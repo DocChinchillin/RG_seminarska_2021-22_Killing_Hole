@@ -7,6 +7,7 @@ import { Physics } from './Physics.js';
 import { Camera } from './Camera.js';
 import { SceneLoader } from './SceneLoader.js';
 import { SceneBuilder } from './SceneBuilder.js';
+import { Gravity } from './Gravity.js';
 
 class App extends Application {
 
@@ -16,6 +17,7 @@ class App extends Application {
         this.renderer = new Renderer(gl);
         this.time = Date.now();
         this.startTime = this.time;
+
         this.aspect = 1;
 
         this.pointerlockchangeHandler = this.pointerlockchangeHandler.bind(this);
@@ -29,6 +31,7 @@ class App extends Application {
         const builder = new SceneBuilder(scene);
         this.scene = builder.build();
         this.physics = new Physics(this.scene);
+        this.gravity = new Gravity(this.scene);
 
         // Find first camera.
         this.camera = null;
@@ -71,6 +74,12 @@ class App extends Application {
         if (this.physics) {
             this.physics.update(dt);
         }
+
+        if (this.gravity) {
+            this.gravity.update(dt);
+        }
+
+
     }
 
     render() {

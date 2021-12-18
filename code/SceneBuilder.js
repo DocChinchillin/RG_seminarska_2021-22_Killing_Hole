@@ -27,6 +27,7 @@ export class SceneBuilder {
     build() {
         let scene = new Scene();
         this.spec.nodes.forEach(spec => scene.addNode(this.createNode(spec)));
+        console.log(scene.nodes)
         return scene;
     }
 

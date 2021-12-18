@@ -13,7 +13,9 @@ export class Gravity {
             if (cam instanceof Camera) {
                 this.scene.traverse(other => {
                     if (cam !== other) {
-                        col +=this.resolveCollision(cam, other);
+                        if(other.jumpable){
+                            col +=this.resolveCollision(cam, other);
+                        }
                     }
                 });
             }

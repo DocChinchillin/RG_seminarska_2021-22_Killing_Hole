@@ -27,7 +27,15 @@ export class SceneBuilder {
     build() {
         let scene = new Scene();
         this.spec.nodes.forEach(spec => scene.addNode(this.createNode(spec)));
-        console.log(scene.nodes)
+        scene.traverse(node => {
+            if (node instanceof Model) {
+                if(node.jumpable){
+                    //dodati logiko za generiranje "logičnih" hitboxov za jump
+                    node.jump_aabb = node.aabb;
+                }
+            }
+        });
+        
         return scene;
     }
 

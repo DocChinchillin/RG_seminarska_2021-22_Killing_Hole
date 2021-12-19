@@ -49,7 +49,6 @@ export class Renderer {
         mat4.invert(viewMatrix, viewMatrix);
         mat4.copy(matrix, viewMatrix);
         gl.uniformMatrix4fv(program.uniforms.uProjection, false, camera.projection);
-
         scene.traverse(
             node => {
                 matrixStack.push(mat4.clone(matrix));
@@ -60,6 +59,7 @@ export class Renderer {
                     gl.activeTexture(gl.TEXTURE0);
                     gl.bindTexture(gl.TEXTURE_2D, node.gl.texture);
                     gl.uniform1i(program.uniforms.uTexture, 0);
+                    //if(!node.hasOwnProperty("equiped") || node.equiped)
                     gl.drawElements(gl.TRIANGLES, node.gl.indices, gl.UNSIGNED_SHORT, 0);
                 }
             },

@@ -16,6 +16,7 @@ export class Camera extends Node {
         this.keydownHandler = this.keydownHandler.bind(this);
         this.keyupHandler = this.keyupHandler.bind(this);
         this.keys = {};
+        this.guns = [];
     }
 
     updateProjection() {
@@ -30,12 +31,24 @@ export class Camera extends Node {
 
         //dodaj se trigom(rot[0])
 
+        
         const forward = vec3.set(vec3.create(),
             -Math.sin(c.rotation[1]), 0, -Math.cos(c.rotation[1]));
         const right = vec3.set(vec3.create(),
             Math.cos(c.rotation[1]), 0, -Math.sin(c.rotation[1]));
         const up = vec3.set(vec3.create(), 0, 1 ,0 );
         
+
+        if(this.keys['Digit1']) {
+            this.children = [];
+            this.children.push(this.guns[0]);
+        }
+        if(this.keys['Digit2']) {
+            this.children = [];
+            this.children.push(this.guns[1]);
+            //this.children[1].equiped = true;
+        }
+
         // 1: add movement acceleration
         let acc = vec3.create();
         let jump = vec3.create();

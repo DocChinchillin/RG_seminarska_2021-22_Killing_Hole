@@ -13,6 +13,22 @@
       "far": 100
     },
     {
+      "type": "gun",
+      "mesh": 2,
+      "texture": 2,
+      "translation": [0.3, -0.3, -0.5],
+      "rotation": [0, -1.8, 0],
+      "scale": [0.7, 0.7, 0.7]
+    },
+    {
+      "type": "gun",
+      "mesh": 3,
+      "texture": 3,
+      "translation": [0.3, -0.2, -0.1],
+      "rotation": [0, -3.5, 0],
+      "scale": [0.05, 0.05, 0.05]
+    },
+    {
       "type": "model",
       "mesh": 0,
       "texture": 0,
@@ -61,10 +77,14 @@
   ],
   "textures": [
     "../common/images/crate-diffuse.png",
-    "../common/images/grass.png"
+    "../common/images/grass.png",
+    "../common/images/gun.png",
+    "../common/images/gun_1.png"
   ],
   "meshes": [
     "../common/models/cube.json",
-    "../common/models/pyramid.json"
+    "../common/models/pyramid.json",
+    "../common/models/gun.json",
+    "../common/models/gun_1.json"
   ]
 }

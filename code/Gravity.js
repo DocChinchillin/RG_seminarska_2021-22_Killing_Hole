@@ -36,24 +36,24 @@ export class Gravity {
             && this.intervalIntersection(aabb1.min[2], aabb1.max[2], aabb2.min[2], aabb2.max[2]);
     }
 
-    resolveCollision(a, b) {
+    resolveCollision(cam, b) {
         //console.log(a)
         // Update bounding boxes with global translation.
-        const ta = a.getGlobalTransform();
+        const tcam = cam.getGlobalTransform();
         const tb = b.getGlobalTransform();
 
-        const posa = mat4.getTranslation(vec3.create(), ta);
+        const poscam = mat4.getTranslation(vec3.create(), tcam);
         const posb = mat4.getTranslation(vec3.create(), tb);
 
-        const mina = vec3.add(vec3.create(), posa, a.aabb.min);
-        const maxa = vec3.add(vec3.create(), posa, a.aabb.max);
-        const minb = vec3.add(vec3.create(), posb, b.aabb.min);
-        const maxb = vec3.add(vec3.create(), posb, b.aabb.max);
+        const mincam = vec3.add(vec3.create(), poscam, cam.aabb.min);
+        const maxcam = vec3.add(vec3.create(), poscam, cam.aabb.max);
+        const minb = vec3.add(vec3.create(), posb, b.jump_aabb.min);
+        const maxb = vec3.add(vec3.create(), posb, b.jump_aabb.max);
 
         // Check if there is collision.
         const isColliding = this.aabbIntersection({
-            min: mina,
-            max: maxa
+            min: mincam,
+            max: maxcam
         }, {
             min: minb,
             max: maxb
@@ -62,7 +62,7 @@ export class Gravity {
         if (!isColliding) {
             return 0;
         }
-        a.can_jump = 1
+        cam.can_jump = 1
         //console.log("se dotikam :)")
         return 1;
         

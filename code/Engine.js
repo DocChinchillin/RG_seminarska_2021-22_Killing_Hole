@@ -8,6 +8,7 @@ import { Camera } from './Camera.js';
 import { SceneLoader } from './SceneLoader.js';
 import { SceneBuilder } from './SceneBuilder.js';
 import { Gravity } from './Gravity.js';
+import { Gun } from './Gun.js';
 
 class App extends Application {
 
@@ -38,6 +39,11 @@ class App extends Application {
         this.scene.traverse(node => {
             if (node instanceof Camera) {
                 this.camera = node;
+            }
+            if (node instanceof Gun) {
+                this.camera.guns.push(node);
+                if (!this.camera.children.length)
+                    this.camera.addChild(node);
             }
         });
 

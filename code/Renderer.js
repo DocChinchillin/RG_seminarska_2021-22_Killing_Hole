@@ -59,7 +59,6 @@ export class Renderer {
                     gl.activeTexture(gl.TEXTURE0);
                     gl.bindTexture(gl.TEXTURE_2D, node.gl.texture);
                     gl.uniform1i(program.uniforms.uTexture, 0);
-                    //if(!node.hasOwnProperty("equiped") || node.equiped)
                     gl.drawElements(gl.TRIANGLES, node.gl.indices, gl.UNSIGNED_SHORT, 0);
                 }
             },

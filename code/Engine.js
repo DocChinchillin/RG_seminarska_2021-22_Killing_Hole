@@ -9,6 +9,7 @@ import { SceneLoader } from './SceneLoader.js';
 import { SceneBuilder } from './SceneBuilder.js';
 import { Gravity } from './Gravity.js';
 import { Gun } from './Gun.js';
+import { Sound } from './Sound.js';
 
 class App extends Application {
 
@@ -23,6 +24,10 @@ class App extends Application {
 
         this.pointerlockchangeHandler = this.pointerlockchangeHandler.bind(this);
         document.addEventListener('pointerlockchange', this.pointerlockchangeHandler);
+
+        this.BGM = new Sound("../common/sounds/BGM.m4a")
+        this.BGM.setVolume(0.1)
+        
 
         this.load('scene.json');
     }
@@ -63,8 +68,11 @@ class App extends Application {
 
         if (document.pointerLockElement === this.canvas) {
             this.camera.enable();
+            
+            this.BGM.play()
         } else {
             this.camera.disable();
+            this.BGM.stop()
         }
     }
 
@@ -72,6 +80,8 @@ class App extends Application {
         const t = this.time = Date.now();
         const dt = (this.time - this.startTime) * 0.001;
         this.startTime = this.time;
+
+        
 
         if (this.camera) {
             this.camera.update(dt);

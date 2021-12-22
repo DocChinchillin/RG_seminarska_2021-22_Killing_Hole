@@ -18,7 +18,9 @@
       "texture": 2,
       "translation": [0.3, -0.3, -0.5],
       "rotation": [0, -1.7, 0],
-      "scale": [0.7, 0.7, 0.7]
+      "scale": [0.7, 0.7, 0.7],
+      "shoot": "../common/sounds/pistol.mp3",
+      "fireRate": 1000
     },
     {
       "type": "gun",
@@ -26,7 +28,9 @@
       "texture": 3,
       "translation": [0.3, -0.2, -0.1],
       "rotation": [0, -3.5, 0],
-      "scale": [0.05, 0.05, 0.05]
+      "scale": [0.05, 0.05, 0.05],
+      "shoot": "../common/sounds/rifle.mp3",
+      "fireRate": 500
     },
     {
       "type": "model",

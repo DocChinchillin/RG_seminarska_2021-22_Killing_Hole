@@ -3,6 +3,9 @@ import { vec3, mat4 } from '../lib/gl-matrix-module.js';
 import { Utils } from './Utils.js';
 import { Node } from './Node.js';
 
+
+  
+
 export class Camera extends Node {
 
     constructor(options) {
@@ -15,6 +18,10 @@ export class Camera extends Node {
         this.mousemoveHandler = this.mousemoveHandler.bind(this);
         this.keydownHandler = this.keydownHandler.bind(this);
         this.keyupHandler = this.keyupHandler.bind(this);
+
+        this.mousedownHandler = this.mousedownHandler.bind(this);
+        this.mouseupHandler = this.mouseupHandler.bind(this);
+
         this.keys = {};
         this.guns = [];
     }
@@ -47,6 +54,9 @@ export class Camera extends Node {
             this.children = [];
             this.children.push(this.guns[1]);
             //this.children[1].equiped = true;
+        }
+        if(this.keys["mouseDown"]){
+            this.children[0].triggerPull()
         }
 
         // 1: add movement acceleration
@@ -124,6 +134,9 @@ export class Camera extends Node {
         document.addEventListener('mousemove', this.mousemoveHandler);
         document.addEventListener('keydown', this.keydownHandler);
         document.addEventListener('keyup', this.keyupHandler);
+
+        document.addEventListener('mousedown', this.mousedownHandler);
+        document.addEventListener('mouseup', this.mouseupHandler);
     }
 
     disable() {
@@ -164,6 +177,14 @@ export class Camera extends Node {
 
     keyupHandler(e) {
         this.keys[e.code] = false;
+    }
+
+    mousedownHandler(e) {
+        this.keys["mouseDown"] = true;
+    }
+
+    mouseupHandler(e) {
+        this.keys["mouseDown"] = false;
     }
 
 }

@@ -8,8 +8,9 @@ import { Camera } from './Camera.js';
 import { SceneLoader } from './SceneLoader.js';
 import { SceneBuilder } from './SceneBuilder.js';
 import { Gravity } from './Gravity.js';
-import { Gun } from './Gun.js';
 import { Sound } from './Sound.js';
+import { Shop } from './Shop.js';
+import { InventoryBuilder } from './InventoryBuilder.js';
 
 class App extends Application {
 
@@ -29,15 +30,19 @@ class App extends Application {
         this.BGM.setVolume(0.1)
         
 
-        this.load('scene.json');
+        this.load('scene.json', 'inventory.json');
     }
 
-    async load(uri) {
+    async load(uri, uri2) {
         const scene = await new SceneLoader().loadScene(uri);
+        const inventory = await new SceneLoader().loadScene(uri2);
         const builder = new SceneBuilder(scene);
+        const invBuilder = new InventoryBuilder(inventory);
         this.scene = builder.build();
+        this.inventory = invBuilder.build();
         this.physics = new Physics(this.scene);
         this.gravity = new Gravity(this.scene);
+        this.shop = new Shop(this.scene);
 
         // Find first camera.
         this.camera = null;
@@ -45,16 +50,15 @@ class App extends Application {
             if (node instanceof Camera) {
                 this.camera = node;
             }
-            if (node instanceof Gun) {
-                this.camera.guns.push(node);
-                if (!this.camera.children.length)
-                    this.camera.addChild(node);
-            }
         });
 
+        this.camera.addChild(this.inventory.nodes[0]);
+        this.camera.player.guns.push(this.inventory.nodes[0]);
+        
         this.camera.aspect = this.aspect;
         this.camera.updateProjection();
         this.renderer.prepare(this.scene);
+        this.renderer.prepare(this.inventory);
     }
 
     enableCamera() {
@@ -95,6 +99,9 @@ class App extends Application {
             this.gravity.update(dt);
         }
 
+        /*if (this.shop) {
+            this.shop.update(dt, this.camera);
+        }*/
 
     }
 

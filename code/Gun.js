@@ -1,4 +1,3 @@
-import { mat4, vec3 } from "../lib/gl-matrix-module.js";
 import { Model } from "./Model.js";
 import { Sound } from "./Sound.js";
 
@@ -8,6 +7,10 @@ export class Gun extends Model {
         super(mesh, texture, spec);
         //firerate
         this.fireRate = spec.fireRate;
+        this.price = spec.price;
+        this.ammoPrice = spec.ammoPrice;
+        this.startingAmmo = spec.startingAmmo;
+        this.inInventory = spec.inInventory || false;
         this.lastFire = 0
 
         //sounds

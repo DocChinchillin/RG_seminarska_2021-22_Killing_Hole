@@ -13,36 +13,6 @@
       "far": 100
     },
     {
-      "type": "gun",
-      "mesh": 2,
-      "texture": 2,
-      "translation": [0.3, -0.3, -0.5],
-      "rotation": [0, -1.7, 0],
-      "scale": [0.7, 0.7, 0.7],
-      "shoot": "../common/sounds/pistol.mp3",
-      "fireRate": 1000,
-      "magSize": 6,
-      "totalAmmo": 30,
-      "emptyShot": "../common/sounds/empty.mp3",
-      "reloadSound" : "../common/sounds/clean-revolver-reload.mp3",
-      "reloadTime": 3
-    },
-    {
-      "type": "gun",
-      "mesh": 3,
-      "texture": 3,
-      "translation": [0.3, -0.2, -0.1],
-      "rotation": [0, -3.5, 0],
-      "scale": [0.05, 0.05, 0.05],
-      "shoot": "../common/sounds/rifle.mp3",
-      "fireRate": 500,
-      "magSize": 30,
-      "totalAmmo": 10,
-      "emptyShot": "../common/sounds/empty.mp3",
-      "reloadSound" : "../common/sounds/empty.mp3",
-      "reloadTime": 3
-    },
-    {
       "type": "model",
       "mesh": 0,
       "texture": 0,
@@ -87,6 +57,31 @@
       "rotation": [0, 1, 0],
       "scale": [1, 0.1, 1],
       "jumpable": 1
+    },
+
+    {
+      "type": "shopModel",
+      "mesh": 2,
+      "texture": 2,
+      "translation": [0.3, 0.6, 2],
+      "rotation": [0, -1.9, 0],
+      "scale": [0.7, 0.7, 0.7],
+      "aabb": {
+        "min": [-1, -0.1, -1],
+        "max": [0.5, 0.1, 0.5]
+      }
+    },
+    {
+      "type": "shopModel",
+      "mesh": 3,
+      "texture": 3,
+      "translation": [0.5, 0.6, 0],
+      "rotation": [0, -3.5, 0],
+      "scale": [0.05, 0.05, 0.05],
+      "aabb": {
+        "min": [-1, -0.1, -1],
+        "max": [1, 0.1, 1]
+      }
     }
   ],
   "textures": [

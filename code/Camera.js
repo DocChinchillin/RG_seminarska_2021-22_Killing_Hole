@@ -2,6 +2,7 @@ import { vec3, mat4 } from '../lib/gl-matrix-module.js';
 
 import { Utils } from './Utils.js';
 import { Node } from './Node.js';
+import { Player } from './Player.js';
 
 
   
@@ -23,7 +24,8 @@ export class Camera extends Node {
         this.mouseupHandler = this.mouseupHandler.bind(this);
 
         this.keys = {};
-        this.guns = [];
+
+        this.player = new Player();
     }
 
     updateProjection() {

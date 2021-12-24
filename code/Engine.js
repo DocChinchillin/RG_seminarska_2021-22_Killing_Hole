@@ -52,9 +52,10 @@ class App extends Application {
             }
         });
 
+        this.inventory.nodes[0].isEquiped = true;
         this.camera.addChild(this.inventory.nodes[0]);
-        this.camera.player.guns.push(this.inventory.nodes[0]);
-        
+        this.camera.player.guns = this.inventory.nodes;
+console.log(this.camera)
         this.camera.aspect = this.aspect;
         this.camera.updateProjection();
         this.renderer.prepare(this.scene);
@@ -99,9 +100,9 @@ class App extends Application {
             this.gravity.update(dt);
         }
 
-        /*if (this.shop) {
+        if (this.shop) {
             this.shop.update(dt, this.camera);
-        }*/
+        }
 
     }
 

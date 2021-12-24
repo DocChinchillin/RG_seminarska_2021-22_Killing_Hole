@@ -1,6 +1,6 @@
 export class Player {
     constructor() {
         this.guns = [];
-        this.money;
+        this.money = 100;
     }
 }

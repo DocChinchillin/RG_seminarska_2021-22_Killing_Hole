@@ -5,12 +5,11 @@ import { Sound } from "./Sound.js";
 export class Gun extends Model {
     constructor(mesh, texture, spec) {
         super(mesh, texture, spec);
+        this.itemName = spec.itemName;
+        this.isEquiped = false;
+        this.inInventory = spec.inInventory || false;
         //firerate
         this.fireRate = spec.fireRate;
-        this.price = spec.price;
-        this.ammoPrice = spec.ammoPrice;
-        this.startingAmmo = spec.startingAmmo;
-        this.inInventory = spec.inInventory || false;
         this.lastFire = 0
 
         //sounds

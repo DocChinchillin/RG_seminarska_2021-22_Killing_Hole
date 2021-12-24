@@ -48,16 +48,20 @@ export class Camera extends Node {
         const up = vec3.set(vec3.create(), 0, 1 ,0 );
         
         //gun logic
-        if(this.keys['Digit1']) {
+        if(this.keys['Digit1'] && this.player.guns[0].inInventory) {
             this.children[0].stopReload()
+            this.children[0].isEquiped = false;
+            this.player.guns[0].isEquiped = true;
             this.children = [];
-            this.children.push(this.guns[0]);
+            this.addChild(this.player.guns[0]);
             this.children[0].showAmmo();
         }
-        if(this.keys['Digit2']) {
+        if(this.keys['Digit2'] && this.player.guns[1].inInventory) {
             this.children[0].stopReload()
+            this.children[0].isEquiped = false;
+            this.player.guns[1].isEquiped = true;
             this.children = [];
-            this.children.push(this.guns[1]);
+            this.addChild(this.player.guns[1]);
             this.children[0].showAmmo();
             //this.children[1].equiped = true;
         }

@@ -13,10 +13,8 @@
       "emptyShot": "../common/sounds/empty.mp3",
       "reloadSound" : "../common/sounds/clean-revolver-reload.mp3",
       "reloadTime": 3,
-      "price": 15,
-      "ammoPrice": 5,
       "fireRate": 1000,
-      "startingAmmo": 120,
+      "itemName": "revolver",
       "inInventory": true
     },
     {
@@ -32,10 +30,8 @@
       "emptyShot": "../common/sounds/empty.mp3",
       "reloadSound" : "../common/sounds/empty.mp3",
       "reloadTime": 3,
-      "price": 40,
-      "ammoPrice": 10,
       "fireRate": 500,
-      "startingAmmo": 30
+      "itemName": "assaultRifle"
     }
   ],
   "textures": [

@@ -45,24 +45,33 @@ export class Camera extends Node {
             Math.cos(c.rotation[1]), 0, -Math.sin(c.rotation[1]));
         const up = vec3.set(vec3.create(), 0, 1 ,0 );
         
-
+        //gun logic
         if(this.keys['Digit1']) {
+            this.children[0].stopReload()
             this.children = [];
             this.children.push(this.guns[0]);
+            this.children[0].showAmmo();
         }
         if(this.keys['Digit2']) {
+            this.children[0].stopReload()
             this.children = [];
             this.children.push(this.guns[1]);
+            this.children[0].showAmmo();
             //this.children[1].equiped = true;
         }
-        if(this.keys["mouseDown"]){
+        if(this.keys["mouse0"]){
             this.children[0].triggerPull()
         }
+        if(this.keys["KeyR"]){
+            this.children[0].tryReload()
+        }
+        this.children[0].reloading(dt)
 
         // 1: add movement acceleration
         let acc = vec3.create();
         let jump = vec3.create();
         //console.log(this.keys)
+
         if (this.keys['KeyW']) {
             vec3.add(acc, acc, forward);
         }
@@ -180,11 +189,11 @@ export class Camera extends Node {
     }
 
     mousedownHandler(e) {
-        this.keys["mouseDown"] = true;
+        this.keys["mouse"+e.button] = true;
     }
 
     mouseupHandler(e) {
-        this.keys["mouseDown"] = false;
+        this.keys["mouse"+e.button] = false;
     }
 
 }

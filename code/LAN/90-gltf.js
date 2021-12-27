@@ -1,4 +1,4 @@
-import Application from '../../common/Application.js';
+import Application from './Application.js';
 import * as WebGL from './WebGL.js';
 import GLTFLoader from './GLTFLoader.js';
 import Renderer from './Renderer.js';
@@ -30,10 +30,10 @@ class App extends Application {
 
     async start() {
         this.loader = new GLTFLoader();
-        await this.loader.load('../../common/models/game/game.gltf');
+        await this.loader.load('/models/map.gltf');
         this.scene = await this.loader.loadScene(this.loader.defaultScene);
         this.camera = await this.loader.loadNode('Camera');
-        this.character = await this.loader.loadNode('Character');
+        this.character = await this.loader.loadNode('Camera');
 
         this.keydownHandler = this.keydownHandler.bind(this);
         this.keyupHandler = this.keyupHandler.bind(this);

@@ -29,10 +29,15 @@ writingElement.appendChild(writingNode);
 class App extends Application {
 
     async start() {
+      console.log("sm")
         this.loader = new GLTFLoader();
-        await this.loader.load('/models/map.gltf');
+        await this.loader.load('./models/map.gltf');
+        console.log("sm2")
+        print(this.loader.defaultScene)
         this.scene = await this.loader.loadScene(this.loader.defaultScene);
+        console.log("sm3")
         this.camera = await this.loader.loadNode('Camera');
+        console.log("camera")
         this.character = await this.loader.loadNode('Camera');
 
         this.keydownHandler = this.keydownHandler.bind(this);

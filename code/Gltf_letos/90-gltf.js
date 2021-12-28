@@ -1,13 +1,13 @@
-import { Application } from '../../common/engine/Application.js';
+import { Application } from './Application.js';
 
 import { GLTFLoader } from './GLTFLoader.js';
 import { Renderer } from './Renderer.js';
 
-class App extends Application {
+class App extends Application{
 
     async start() {
         this.loader = new GLTFLoader();
-        await this.loader.load('../../common/models/monkey/monkey.gltf');
+        await this.loader.load('./models/map.gltf');
 
         this.scene = await this.loader.loadScene(this.loader.defaultScene);
         this.camera = await this.loader.loadNode('Camera');
@@ -21,8 +21,13 @@ class App extends Application {
         }
 
         this.renderer = new Renderer(this.gl);
+        console.log(this.scene)
         this.renderer.prepareScene(this.scene);
         this.resize();
+    }
+
+    update() {
+
     }
 
     render() {

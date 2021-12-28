@@ -214,13 +214,15 @@ export class Renderer {
         const vao = this.glObjects.get(primitive);
         const material = primitive.material;
         const texture = material.baseColorTexture;
-        const glTexture = this.glObjects.get(texture.image);
-        const glSampler = this.glObjects.get(texture.sampler);
+        if(texture){
+            const glTexture = this.glObjects.get(texture.image);
+            const glSampler = this.glObjects.get(texture.sampler);
 
-        gl.bindVertexArray(vao);
-        gl.activeTexture(gl.TEXTURE0);
-        gl.bindTexture(gl.TEXTURE_2D, glTexture);
-        gl.bindSampler(0, glSampler);
+            gl.bindVertexArray(vao);
+            gl.activeTexture(gl.TEXTURE0);
+            gl.bindTexture(gl.TEXTURE_2D, glTexture);
+            gl.bindSampler(0, glSampler);
+        }
 
         if (primitive.indices) {
             const mode = primitive.mode;

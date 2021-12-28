@@ -2852,12 +2852,12 @@
         {
             "mimeType" : "image/png",
             "name" : "Leaves Base Color",
-            "uri" : "Leaves%20Base%20Color.png"
+            "uri" : "Leaves_Base_Color.png"
         },
         {
             "mimeType" : "image/png",
             "name" : "Bark Base Color",
-            "uri" : "Bark%20Base%20Color.png"
+            "uri" : "Bark_Base_Color.png"
         }
     ],
     "accessors" : [

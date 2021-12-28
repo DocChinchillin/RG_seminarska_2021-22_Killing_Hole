@@ -1,4 +1,5 @@
 import { vec3, mat4 } from '../lib/gl-matrix-module.js';
+import { Player } from './Player.js';
 
 export class Physics {
 
@@ -8,12 +9,13 @@ export class Physics {
 
     update(dt) {
         this.scene.traverse(node => {
+            //console.log(node)
             if (node.velocity) {
                 vec3.scaleAndAdd(node.translation, node.translation, node.velocity, dt);
-                node.updateTransform();
+                node.updatePos();
                 this.scene.traverse(other => {
                     if (node !== other) {
-                        this.resolveCollision(node, other);
+                        //this.resolveCollision(node, other);
                     }
                 });
             }

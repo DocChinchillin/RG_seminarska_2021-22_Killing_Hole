@@ -1,4 +1,4 @@
-import Application from './Application.js';
+import Application from '../Gltf_letos/Application.js';
 import * as WebGL from './WebGL.js';
 import GLTFLoader from './GLTFLoader.js';
 import Renderer from './Renderer.js';

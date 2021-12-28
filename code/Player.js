@@ -29,7 +29,7 @@ export class Player extends Node {
             -Math.sin(c.rotation[1]), 0, -Math.cos(c.rotation[1]));
         const right = vec3.set(vec3.create(),
             Math.cos(c.rotation[1]), 0, -Math.sin(c.rotation[1]));
-
+            const up = vec3.set(vec3.create(), 0, 1 ,0 );
         // 1: add movement acceleration
         let acc = vec3.create();
         if (this.keys['KeyW']) {
@@ -43,6 +43,13 @@ export class Player extends Node {
         }
         if (this.keys['KeyA']) {
             vec3.sub(acc, acc, right);
+        }
+
+        if (this.keys['KeyC']) {
+            vec3.add(acc, acc, up);
+        }
+        if (this.keys['KeyX']) {
+            vec3.sub(acc, acc, up);
         }
 
         // 2: update velocity
@@ -62,6 +69,7 @@ export class Player extends Node {
         if (len > c.maxSpeed) {
             vec3.scale(c.velocity, c.velocity, c.maxSpeed / len);
         }
+       
     }
 
     enable() {

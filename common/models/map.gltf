@@ -58,7 +58,8 @@
                 48,
                 49,
                 50,
-                51
+                51,
+                52
             ]
         }
     ],
@@ -952,6 +953,26 @@
                 3.808990478515625,
                 -41.5187873840332
             ]
+        },
+        {
+            "mesh" : 50,
+            "name" : "Cube.002_Cube.003",
+            "rotation" : [
+                -0.000269418116658926,
+                -0.0002695024013519287,
+                -0.7071067690849304,
+                0.7071067094802856
+            ],
+            "scale" : [
+                0.5936424136161804,
+                0.5936424136161804,
+                0.5936424136161804
+            ],
+            "translation" : [
+                0.047016799449920654,
+                1.502705693244934,
+                55.09442138671875
+            ]
         }
     ],
     "cameras" : [
@@ -1733,6 +1754,30 @@
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.6732679605484009
+            }
+        },
+        {
+            "doubleSided" : true,
+            "name" : "handgun",
+            "pbrMetallicRoughness" : {
+                "baseColorTexture" : {
+                    "index" : 64,
+                    "texCoord" : 0
+                },
+                "metallicFactor" : 0,
+                "roughnessFactor" : 0.5
+            }
+        },
+        {
+            "doubleSided" : true,
+            "name" : "handgun_handgun_C.jpg",
+            "pbrMetallicRoughness" : {
+                "baseColorTexture" : {
+                    "index" : 65,
+                    "texCoord" : 0
+                },
+                "metallicFactor" : 0,
+                "roughnessFactor" : 0.5
             }
         }
     ],
@@ -2562,6 +2607,29 @@
                     "material" : 63
                 }
             ]
+        },
+        {
+            "name" : "Cube.002_Cube.003",
+            "primitives" : [
+                {
+                    "attributes" : {
+                        "POSITION" : 199,
+                        "NORMAL" : 200,
+                        "TEXCOORD_0" : 201
+                    },
+                    "indices" : 202,
+                    "material" : 64
+                },
+                {
+                    "attributes" : {
+                        "POSITION" : 203,
+                        "NORMAL" : 204,
+                        "TEXCOORD_0" : 205
+                    },
+                    "indices" : 206,
+                    "material" : 65
+                }
+            ]
         }
     ],
     "textures" : [
@@ -2820,6 +2888,14 @@
         {
             "sampler" : 0,
             "source" : 4
+        },
+        {
+            "sampler" : 0,
+            "source" : 5
+        },
+        {
+            "sampler" : 0,
+            "source" : 5
         }
     ],
     "images" : [
@@ -2829,9 +2905,9 @@
             "uri" : "ImphenziaPalette01.png"
         },
         {
-            "mimeType" : "image/jpeg",
+            "mimeType" : "image/png",
             "name" : "Rock-Texture-Surface",
-            "uri" : "Rock-Texture-Surface.jpg"
+            "uri" : "Rock-Texture-Surface.png"
         },
         {
             "mimeType" : "image/png",
@@ -2847,6 +2923,11 @@
             "mimeType" : "image/png",
             "name" : "Bark Base Color",
             "uri" : "Bark%20Base%20Color.png"
+        },
+        {
+            "mimeType" : "image/jpeg",
+            "name" : "handgun_C",
+            "uri" : "handgun_C.jpg"
         }
     ],
     "accessors" : [
@@ -4683,6 +4764,74 @@
             "componentType" : 5126,
             "count" : 90,
             "type" : "VEC2"
+        },
+        {
+            "bufferView" : 199,
+            "componentType" : 5126,
+            "count" : 2337,
+            "max" : [
+                0.8523499965667725,
+                0.1015309989452362,
+                0.6110110282897949
+            ],
+            "min" : [
+                -0.922989010810852,
+                -0.1015309989452362,
+                -0.6452510952949524
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 200,
+            "componentType" : 5126,
+            "count" : 2337,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 201,
+            "componentType" : 5126,
+            "count" : 2337,
+            "type" : "VEC2"
+        },
+        {
+            "bufferView" : 202,
+            "componentType" : 5123,
+            "count" : 6234,
+            "type" : "SCALAR"
+        },
+        {
+            "bufferView" : 203,
+            "componentType" : 5126,
+            "count" : 12147,
+            "max" : [
+                0.8741850256919861,
+                0.12390200048685074,
+                0.5238859057426453
+            ],
+            "min" : [
+                -0.9760249853134155,
+                -0.12610800564289093,
+                -0.5667501091957092
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 204,
+            "componentType" : 5126,
+            "count" : 12147,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 205,
+            "componentType" : 5126,
+            "count" : 12147,
+            "type" : "VEC2"
+        },
+        {
+            "bufferView" : 206,
+            "componentType" : 5123,
+            "count" : 59160,
+            "type" : "SCALAR"
         }
     ],
     "bufferViews" : [
@@ -5680,6 +5829,46 @@
             "buffer" : 0,
             "byteLength" : 720,
             "byteOffset" : 686148
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 28044,
+            "byteOffset" : 686868
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 28044,
+            "byteOffset" : 714912
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 18696,
+            "byteOffset" : 742956
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 12468,
+            "byteOffset" : 761652
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 145764,
+            "byteOffset" : 774120
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 145764,
+            "byteOffset" : 919884
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 97176,
+            "byteOffset" : 1065648
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 118320,
+            "byteOffset" : 1162824
         }
     ],
     "samplers" : [
@@ -5690,7 +5879,7 @@
     ],
     "buffers" : [
         {
-            "byteLength" : 686868,
+            "byteLength" : 1281144,
             "uri" : "map.bin"
         }
     ]

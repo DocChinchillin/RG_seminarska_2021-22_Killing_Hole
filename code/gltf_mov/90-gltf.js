@@ -9,7 +9,7 @@ import { Physics } from './Physics.js';
 class App extends Application {
     async start() {
         this.loader = new GLTFLoader();
-        await this.loader.load('../../common/models/monkey/monkey.gltf');
+        await this.loader.load('../../common/models/map/test/test.gltf');
 
         this.camera = await this.loader.loadPlayer('Camera');
         this.scene = await this.loader.loadScene(this.loader.defaultScene);

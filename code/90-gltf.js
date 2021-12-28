@@ -54,7 +54,7 @@ class App extends Application {
         this.startTime = this.time;
 
         if (this.camera) {
-            console.log(this.camera)
+            //console.log(this.camera)
             this.camera.update(dt);
         }
 

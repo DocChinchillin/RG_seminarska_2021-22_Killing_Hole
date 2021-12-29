@@ -5,6 +5,7 @@ import { Application } from '../common/engine/Application.js';
 import { GLTFLoader } from './GLTFLoader.js';
 import { Renderer } from './Renderer.js';
 import { Physics } from './Physics.js';
+import { Gravity } from './Gravity.js';
 
 class App extends Application {
     async start() {
@@ -26,6 +27,7 @@ class App extends Application {
         this.renderer = new Renderer(this.gl);
         this.renderer.prepareScene(this.scene);
         this.physics = new Physics(this.scene);
+        this.gravity = new Gravity(this.scene);
         this.resize();
         this.pointerlockchangeHandler = this.pointerlockchangeHandler.bind(this);
         document.addEventListener('pointerlockchange', this.pointerlockchangeHandler);
@@ -60,6 +62,10 @@ class App extends Application {
 
         if (this.physics) {
             this.physics.update(dt);
+        }
+
+        if (this.gravity) {
+            this.gravity.update(dt);
         }
         
         //console.log(this.scene)

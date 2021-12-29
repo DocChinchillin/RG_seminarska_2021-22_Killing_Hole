@@ -15,6 +15,11 @@ export class Player extends Node {
         this.mousemoveHandler = this.mousemoveHandler.bind(this);
         this.keydownHandler = this.keydownHandler.bind(this);
         this.keyupHandler = this.keyupHandler.bind(this);
+
+        this.mousedownHandler = this.mousedownHandler.bind(this);
+        this.mouseupHandler = this.mouseupHandler.bind(this);
+
+
         this.keys = {};
     }
 
@@ -30,8 +35,12 @@ export class Player extends Node {
         const right = vec3.set(vec3.create(),
             Math.cos(c.rotation[1]), 0, -Math.sin(c.rotation[1]));
             const up = vec3.set(vec3.create(), 0, 1 ,0 );
+
+
         // 1: add movement acceleration
         let acc = vec3.create();
+        let jump = vec3.create();
+
         if (this.keys['KeyW']) {
             vec3.add(acc, acc, forward);
         }
@@ -45,6 +54,23 @@ export class Player extends Node {
             vec3.sub(acc, acc, right);
         }
 
+        if(c.can_jump || c.jumptime > 0){
+            if (this.keys['Space'] || c.jumptime > 0) {
+                vec3.add(acc, acc, up);
+                if(this.jumptime <= 0)
+                    this.jumptime = 1
+                c.can_jump = 0
+            }
+            
+        }
+        //gravity
+        this.jumptime = this.jumptime - dt
+        const grav = vec3.set(vec3.create(),0, -2,0 );
+        if(!c.can_jump){
+            vec3.scaleAndAdd(jump, jump, grav,Math.abs(1-this.jumptime));
+        }
+
+        //vclip
         if (this.keys['KeyC']) {
             vec3.add(acc, acc, up);
         }
@@ -54,7 +80,7 @@ export class Player extends Node {
 
         // 2: update velocity
         vec3.scaleAndAdd(c.velocity, c.velocity, acc, dt * c.acceleration);
-
+        vec3.scale(jump, jump, dt * c.jump);
         // 3: if no movement, apply friction
         if (!this.keys['KeyW'] &&
             !this.keys['KeyS'] &&
@@ -69,6 +95,7 @@ export class Player extends Node {
         if (len > c.maxSpeed) {
             vec3.scale(c.velocity, c.velocity, c.maxSpeed / len);
         }
+        vec3.add(c.velocity,c.velocity,jump)
        
     }
 
@@ -76,12 +103,18 @@ export class Player extends Node {
         document.addEventListener('mousemove', this.mousemoveHandler);
         document.addEventListener('keydown', this.keydownHandler);
         document.addEventListener('keyup', this.keyupHandler);
+
+        document.addEventListener('mousedown', this.mousedownHandler);
+        document.addEventListener('mouseup', this.mouseupHandler);
+
     }
 
     disable() {
         document.removeEventListener('mousemove', this.mousemoveHandler);
         document.removeEventListener('keydown', this.keydownHandler);
         document.removeEventListener('keyup', this.keyupHandler);
+        document.removeEventListener('mousedown', this.mousedownHandler);
+        document.removeEventListener('mouseup', this.mouseupHandler);
 
         for (let key in this.keys) {
             this.keys[key] = false;
@@ -118,6 +151,14 @@ export class Player extends Node {
         this.keys[e.code] = false;
     }
 
+    mousedownHandler(e) {
+        this.keys["mouse"+e.button] = true;
+    }
+
+    mouseupHandler(e) {
+        this.keys["mouse"+e.button] = false;
+    }
+
 }
 
 Player.defaults = {
@@ -127,5 +168,9 @@ Player.defaults = {
     friction         : 0.2,
     acceleration     : 20,
     min              : [-0.2, -1, -0.2],
-    max              : [0.2, 0.7, 0.2]
+    max              : [0.2, 0.7, 0.2],
+    jump             : 100,
+    can_jump         : 1,
+    jumptime         : 0,
+    maxFall          : 3
 };

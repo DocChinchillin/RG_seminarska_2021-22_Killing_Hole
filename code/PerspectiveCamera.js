@@ -8,7 +8,7 @@ export class PerspectiveCamera extends Camera {
         super(options);
 
         this.aspect = options.aspect || 1.5;
-        this.fov = options.fov || 1.5;
+        this.fov = options.fov || 2;
         this.near = options.near || 1;
         this.far = options.far || Infinity;
 

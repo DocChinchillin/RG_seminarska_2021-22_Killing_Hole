@@ -9,13 +9,13 @@ export class Physics {
 
     update(dt) {
         this.scene.traverse(node => {
-            //console.log(node)
             if (node.velocity) {
+                //console.log(node)
                 vec3.scaleAndAdd(node.translation, node.translation, node.velocity, dt);
                 node.updatePos();
                 this.scene.traverse(other => {
                     if (node !== other) {
-                        //this.resolveCollision(node, other);
+                        this.resolveCollision(node, other);
                     }
                 });
             }
@@ -39,11 +39,17 @@ export class Physics {
 
         const posa = mat4.getTranslation(vec3.create(), ta);
         const posb = mat4.getTranslation(vec3.create(), tb);
+        
+        if(!b.mesh){
+            return
+        }
+        //console.log(a)
+        //console.log(b)
 
-        const mina = vec3.add(vec3.create(), posa, a.aabb.min);
-        const maxa = vec3.add(vec3.create(), posa, a.aabb.max);
-        const minb = vec3.add(vec3.create(), posb, b.aabb.min);
-        const maxb = vec3.add(vec3.create(), posb, b.aabb.max);
+        const mina = vec3.add(vec3.create(), posa, a.min);
+        const maxa = vec3.add(vec3.create(), posa, a.max);
+        const minb = vec3.add(vec3.create(), posb, b.mesh.primitives[0].attributes.POSITION.min);
+        const maxb = vec3.add(vec3.create(), posb, b.mesh.primitives[0].attributes.POSITION.max);
 
         // Check if there is collision.
         const isColliding = this.aabbIntersection({
@@ -57,7 +63,7 @@ export class Physics {
         if (!isColliding) {
             return;
         }
-
+        console.log("collison")
         // Move node A minimally to avoid collision.
         const diffa = vec3.sub(vec3.create(), maxb, mina);
         const diffb = vec3.sub(vec3.create(), maxa, minb);
@@ -90,7 +96,7 @@ export class Physics {
         }
 
         vec3.add(a.translation, a.translation, minDirection);
-        a.updateTransform();
+        a.updatePos();
     }
 
 }

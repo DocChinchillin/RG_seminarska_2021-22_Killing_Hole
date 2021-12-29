@@ -123,7 +123,9 @@ export class Player extends Node {
 Player.defaults = {
     velocity         : [0, 0, 0],
     mouseSensitivity : 0.002,
-    maxSpeed         : 3,
+    maxSpeed         : 10,
     friction         : 0.2,
-    acceleration     : 20
+    acceleration     : 20,
+    min              : [-0.2, -1, -0.2],
+    max              : [0.2, 0.7, 0.2]
 };

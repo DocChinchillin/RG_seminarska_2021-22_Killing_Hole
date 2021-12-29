@@ -12,9 +12,9 @@ class App extends Application {
         await this.loader.load('../common/models/map.gltf');
 
         this.camera = await this.loader.loadPlayer('Camera');
+        this.gun = await this.loader.loadGun('Gun1');
         this.scene = await this.loader.loadScene(this.loader.defaultScene);
-        
-        //console.log(this.camera)
+
         if (!this.scene || !this.camera) {
             throw new Error('Scene or Camera not present in glTF');
         }
@@ -60,8 +60,9 @@ class App extends Application {
 
         if (this.physics) {
             this.physics.update(dt);
+            console.log(this.camera)
         }
-        
+
         //console.log(this.scene)
     }
 

@@ -10,6 +10,7 @@ import { OrthographicCamera } from './OrthographicCamera.js';
 import { Node } from './Node.js';
 import { Scene } from './Scene.js';
 import { Player } from './Player.js';
+import { Gun } from './Gun.js';
 
 // This class loads all GLTF resources and instantiates
 // the corresponding classes. Keep in mind that it loads
@@ -286,6 +287,7 @@ export class GLTFLoader {
                 options.children.push(node);
             }
         }
+
         if (gltfSpec.camera !== undefined) {
             options.camera = await this.loadCamera(gltfSpec.camera);
         }
@@ -336,10 +338,36 @@ export class GLTFLoader {
                 options.nodes.push(node);
             }
         }
-
+        
         const scene = new Scene(options);
         this.cache.set(gltfSpec, scene);
         return scene;
+    }
+
+    async loadGun(nameOrIndex) {
+        const gltfSpec = this.findByNameOrIndex(this.gltf.nodes, nameOrIndex);
+        
+        if (this.cache.has(gltfSpec)) {
+            return this.cache.get(gltfSpec);
+        }
+        
+        let options = { ...gltfSpec, children: [] };
+        if (gltfSpec.children) {
+            for (const nodeIndex of gltfSpec.children) {
+                const node = await this.loadNode(nodeIndex);
+                options.children.push(node);
+            }
+        }
+        if (gltfSpec.camera !== undefined) {
+            options.camera = await this.loadCamera(gltfSpec.camera);
+        }
+        if (gltfSpec.mesh !== undefined) {
+            options.mesh = await this.loadMesh(gltfSpec.mesh);
+        }
+
+        const node = new Gun(options);
+        this.cache.set(gltfSpec, node);
+        return node;
     }
 
 }

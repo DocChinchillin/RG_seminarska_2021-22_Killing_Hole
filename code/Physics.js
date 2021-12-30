@@ -15,7 +15,9 @@ export class Physics {
                 node.updatePos();
                 this.scene.traverse(other => {
                     if (node !== other) {
-                        this.resolveCollision(node, other);
+                        if(!other.parent == node){
+                            this.resolveCollision(node, other);
+                        }
                     }
                 });
             }

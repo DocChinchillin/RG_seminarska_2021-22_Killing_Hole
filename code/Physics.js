@@ -1,4 +1,5 @@
 import { vec3, mat4 } from '../lib/gl-matrix-module.js';
+import { Gun } from './Gun.js';
 import { Player } from './Player.js';
 
 export class Physics {
@@ -15,7 +16,7 @@ export class Physics {
                 node.updatePos();
                 this.scene.traverse(other => {
                     if (node !== other) {
-                        if(!other.parent == node){
+                        if(!(other instanceof Gun)){
                             this.resolveCollision(node, other);
                         }
                     }
@@ -65,6 +66,7 @@ export class Physics {
         if (!isColliding) {
             return;
         }
+        //console.log(b)
         console.log("collison")
         // Move node A minimally to avoid collision.
         const diffa = vec3.sub(vec3.create(), maxb, mina);

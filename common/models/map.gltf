@@ -589,9 +589,9 @@
                 -0.49999991059303284
             ],
             "translation" : [
-                6.817018985748291,
-                0,
-                8.68816089630127
+                12.24786376953125,
+                2.718264579772949,
+                16.839847564697266
             ]
         },
         {
@@ -971,7 +971,7 @@
             "translation" : [
                 0.047016799449920654,
                 1.502705693244934,
-                53.09442138671875
+                55.09442138671875
             ]
         }
     ],
@@ -980,7 +980,7 @@
             "name" : "Camera",
             "perspective" : {
                 "aspectRatio" : 1.7777777777777777,
-                "yfov" : 1,
+                "yfov" : 0.39959652046304894,
                 "zfar" : 1000,
                 "znear" : 0.10000000149011612
             },
@@ -2917,12 +2917,12 @@
         {
             "mimeType" : "image/png",
             "name" : "Leaves Base Color",
-            "uri" : "Leaves_Base_Color.png"
+            "uri" : "Leaves%20Base%20Color.png"
         },
         {
             "mimeType" : "image/png",
             "name" : "Bark Base Color",
-            "uri" : "Bark_Base_Color.png"
+            "uri" : "Bark%20Base%20Color.png"
         },
         {
             "mimeType" : "image/jpeg",

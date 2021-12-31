@@ -10,7 +10,7 @@ export class Player extends Node {
         Utils.init(this, this.constructor.defaults, options);
 
         //this.projection = this.camera.matrix//mat4.create();
-        this.camera.updateMatrix();
+        //this.camera.updateMatrix();
 
         this.mousemoveHandler = this.mousemoveHandler.bind(this);
         this.keydownHandler = this.keydownHandler.bind(this);

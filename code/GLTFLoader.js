@@ -275,18 +275,12 @@ export class GLTFLoader {
     }
     async loadPlayer(nameOrIndex) {
         const gltfSpec = this.findByNameOrIndex(this.gltf.nodes, nameOrIndex);
-        console.log(gltfSpec)
+        
         if (this.cache.has(gltfSpec)) {
             return this.cache.get(gltfSpec);
         }
 
         let options = { ...gltfSpec, children: [] };
-        if (gltfSpec.children) {
-            for (const nodeIndex of gltfSpec.children) {
-                const node = await this.loadNode(nodeIndex);
-                options.children.push(node);
-            }
-        }
 
         if (gltfSpec.camera !== undefined) {
             options.camera = await this.loadCamera(gltfSpec.camera);
@@ -358,9 +352,7 @@ export class GLTFLoader {
                 options.children.push(node);
             }
         }
-        if (gltfSpec.camera !== undefined) {
-            options.camera = await this.loadCamera(gltfSpec.camera);
-        }
+
         if (gltfSpec.mesh !== undefined) {
             options.mesh = await this.loadMesh(gltfSpec.mesh);
         }

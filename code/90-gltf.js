@@ -13,15 +13,24 @@ class App extends Application {
     this.loader = new GLTFLoader();
     await this.loader.load("../common/models/map.gltf");
 
-    this.camera = await this.loader.loadPlayer("Camera");
+    this.player = await this.loader.loadPlayer("Player");
+    this.playerRef = await this.loader.loadNode("Camera");
     this.gun = await this.loader.loadGun("Gun1");
+    console.log(this.player)
+    this.player.camera = this.playerRef.camera;
+    this.player.camera.updateMatrix();
+    this.player.addChild(this.gun)
+    console.log(this.gun.translation)
+    
     this.scene = await this.loader.loadScene(this.loader.defaultScene);
-    this.camera.addChild(this.gun);
-    if (!this.scene || !this.camera) {
+    console.log(this.player)
+    console.log(this.scene);
+
+    if (!this.scene || !this.player) {
       throw new Error("Scene or Camera not present in glTF");
     }
 
-    if (!this.camera.camera) {
+    if (!this.player.camera) {
       throw new Error("Camera node does not contain a camera reference");
     }
 
@@ -35,7 +44,7 @@ class App extends Application {
       "pointerlockchange",
       this.pointerlockchangeHandler
     );
-    console.log(this.camera);
+    
   }
 
   enableCamera() {
@@ -43,14 +52,14 @@ class App extends Application {
   }
 
   pointerlockchangeHandler() {
-    if (!this.camera) {
+    if (!this.player) {
       return;
     }
 
     if (document.pointerLockElement === this.canvas) {
-      this.camera.enable();
+      this.player.enable();
     } else {
-      this.camera.disable();
+      this.player.disable();
     }
   }
 
@@ -59,37 +68,22 @@ class App extends Application {
     const dt = (this.time - this.startTime) * 0.001;
     this.startTime = this.time;
 
-    if (this.camera) {
-      //console.log(this.camera)
-      this.camera.update(dt);
+    if (this.player) {
+      this.player.update(dt);
     }
 
     if (this.physics) {
       this.physics.update(dt);
-      console.log(this.camera);
     }
 
     if (this.gravity) {
       this.gravity.update(dt);
     }
-
-    if (this.gun) {
-      this.gun.matrix = mat4.clone(this.camera.getGlobalTransform());
-      mat4.rotateX(this.gun.matrix, this.gun.matrix, this.gun.rotation[0]);
-      mat4.rotateY(this.gun.matrix, this.gun.matrix, this.gun.rotation[1]);
-      mat4.rotateZ(this.gun.matrix, this.gun.matrix,this.gun.rotation[2]);
-      mat4.translate(
-        this.gun.matrix,
-        this.gun.matrix,
-        this.gun.translation
-      );
-    }
-    //console.log(this.scene)
   }
 
   render() {
     if (this.renderer) {
-      this.renderer.render(this.scene, this.camera);
+      this.renderer.render(this.scene, this.player);
     }
   }
 
@@ -98,9 +92,9 @@ class App extends Application {
     const h = this.canvas.clientHeight;
     const aspectRatio = w / h;
 
-    if (this.camera) {
-      this.camera.camera.aspect = aspectRatio;
-      this.camera.camera.updateMatrix();
+    if (this.player) {
+      this.player.camera.aspect = aspectRatio;
+      this.player.camera.updateMatrix();
     }
   }
 }

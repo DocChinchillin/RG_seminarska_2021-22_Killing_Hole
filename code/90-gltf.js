@@ -15,7 +15,7 @@ class App extends Application {
 
     this.player = await this.loader.loadPlayer("Player");
     this.playerRef = await this.loader.loadNode("Camera");
-    this.gun = await this.loader.loadGun("Gun1");
+    this.gun = await this.loader.loadGun("Gun2");
     console.log(this.player)
     this.player.camera = this.playerRef.camera;
     this.player.camera.updateMatrix();

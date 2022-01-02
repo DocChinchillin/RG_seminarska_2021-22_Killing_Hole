@@ -7,11 +7,8 @@ import { Renderer } from "./Renderer.js";
 import { Physics } from "./Physics.js";
 import { Gravity } from "./Gravity.js";
 import { mat4, vec3 } from "../lib/gl-matrix-module.js";
-<<<<<<< HEAD
 import { Shop } from "./Shop.js";
-=======
 import { HitScan } from "./HitScan.js";
->>>>>>> ca095592b1c48c8bf63a90135cb570308aa629a5
 
 class App extends Application {
   async start() {
@@ -101,17 +98,14 @@ class App extends Application {
       this.gravity.update(dt);
     }
 
-<<<<<<< HEAD
     if (this.shop) {
       this.shop.update(dt, this.player);
     }
-=======
     if (this.hitScan) {
       this.hitScan.update(dt);
     }
 
 
->>>>>>> ca095592b1c48c8bf63a90135cb570308aa629a5
   }
 
   render() {

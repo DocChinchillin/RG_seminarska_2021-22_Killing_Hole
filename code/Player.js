@@ -27,6 +27,34 @@ export class Player extends Node {
         mat4.perspective(this.projection, this.fov, this.aspect, this.near, this.far);
     }
 
+    changeToGun(n){
+        this.children[0].stopReload()
+        //this.children[0].isEquiped = false;
+        //this.player.guns[0].isEquiped = true;
+        this.children = [];
+        this.addChild(this.player.guns[n]);
+        this.children[0].showAmmo();
+    }
+
+    updateGuns(){
+        
+        if(this.keys['Digit1']) {
+            this.changeToGun(0)
+        }
+
+        if(this.keys['Digit2']) {
+            this.changeToGun(1)
+        }
+
+        if(this.keys["mouse0"]){
+            this.children[0].triggerPull()
+        }
+        
+        if(this.keys["KeyR"]){
+            this.children[0].tryReload()
+        }
+    }
+
     update(dt) {
         const c = this;
         //console.log(c.jumptime)
@@ -37,6 +65,11 @@ export class Player extends Node {
 
         const up = vec3.set(vec3.create(), 0, 1 ,0 );
 
+        this.updateGuns()
+
+        if(this.children[0]){
+            this.children[0].reloading(dt)
+        }
 
         // 1: add movement acceleration
         let acc = vec3.create();

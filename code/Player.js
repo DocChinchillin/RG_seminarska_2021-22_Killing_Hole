@@ -29,12 +29,13 @@ export class Player extends Node {
 
     update(dt) {
         const c = this;
-        //console.log(this.keys)
+        //console.log(c.jumptime)
         const forward = vec3.set(vec3.create(),
             -Math.sin(c.rotation[1]), 0, -Math.cos(c.rotation[1]));
         const right = vec3.set(vec3.create(),
             Math.cos(c.rotation[1]), 0, -Math.sin(c.rotation[1]));
-            const up = vec3.set(vec3.create(), 0, 1 ,0 );
+
+        const up = vec3.set(vec3.create(), 0, 1 ,0 );
 
 
         // 1: add movement acceleration
@@ -56,7 +57,7 @@ export class Player extends Node {
 
         if(c.can_jump || c.jumptime > 0){
             if (this.keys['Space'] || c.jumptime > 0) {
-                vec3.add(acc, acc, up);
+                vec3.add(jump, jump, up);
                 if(this.jumptime <= 0)
                     this.jumptime = 1
                 c.can_jump = 0
@@ -67,7 +68,7 @@ export class Player extends Node {
         this.jumptime = this.jumptime - dt
         const grav = vec3.set(vec3.create(),0, -2,0 );
         if(!c.can_jump){
-            vec3.scaleAndAdd(jump, jump, grav,Math.abs(1-this.jumptime));
+            vec3.scaleAndAdd(jump, jump, grav ,Math.abs(1-this.jumptime));
         }
 
         //vclip
@@ -167,8 +168,8 @@ Player.defaults = {
     maxSpeed         : 10,
     friction         : 0.2,
     acceleration     : 20,
-    min              : [-1, -6, -1],
-    max              : [1, 3, 1],
+    min              : [-1, -3, -1],
+    max              : [1, 1, 1],
     jump             : 100,
     can_jump         : 1,
     jumptime         : 0,

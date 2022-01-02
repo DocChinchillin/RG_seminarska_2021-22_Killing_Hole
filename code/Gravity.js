@@ -1,4 +1,5 @@
 import { vec3, mat4 } from '../lib/gl-matrix-module.js';
+import { Gun } from './Gun.js';
 import { Player } from './Player.js';
 
 export class Gravity {
@@ -6,15 +7,17 @@ export class Gravity {
     constructor(scene) {
         this.scene = scene;
     }
-
+    
     update(dt) {
         let col = 0
         this.scene.traverse(cam => {
             if (cam instanceof Player) {
                 this.scene.traverse(other => {
                     if (cam !== other) {
-                        if(other.jumpable){
-                            col +=this.resolveCollision(cam, other);
+                        if(!(other instanceof Gun)){
+                            //if(other.jumpable){ //ko bojo jump hitboxi odkomenitraj
+                                col +=this.resolveCollision(cam, other);
+                            // }
                         }
                     }
                 });
@@ -47,8 +50,8 @@ export class Gravity {
 
         const mincam = vec3.add(vec3.create(), poscam, cam.min);
         const maxcam = vec3.add(vec3.create(), poscam, cam.max);
-        const minb = vec3.add(vec3.create(), posb, b.jump_aabb.min);
-        const maxb = vec3.add(vec3.create(), posb, b.jump_aabb.max);
+        const minb = vec3.add(vec3.create(), posb, b.mesh.primitives[0].attributes.POSITION.min);
+        const maxb = vec3.add(vec3.create(), posb, b.mesh.primitives[0].attributes.POSITION.max);
 
         // Check if there is collision.
         const isColliding = this.aabbIntersection({
@@ -62,6 +65,10 @@ export class Gravity {
         if (!isColliding) {
             return 0;
         }
+
+        //stop falling or jumping
+        const stop = vec3.set(vec3.create(),1, 0, 1 );
+        vec3.multiply(cam.velocity,cam.velocity,stop)
         cam.can_jump = 1
         //console.log("se dotikam :)")
         return 1;

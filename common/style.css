@@ -31,6 +31,13 @@ body, html {
    
 }
 
+.hudCross{
+    position: fixed;
+    right: 50vw;
+    bottom: 50vh;
+   
+}
+
 a.back {
     display: block;
     padding: 5px 10px;
@@ -53,4 +60,12 @@ a.ammo {
     background: #fff;
     color:rgb(255, 0, 0);
     border: 1px solid rgb(255, 0, 0);
+}
+
+a.cross {
+    display: block;
+    font-weight: bold;
+    font-size: large;
+    padding: 5px 10px;
+    color:rgb(255, 0, 0);
 }

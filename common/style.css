@@ -33,7 +33,8 @@ body, html {
 
 .hudCross{
     position: fixed;
-    right: 50vw;
+    width: 100%;
+    text-align: center;
     bottom: 50vh;
    
 }
@@ -68,4 +69,13 @@ a.cross {
     font-size: large;
     padding: 5px 10px;
     color:rgb(255, 0, 0);
+}
+
+.hudText {
+    position: fixed;
+    width: 100%;
+    text-align: center;
+    bottom: 20vh;
+    font-size: x-large;
+    color: white;
 }

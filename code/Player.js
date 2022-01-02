@@ -19,8 +19,9 @@ export class Player extends Node {
         this.mousedownHandler = this.mousedownHandler.bind(this);
         this.mouseupHandler = this.mouseupHandler.bind(this);
 
-
         this.keys = {};
+
+        this.inventory = {money: 100, health: 100}
     }
 
     updateProjection() {
@@ -32,17 +33,19 @@ export class Player extends Node {
         //this.children[0].isEquiped = false;
         //this.player.guns[0].isEquiped = true;
         this.children = [];
-        this.addChild(this.player.guns[n]);
+        this.addChild(this.inventory.guns[n]);
         this.children[0].showAmmo();
     }
 
     updateGuns(){
         
         if(this.keys['Digit1']) {
-            this.changeToGun(0)
+            if (this.inventory.guns[0].inInventory === "true")
+                this.changeToGun(0)
         }
 
         if(this.keys['Digit2']) {
+            if (this.inventory.guns[1].inInventory === "true")
             this.changeToGun(1)
         }
 

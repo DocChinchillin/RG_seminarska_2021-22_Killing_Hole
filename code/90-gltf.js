@@ -7,6 +7,7 @@ import { Renderer } from "./Renderer.js";
 import { Physics } from "./Physics.js";
 import { Gravity } from "./Gravity.js";
 import { mat4, vec3 } from "../lib/gl-matrix-module.js";
+import { HitScan } from "./HitScan.js";
 
 class App extends Application {
   async start() {
@@ -38,6 +39,7 @@ class App extends Application {
     this.renderer.prepareScene(this.scene);
     this.physics = new Physics(this.scene);
     this.gravity = new Gravity(this.scene);
+    this.hitScan = new HitScan(this.scene);
     this.resize();
     this.pointerlockchangeHandler = this.pointerlockchangeHandler.bind(this);
     document.addEventListener(
@@ -70,6 +72,7 @@ class App extends Application {
 
     if (this.player) {
       this.player.update(dt);
+      //console.log(this.player.look)
     }
 
     if (this.physics) {
@@ -79,6 +82,12 @@ class App extends Application {
     if (this.gravity) {
       this.gravity.update(dt);
     }
+
+    if (this.hitScan) {
+      this.hitScan.update(dt);
+    }
+
+
   }
 
   render() {

@@ -18,7 +18,8 @@ export class Player extends Node {
 
         this.mousedownHandler = this.mousedownHandler.bind(this);
         this.mouseupHandler = this.mouseupHandler.bind(this);
-
+        this.look = vec3.create()
+        vec3.normalize(this.look,this.rotation)
 
         this.keys = {};
     }
@@ -49,13 +50,16 @@ export class Player extends Node {
         if(this.keys["mouse0"]){
             this.children[0].triggerPull()
         }
-        
+
         if(this.keys["KeyR"]){
             this.children[0].tryReload()
         }
     }
 
     update(dt) {
+        vec3.normalize(this.look,this.rotation)
+        vec3.scale(this.look,this.look,10)
+        
         const c = this;
         //console.log(c.jumptime)
         const forward = vec3.set(vec3.create(),
@@ -106,10 +110,10 @@ export class Player extends Node {
 
         //vclip
         if (this.keys['KeyC']) {
-            vec3.add(acc, acc, up);
+            vec3.add(jump, jump, up);
         }
         if (this.keys['KeyX']) {
-            vec3.sub(acc, acc, up);
+            vec3.sub(jump, jump, up);
         }
 
         // 2: update velocity

@@ -39,6 +39,15 @@ export class Player extends Node {
         this.children[0].showAmmo();
     }
 
+    showHealth() {
+        document.querySelector("#myHealth").innerHTML = this.inventory.health + "%";
+        document.querySelector("#myHealth").style.width = this.inventory.health + "%";
+    }
+
+    showMoney() {
+        document.querySelector("#myMoney").innerHTML = this.inventory.money;
+    }
+
     updateGuns(){
         
         if(this.keys['Digit1']) {

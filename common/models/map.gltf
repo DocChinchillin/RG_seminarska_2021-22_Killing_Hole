@@ -43,6 +43,9 @@
                 32,
                 33,
                 34,
+                40,
+                41,
+                42,
                 43,
                 44,
                 45,
@@ -59,9 +62,7 @@
                 56,
                 57,
                 58,
-                59,
-                60,
-                61
+                59
             ]
         }
     ],
@@ -91,9 +92,9 @@
             "name" : "wall01",
             "rotation" : [
                 0,
-                -0.9999822974205017,
+                -0.9999824166297913,
                 0,
-                0.0059456913731992245
+                0.005945692304521799
             ],
             "scale" : [
                 30.709352493286133,
@@ -211,9 +212,9 @@
             "name" : "wall07",
             "rotation" : [
                 0,
-                -0.882373034954071,
+                -0.8823731541633606,
                 0,
-                0.4705505073070526
+                0.4705505669116974
             ],
             "scale" : [
                 30.709352493286133,
@@ -639,8 +640,14 @@
         {
             "extras" : {
                 "inInventory" : "true",
-                "ammo" : 60,
-                "name" : "handgun"
+                "name" : "handgun",
+                "emptyShoot" : "../common/sounds/empty.mp3",
+                "fireRate" : 100,
+                "magSize" : 6,
+                "reloadSound" : "../common/sounds/clean-revolver-reload.mp3",
+                "reloadTime" : 2,
+                "totalAmmo" : 60,
+                "shoot" : "../common/sounds/rifle.mp3"
             },
             "mesh" : 35,
             "name" : "Gun1",
@@ -664,14 +671,14 @@
         {
             "extras" : {
                 "inInventory" : "false",
-                "fireRate" : 500,
                 "shoot" : "../common/sounds/rifle.mp3",
-                "emptyShoot" : "../common/sounds/empty.mp3",
                 "reloadSound" : "../common/sounds/clean-revolver-reload.mp3",
                 "magSize" : 30,
                 "totalAmmo" : 30,
                 "reloadTime" : 3,
-                "name" : "assault_rifle"
+                "name" : "assault_rifle",
+                "emptyShoot" : "../common/sounds/empty.mp3",
+                "fireRate" : 500
             },
             "mesh" : 36,
             "name" : "Gun2",
@@ -711,18 +718,6 @@
             "children" : [
                 38
             ],
-            "name" : "Node_38.001"
-        },
-        {
-            "children" : [
-                39
-            ],
-            "name" : "Node_39"
-        },
-        {
-            "children" : [
-                40
-            ],
             "name" : "Node_38",
             "rotation" : [
                 0.7071067690849304,
@@ -733,15 +728,9 @@
         },
         {
             "children" : [
-                41
-            ],
-            "name" : "Node_37"
-        },
-        {
-            "children" : [
                 35,
                 36,
-                42
+                39
             ],
             "name" : "Player",
             "translation" : [
@@ -1046,7 +1035,7 @@
             ],
             "translation" : [
                 -3.161743402481079,
-                3.1682798862457275,
+                -16.83169937133789,
                 2.62416934967041
             ]
         },
@@ -1061,10 +1050,10 @@
             "mesh" : 52,
             "name" : "Gun1SHOP",
             "rotation" : [
-                0.01821434497833252,
-                -0.7068567276000977,
-                0.7068721652030945,
-                0.018805474042892456
+                -0.49210408329963684,
+                -0.49210408329963684,
+                0.507773220539093,
+                -0.507773220539093
             ],
             "scale" : [
                 0.699999988079071,
@@ -1072,9 +1061,9 @@
                 0.699999988079071
             ],
             "translation" : [
-                -4.891992568969727,
-                2.057990074157715,
-                -1.048069953918457
+                -5.7998175621032715,
+                3.5179901123046875,
+                -0.8267898559570312
             ]
         },
         {
@@ -1099,9 +1088,9 @@
                 0.30000001192092896
             ],
             "translation" : [
-                -2.6849489212036133,
-                2.057990074157715,
-                -1.048069953918457
+                -3.375110387802124,
+                3.4296703338623047,
+                -3.2139272689819336
             ]
         },
         {
@@ -1122,6 +1111,25 @@
                 -3.161743402481079,
                 10.570280075073242,
                 2.5953495502471924
+            ]
+        },
+        {
+            "extras" : {
+                "type" : "health",
+                "price" : 10
+            },
+            "mesh" : 55,
+            "name" : "FirstAid",
+            "rotation" : [
+                0.7071068286895752,
+                -0.7071068286895752,
+                0,
+                -3.090862321641907e-08
+            ],
+            "translation" : [
+                -0.5300254821777344,
+                3.6602230072021484,
+                0.07628440856933594
             ]
         }
     ],
@@ -1994,6 +2002,20 @@
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.4000000059604645
+            }
+        },
+        {
+            "doubleSided" : true,
+            "name" : "Material.030",
+            "pbrMetallicRoughness" : {
+                "baseColorFactor" : [
+                    0.800000011920929,
+                    0.800000011920929,
+                    0.800000011920929,
+                    1
+                ],
+                "metallicFactor" : 0,
+                "roughnessFactor" : 0.5
             }
         }
     ],
@@ -2972,6 +2994,20 @@
                     },
                     "indices" : 261,
                     "material" : 77
+                }
+            ]
+        },
+        {
+            "name" : "Cube.022",
+            "primitives" : [
+                {
+                    "attributes" : {
+                        "POSITION" : 262,
+                        "NORMAL" : 263,
+                        "TEXCOORD_0" : 264
+                    },
+                    "indices" : 7,
+                    "material" : 78
                 }
             ]
         }
@@ -5679,6 +5715,34 @@
             "componentType" : 5123,
             "count" : 60,
             "type" : "SCALAR"
+        },
+        {
+            "bufferView" : 262,
+            "componentType" : 5126,
+            "count" : 24,
+            "max" : [
+                0.5059614181518555,
+                0.11126518249511719,
+                0.7770709991455078
+            ],
+            "min" : [
+                -0.5059614181518555,
+                -0.11126518249511719,
+                -0.7770709991455078
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 263,
+            "componentType" : 5126,
+            "count" : 24,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 264,
+            "componentType" : 5126,
+            "count" : 24,
+            "type" : "VEC2"
         }
     ],
     "bufferViews" : [
@@ -6991,6 +7055,21 @@
             "buffer" : 0,
             "byteLength" : 120,
             "byteOffset" : 2487208
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 288,
+            "byteOffset" : 2487328
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 288,
+            "byteOffset" : 2487616
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 192,
+            "byteOffset" : 2487904
         }
     ],
     "samplers" : [
@@ -7001,7 +7080,7 @@
     ],
     "buffers" : [
         {
-            "byteLength" : 2487328,
+            "byteLength" : 2488096,
             "uri" : "map.bin"
         }
     ]

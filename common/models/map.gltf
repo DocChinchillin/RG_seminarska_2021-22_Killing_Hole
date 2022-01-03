@@ -1,6 +1,6 @@
 {
     "asset" : {
-        "generator" : "Khronos glTF Blender I/O v1.7.33",
+        "generator" : "Khronos glTF Blender I/O v1.4.40",
         "version" : "2.0"
     },
     "scene" : 0,
@@ -43,7 +43,6 @@
                 32,
                 33,
                 34,
-                40,
                 41,
                 42,
                 43,
@@ -62,7 +61,8 @@
                 56,
                 57,
                 58,
-                59
+                59,
+                60
             ]
         }
     ],
@@ -718,6 +718,12 @@
             "children" : [
                 38
             ],
+            "name" : "Node_38.001"
+        },
+        {
+            "children" : [
+                39
+            ],
             "name" : "Node_38",
             "rotation" : [
                 0.7071067690849304,
@@ -730,7 +736,7 @@
             "children" : [
                 35,
                 36,
-                39
+                40
             ],
             "name" : "Player",
             "translation" : [
@@ -1035,7 +1041,7 @@
             ],
             "translation" : [
                 -3.161743402481079,
-                3.168278694152832,
+                3.168299913406372,
                 2.483865976333618
             ]
         },
@@ -1119,17 +1125,22 @@
                 "price" : 10
             },
             "mesh" : 55,
-            "name" : "FirstAid",
+            "name" : "Medpack",
             "rotation" : [
-                0.7071068286895752,
-                -0.7071068286895752,
-                0,
-                -3.090862321641907e-08
+                0.5000000596046448,
+                0.5000000596046448,
+                -0.5,
+                0.5
+            ],
+            "scale" : [
+                0.5254200100898743,
+                0.12564119696617126,
+                0.3924362063407898
             ],
             "translation" : [
-                -0.5300254821777344,
-                3.6602230072021484,
-                0.07628440856933594
+                -0.5956682562828064,
+                3.6206769943237305,
+                0
             ]
         }
     ],
@@ -1151,7 +1162,8 @@
             "name" : "Material.001",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 0
+                    "index" : 0,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.4000000059604645
@@ -1162,7 +1174,8 @@
             "name" : "Material.013",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 1
+                    "index" : 1,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.5
@@ -1173,7 +1186,8 @@
             "name" : "Material.011",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 2
+                    "index" : 2,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.5
@@ -1184,7 +1198,8 @@
             "name" : "Material.005",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 3
+                    "index" : 3,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.5
@@ -1195,7 +1210,8 @@
             "name" : "Material.017",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 4
+                    "index" : 4,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.5
@@ -1206,7 +1222,8 @@
             "name" : "Material.015",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 5
+                    "index" : 5,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.5
@@ -1217,7 +1234,8 @@
             "name" : "Material.007",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 6
+                    "index" : 6,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.5
@@ -1228,7 +1246,8 @@
             "name" : "Material.009",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 7
+                    "index" : 7,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.5
@@ -1239,7 +1258,8 @@
             "name" : "Material.060",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 8
+                    "index" : 8,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.5
@@ -1250,7 +1270,8 @@
             "name" : "Material.002",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 9
+                    "index" : 9,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.5
@@ -1261,7 +1282,8 @@
             "name" : "Material.004",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 10
+                    "index" : 10,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.5
@@ -1272,7 +1294,8 @@
             "name" : "Material.006",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 11
+                    "index" : 11,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.5
@@ -1283,7 +1306,8 @@
             "name" : "Material.008",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 12
+                    "index" : 12,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.5
@@ -1294,7 +1318,8 @@
             "name" : "Material.010",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 13
+                    "index" : 13,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.5
@@ -1305,7 +1330,8 @@
             "name" : "Material.012",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 14
+                    "index" : 14,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.5
@@ -1316,7 +1342,8 @@
             "name" : "Material.014",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 15
+                    "index" : 15,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.5
@@ -1327,7 +1354,8 @@
             "name" : "Material.016",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 16
+                    "index" : 16,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.5
@@ -1338,7 +1366,8 @@
             "name" : "Material.018",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 17
+                    "index" : 17,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.5
@@ -1349,7 +1378,8 @@
             "name" : "Material.019",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 18
+                    "index" : 18,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.5
@@ -1360,7 +1390,8 @@
             "name" : "Material.044",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 19
+                    "index" : 19,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.5
@@ -1371,7 +1402,8 @@
             "name" : "Material.045",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 20
+                    "index" : 20,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.4000000059604645
@@ -1382,7 +1414,8 @@
             "name" : "Material.046",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 21
+                    "index" : 21,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.4000000059604645
@@ -1393,7 +1426,8 @@
             "name" : "Material.047",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 22
+                    "index" : 22,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.4000000059604645
@@ -1404,7 +1438,8 @@
             "name" : "Material.048",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 23
+                    "index" : 23,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.4000000059604645
@@ -1415,7 +1450,8 @@
             "name" : "Material.049",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 24
+                    "index" : 24,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.4000000059604645
@@ -1426,7 +1462,8 @@
             "name" : "Material.050",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 25
+                    "index" : 25,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.4000000059604645
@@ -1437,7 +1474,8 @@
             "name" : "Material.051",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 26
+                    "index" : 26,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.4000000059604645
@@ -1448,7 +1486,8 @@
             "name" : "Material.052",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 27
+                    "index" : 27,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.4000000059604645
@@ -1459,7 +1498,8 @@
             "name" : "Material.053",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 28
+                    "index" : 28,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.4000000059604645
@@ -1470,7 +1510,8 @@
             "name" : "Material.054",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 29
+                    "index" : 29,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.4000000059604645
@@ -1481,7 +1522,8 @@
             "name" : "Material.055",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 30
+                    "index" : 30,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.4000000059604645
@@ -1492,7 +1534,8 @@
             "name" : "Material.056",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 31
+                    "index" : 31,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.4000000059604645
@@ -1503,7 +1546,8 @@
             "name" : "Material.057",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 32
+                    "index" : 32,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.4000000059604645
@@ -1514,7 +1558,8 @@
             "name" : "Material.058",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 33
+                    "index" : 33,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.4000000059604645
@@ -1525,7 +1570,8 @@
             "name" : "Material.059",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 34
+                    "index" : 34,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.4000000059604645
@@ -1536,7 +1582,8 @@
             "name" : "handgun",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 35
+                    "index" : 35,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.5
@@ -1547,7 +1594,8 @@
             "name" : "handgun_handgun_C.jpg",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 36
+                    "index" : 36,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.5
@@ -1558,7 +1606,8 @@
             "name" : "Material.003",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 37
+                    "index" : 37,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.6732679605484009
@@ -1569,7 +1618,8 @@
             "name" : "Leaves.027",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 38
+                    "index" : 38,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.6732679605484009
@@ -1580,7 +1630,8 @@
             "name" : "Bark.027",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 39
+                    "index" : 39,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.6732679605484009
@@ -1591,7 +1642,8 @@
             "name" : "Leaves.028",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 40
+                    "index" : 40,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.6732679605484009
@@ -1602,7 +1654,8 @@
             "name" : "Bark.028",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 41
+                    "index" : 41,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.6732679605484009
@@ -1613,7 +1666,8 @@
             "name" : "Leaves.029",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 42
+                    "index" : 42,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.6732679605484009
@@ -1624,7 +1678,8 @@
             "name" : "Bark.029",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 43
+                    "index" : 43,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.6732679605484009
@@ -1635,7 +1690,8 @@
             "name" : "Leaves.030",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 44
+                    "index" : 44,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.6732679605484009
@@ -1646,7 +1702,8 @@
             "name" : "Bark.030",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 45
+                    "index" : 45,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.6732679605484009
@@ -1657,7 +1714,8 @@
             "name" : "Leaves.031",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 46
+                    "index" : 46,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.6732679605484009
@@ -1668,7 +1726,8 @@
             "name" : "Bark.031",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 47
+                    "index" : 47,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.6732679605484009
@@ -1679,7 +1738,8 @@
             "name" : "Leaves.032",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 48
+                    "index" : 48,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.6732679605484009
@@ -1690,7 +1750,8 @@
             "name" : "Bark.032",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 49
+                    "index" : 49,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.6732679605484009
@@ -1701,7 +1762,8 @@
             "name" : "Leaves.033",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 50
+                    "index" : 50,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.6732679605484009
@@ -1712,7 +1774,8 @@
             "name" : "Bark.033",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 51
+                    "index" : 51,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.6732679605484009
@@ -1723,7 +1786,8 @@
             "name" : "Leaves.034",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 52
+                    "index" : 52,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.6732679605484009
@@ -1734,7 +1798,8 @@
             "name" : "Bark.034",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 53
+                    "index" : 53,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.6732679605484009
@@ -1745,7 +1810,8 @@
             "name" : "Leaves.035",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 54
+                    "index" : 54,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.6732679605484009
@@ -1756,7 +1822,8 @@
             "name" : "Bark.035",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 55
+                    "index" : 55,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.6732679605484009
@@ -1767,7 +1834,8 @@
             "name" : "Leaves.036",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 56
+                    "index" : 56,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.6732679605484009
@@ -1778,7 +1846,8 @@
             "name" : "Bark.036",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 57
+                    "index" : 57,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.6732679605484009
@@ -1789,7 +1858,8 @@
             "name" : "Leaves.037",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 58
+                    "index" : 58,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.6732679605484009
@@ -1800,7 +1870,8 @@
             "name" : "Bark.037",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 59
+                    "index" : 59,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.6732679605484009
@@ -1811,7 +1882,8 @@
             "name" : "Leaves.038",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 60
+                    "index" : 60,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.6732679605484009
@@ -1822,7 +1894,8 @@
             "name" : "Bark.038",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 61
+                    "index" : 61,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.6732679605484009
@@ -1833,7 +1906,8 @@
             "name" : "Leaves.039",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 62
+                    "index" : 62,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.6732679605484009
@@ -1844,7 +1918,8 @@
             "name" : "Bark.039",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 63
+                    "index" : 63,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.6732679605484009
@@ -1855,7 +1930,8 @@
             "name" : "Leaves.040",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 64
+                    "index" : 64,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.6732679605484009
@@ -1866,7 +1942,8 @@
             "name" : "Bark.040",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 65
+                    "index" : 65,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.6732679605484009
@@ -1877,7 +1954,8 @@
             "name" : "Material.027",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 66
+                    "index" : 66,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.4000000059604645
@@ -1888,7 +1966,8 @@
             "name" : "handgun.001",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 67
+                    "index" : 67,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.5
@@ -1899,7 +1978,8 @@
             "name" : "handgun_handgun_C.jpg.001",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 68
+                    "index" : 68,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.5
@@ -1910,7 +1990,8 @@
             "name" : "Material.028",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 69
+                    "index" : 69,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.6732679605484009
@@ -1921,7 +2002,8 @@
             "name" : "Material.029",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 70
+                    "index" : 70,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.4000000059604645
@@ -1932,7 +2014,8 @@
             "name" : "Material.020",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 71
+                    "index" : 71,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.4000000059604645
@@ -1943,7 +2026,8 @@
             "name" : "Material.021",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 72
+                    "index" : 72,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.4000000059604645
@@ -1954,7 +2038,8 @@
             "name" : "Material.022",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 73
+                    "index" : 73,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.4000000059604645
@@ -1965,7 +2050,8 @@
             "name" : "Material.023",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 74
+                    "index" : 74,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.4000000059604645
@@ -1976,7 +2062,8 @@
             "name" : "Material.024",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 75
+                    "index" : 75,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.4000000059604645
@@ -1987,7 +2074,8 @@
             "name" : "Material.025",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 76
+                    "index" : 76,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.4000000059604645
@@ -1998,7 +2086,8 @@
             "name" : "Material.026",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 77
+                    "index" : 77,
+                    "texCoord" : 0
                 },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.4000000059604645
@@ -2006,14 +2095,48 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.030",
+            "name" : "Material.031",
             "pbrMetallicRoughness" : {
-                "baseColorFactor" : [
-                    0.800000011920929,
-                    0.800000011920929,
-                    0.800000011920929,
-                    1
-                ],
+                "baseColorTexture" : {
+                    "index" : 78,
+                    "texCoord" : 0
+                },
+                "metallicFactor" : 0,
+                "roughnessFactor" : 0.4000000059604645
+            }
+        },
+        {
+            "doubleSided" : true,
+            "name" : "Material.032",
+            "pbrMetallicRoughness" : {
+                "baseColorTexture" : {
+                    "index" : 79,
+                    "texCoord" : 0
+                },
+                "metallicFactor" : 0,
+                "roughnessFactor" : 0.5
+            }
+        },
+        {
+            "doubleSided" : true,
+            "name" : "Material.033",
+            "pbrMetallicRoughness" : {
+                "baseColorTexture" : {
+                    "index" : 80,
+                    "texCoord" : 0
+                },
+                "metallicFactor" : 0,
+                "roughnessFactor" : 0.5
+            }
+        },
+        {
+            "doubleSided" : true,
+            "name" : "Material.034",
+            "pbrMetallicRoughness" : {
+                "baseColorTexture" : {
+                    "index" : 81,
+                    "texCoord" : 0
+                },
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.5
             }
@@ -2998,7 +3121,7 @@
             ]
         },
         {
-            "name" : "Cube.022",
+            "name" : "Cube.023",
             "primitives" : [
                 {
                     "attributes" : {
@@ -3006,8 +3129,35 @@
                         "NORMAL" : 263,
                         "TEXCOORD_0" : 264
                     },
-                    "indices" : 7,
+                    "indices" : 3,
                     "material" : 78
+                },
+                {
+                    "attributes" : {
+                        "POSITION" : 265,
+                        "NORMAL" : 266,
+                        "TEXCOORD_0" : 267
+                    },
+                    "indices" : 268,
+                    "material" : 79
+                },
+                {
+                    "attributes" : {
+                        "POSITION" : 269,
+                        "NORMAL" : 270,
+                        "TEXCOORD_0" : 271
+                    },
+                    "indices" : 7,
+                    "material" : 80
+                },
+                {
+                    "attributes" : {
+                        "POSITION" : 272,
+                        "NORMAL" : 273,
+                        "TEXCOORD_0" : 274
+                    },
+                    "indices" : 275,
+                    "material" : 81
                 }
             ]
         }
@@ -3324,6 +3474,22 @@
         {
             "sampler" : 0,
             "source" : 1
+        },
+        {
+            "sampler" : 0,
+            "source" : 7
+        },
+        {
+            "sampler" : 0,
+            "source" : 7
+        },
+        {
+            "sampler" : 0,
+            "source" : 7
+        },
+        {
+            "sampler" : 0,
+            "source" : 8
         }
     ],
     "images" : [
@@ -3361,6 +3527,16 @@
             "mimeType" : "image/png",
             "name" : "Bark_Base_Color",
             "uri" : "Bark_Base_Color.png"
+        },
+        {
+            "mimeType" : "image/png",
+            "name" : "red",
+            "uri" : "red.png"
+        },
+        {
+            "mimeType" : "image/png",
+            "name" : "white",
+            "uri" : "white.png"
         }
     ],
     "accessors" : [
@@ -5721,14 +5897,14 @@
             "componentType" : 5126,
             "count" : 24,
             "max" : [
-                0.5059614181518555,
-                0.11126518249511719,
-                0.7770709991455078
+                1,
+                1,
+                1
             ],
             "min" : [
-                -0.5059614181518555,
-                -0.11126518249511719,
-                -0.7770709991455078
+                -1,
+                -1,
+                -1
             ],
             "type" : "VEC3"
         },
@@ -5743,6 +5919,102 @@
             "componentType" : 5126,
             "count" : 24,
             "type" : "VEC2"
+        },
+        {
+            "bufferView" : 265,
+            "componentType" : 5126,
+            "count" : 28,
+            "max" : [
+                0.5530869364738464,
+                1.3487657308578491,
+                0.1609797179698944
+            ],
+            "min" : [
+                -0.5530869364738464,
+                -1.4226804971694946,
+                -0.1609797179698944
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 266,
+            "componentType" : 5126,
+            "count" : 28,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 267,
+            "componentType" : 5126,
+            "count" : 28,
+            "type" : "VEC2"
+        },
+        {
+            "bufferView" : 268,
+            "componentType" : 5123,
+            "count" : 36,
+            "type" : "SCALAR"
+        },
+        {
+            "bufferView" : 269,
+            "componentType" : 5126,
+            "count" : 24,
+            "max" : [
+                0.12023574113845825,
+                1.3857231140136719,
+                0.7405099272727966
+            ],
+            "min" : [
+                -0.12023574113845825,
+                -1.3857231140136719,
+                -0.7405099272727966
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 270,
+            "componentType" : 5126,
+            "count" : 24,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 271,
+            "componentType" : 5126,
+            "count" : 24,
+            "type" : "VEC2"
+        },
+        {
+            "bufferView" : 272,
+            "componentType" : 5126,
+            "count" : 315,
+            "max" : [
+                0.6224383115768433,
+                1.2883528470993042,
+                0.8333622217178345
+            ],
+            "min" : [
+                -0.6224383115768433,
+                -1.2883528470993042,
+                -0.8333622217178345
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 273,
+            "componentType" : 5126,
+            "count" : 315,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 274,
+            "componentType" : 5126,
+            "count" : 315,
+            "type" : "VEC2"
+        },
+        {
+            "bufferView" : 275,
+            "componentType" : 5123,
+            "count" : 372,
+            "type" : "SCALAR"
         }
     ],
     "bufferViews" : [
@@ -7070,17 +7342,72 @@
             "buffer" : 0,
             "byteLength" : 192,
             "byteOffset" : 2487904
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 336,
+            "byteOffset" : 2488096
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 336,
+            "byteOffset" : 2488432
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 224,
+            "byteOffset" : 2488768
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 72,
+            "byteOffset" : 2488992
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 288,
+            "byteOffset" : 2489064
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 288,
+            "byteOffset" : 2489352
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 192,
+            "byteOffset" : 2489640
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 3780,
+            "byteOffset" : 2489832
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 3780,
+            "byteOffset" : 2493612
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 2520,
+            "byteOffset" : 2497392
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 744,
+            "byteOffset" : 2499912
         }
     ],
     "samplers" : [
         {
             "magFilter" : 9729,
-            "minFilter" : 9987
+            "minFilter" : 9986
         }
     ],
     "buffers" : [
         {
-            "byteLength" : 2488096,
+            "byteLength" : 2500656,
             "uri" : "map.bin"
         }
     ]

@@ -30,7 +30,7 @@ class App extends Application {
     this.shop = new Shop();
     this.shop.shopModels.push(await this.loader.loadShop("Gun1SHOP"));
     this.shop.shopModels.push(await this.loader.loadShop("Gun2SHOP"));
-    this.shop.shopModels.push(await this.loader.loadShop("FirstAid"));
+    this.shop.shopModels.push(await this.loader.loadShop("Medpack"));
 
     this.shop.gate = await this.loader.loadNode("Gate")
     

@@ -23,8 +23,9 @@ class App extends Application {
     this.player.inventory.guns = gunInventory;
     this.player.camera = this.playerRef.camera;
     this.player.camera.updateMatrix();
-    this.player.addChild(this.gun);
-    //this.player.addChild(this.player.inventory.guns[1])
+    gunInventory.forEach(gun => {   //dodamo vse gune playerju, zato da bodo bli na sceni
+      this.player.addChild(gun);
+    })
     this.gun.showAmmo();
 
     this.shop = new Shop();
@@ -47,12 +48,11 @@ class App extends Application {
       throw new Error("Camera node does not contain a camera reference");
     }
 
-    /*this.scene.nodes.forEach(node => {
-      console.log(node.translation)
-    })*/
     this.renderer = new Renderer(this.gl);
     this.renderer.prepareScene(this.scene);
-    //this.player.children.pop();
+    
+    this.player.children.splice(1, this.player.children.length - 1);  //na sceni rabi bit samo se prvi gun
+
     this.physics = new Physics(this.scene);
     this.gravity = new Gravity(this.scene);
     this.hitScan = new HitScan(this.scene);

@@ -1,125 +1,189 @@
-body, html {
-    margin: 0;
-    padding: 0;
+body,
+html {
+  margin: 0;
+  padding: 0;
 }
 
 * {
-    font-family: sans-serif;
+  font-family: sans-serif;
 }
 
 .fullscreen {
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 }
 
 .fullscreen > * {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 .overlay {
-    position: fixed;
-    left: 20px;
-    top: 20px;
+  position: fixed;
+  left: 20px;
+  top: 20px;
 }
 
-.hudAmmo{
-    position: fixed;
-    right: 20px;
-    bottom: 20px;
-   
+.hudAmmo {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
 }
 
-.hudCross{
-    position: fixed;
-    width: 100%;
-    text-align: center;
-    bottom: 50vh;
-   
+.hudCross {
+  position: fixed;
+  width: 100%;
+  text-align: center;
+  bottom: 50vh;
 }
 
 a.back {
-    display: block;
-    padding: 5px 10px;
-    background: #fff;
-    border: 1px solid #ccc;
-    cursor: pointer;
-    text-decoration: none;
-    color: rgb(0, 0, 0);
+  display: block;
+  padding: 5px 10px;
+  background: #fff;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  text-decoration: none;
+  color: rgb(0, 0, 0);
 }
 
 a.back:hover {
-    background: #ddd;
+  background: #ddd;
 }
 
 a.ammo {
-    display: block;
-    font-weight: bold;
-    font-size: large;
-    padding: 5px 10px;
-    background: #fff;
-    color:rgb(255, 0, 0);
-    border: 1px solid rgb(255, 0, 0);
+  display: block;
+  font-weight: bold;
+  font-size: large;
+  padding: 5px 10px;
+  background: #fff;
+  color: rgb(255, 0, 0);
+  border: 1px solid rgb(255, 0, 0);
 }
 
 a.cross {
-    display: block;
-    font-weight: bold;
-    font-size: large;
-    padding: 5px 10px;
-    color:rgb(255, 0, 0);
+  display: block;
+  font-weight: bold;
+  font-size: large;
+  padding: 5px 10px;
+  color: rgb(255, 0, 0);
 }
 
-.hudText {
-    position: fixed;
-    width: 100%;
-    text-align: center;
-    bottom: 20vh;
-    font-size: x-large;
-    color: white;
+.hudInfoText {
+  position: fixed;
+  width: 100%;
+  text-align: center;
+  bottom: 20vh;
+  font-size: x-large;
+  color: white;
 }
 
 .hudHealth {
-    position: fixed;
-    top: 7vh;
-    right: 20px;
-    display: flex;
-    width: 220px;
-    height: 30px;
-    align-items: center;
+  position: fixed;
+  top: 7vh;
+  right: 20px;
+  display: flex;
+  width: 220px;
+  height: 30px;
+  align-items: center;
 }
 
 .fullHealth {
-    display: block;
-    width: 100%;
-    height: 100%;
-    color:#000!important;
-    background-color:#f1f1f1!important;
-    margin-left: 4px;;
+  display: block;
+  width: 100%;
+  height: 100%;
+  color: #000 !important;
+  background-color: #f1f1f1 !important;
+  margin-left: 4px;
 }
 
 .myHealth {
-    width: 100%;
-    height: 100%;
-    color: #fff!important;
-    background-color: #4CAF50!important;
-    display: block;
-    box-sizing: border-box;
-    text-align: center;
-    padding: 5px 0px;
-    line-height: 20px;
+  width: 100%;
+  height: 100%;
+  color: #fff !important;
+  background-color: #4caf50 !important;
+  display: block;
+  box-sizing: border-box;
+  text-align: center;
+  padding: 5px 0px;
+  line-height: 20px;
 }
 
 .hudMoney {
-    position: fixed;
-    top: 11vh;
-    right: 20px;
-    display: flex;
+  position: fixed;
+  top: 11vh;
+  right: 20px;
+  display: flex;
 }
 
 .myMoney {
-    font-weight: bold;
-    margin-left: 4px;
-    font-size: 19px;
+  font-weight: bold;
+  margin-left: 4px;
+  font-size: 19px;
+}
+
+#hudWarningText {
+  position: fixed;
+  width: 100%;
+  text-align: center;
+}
+
+#warningText {
+  font-size: x-large;
+  color: white;
+}
+
+.moving {
+  -webkit-animation: moving 3s;
+  animation: moving 3s;
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+
+.fading {
+  -webkit-animation: fading 2s;
+  animation: fading 2s;
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes moving {
+  from {
+    bottom: 40vh;
+  }
+  to {
+    bottom: 50vh;
+  }
+}
+
+@keyframes moving {
+  from {
+    bottom: 40vh;
+  }
+  to {
+    bottom: 50vh;
+  }
+}
+
+@-webkit-keyframes fading {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fading {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }

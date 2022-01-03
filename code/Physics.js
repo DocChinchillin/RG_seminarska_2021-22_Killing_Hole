@@ -67,7 +67,7 @@ export class Physics {
             return;
         }
         //console.log(b)
-        console.log("collison")
+        //console.log("collison")
         // Move node A minimally to avoid collision.
         const diffa = vec3.sub(vec3.create(), maxb, mina);
         const diffb = vec3.sub(vec3.create(), maxa, minb);

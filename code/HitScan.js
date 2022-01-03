@@ -73,7 +73,7 @@ export class HitScan {
         // if ( Math.abs( LMid.x * L.z - LMid.z * L.x)  >  (m_Extent.x * LExt.z + m_Extent.z * LExt.x) ) return false;
         // if ( Math.abs( LMid.x * L.y - LMid.y * L.x)  >  (m_Extent.x * LExt.y + m_Extent.y * LExt.x) ) return false;
         // No separating axis, the line intersects
-        console.log("Gledam")
+        //console.log("Gledam")
         return true;
 
         // Check if there is collision.

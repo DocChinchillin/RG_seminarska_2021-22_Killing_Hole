@@ -116,8 +116,9 @@ export class Renderer {
         const attributeNameToIndexMap = {
             POSITION   : 0,
             TEXCOORD_0 : 1,
+            redness    : 2,
         };
-
+        
         for (const name in primitive.attributes) {
             const accessor = primitive.attributes[name];
             const bufferView = accessor.bufferView;

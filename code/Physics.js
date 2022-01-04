@@ -13,6 +13,7 @@ export class Physics {
             if (node.velocity) {
                 //console.log(node)
                 vec3.scaleAndAdd(node.translation, node.translation, node.velocity, dt);
+                vec3.scaleAndAdd(node.translation, node.translation, node.padc, dt);
                 node.updatePos();
                 this.scene.traverse(other => {
                     if (node !== other) {

@@ -26,7 +26,7 @@ export class HitScan {
         if(col == 0){
             document.getElementsByClassName("cross")[0].innerHTML = "+"
         }
-        console.log(col)
+        //console.log(col)
     }
 
     // all args are Vec3, Hit will be filled by this algo

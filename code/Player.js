@@ -137,8 +137,10 @@ export class Player extends Node {
         }
 
         // 2: update velocity
+
         vec3.scaleAndAdd(c.velocity, c.velocity, acc, dt * c.acceleration);
         vec3.scale(jump, jump, dt * c.jump);
+        vec3.add(c.padc,c.padc,jump)
         // 3: if no movement, apply friction
         if (!this.keys['KeyW'] &&
             !this.keys['KeyS'] &&
@@ -149,11 +151,16 @@ export class Player extends Node {
         }
 
         // 4: limit speed
-        const len = vec3.len(c.velocity);
+        let len = vec3.len(c.velocity);
         if (len > c.maxSpeed) {
             vec3.scale(c.velocity, c.velocity, c.maxSpeed / len);
         }
-        vec3.add(c.velocity,c.velocity,jump)
+
+        len = vec3.len(c.padc);
+        if (len > c.maxFall) {
+            vec3.scale(c.padc, c.padc, c.maxFall / len);
+        }
+        
        
     }
 
@@ -221,6 +228,7 @@ export class Player extends Node {
 
 Player.defaults = {
     velocity         : [0, 0, 0],
+    padc         : [0, 0, 0],
     mouseSensitivity : 0.002,
     maxSpeed         : 10,
     friction         : 0.2,
@@ -230,5 +238,5 @@ Player.defaults = {
     jump             : 100,
     can_jump         : 1,
     jumptime         : 0,
-    maxFall          : 3
+    maxFall          : 5
 };

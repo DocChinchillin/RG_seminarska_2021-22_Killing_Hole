@@ -86,18 +86,20 @@ class App extends Application {
     const dt = (this.time - this.startTime) * 0.001;
     this.startTime = this.time;
 
-    if (this.player) {
+    if (this.player && this.player.camera) {
       this.player.update(dt);
       //console.log(this.player.look)
+    }
+
+    if (this.gravity) {
+      this.gravity.update(dt);
     }
 
     if (this.physics) {
       this.physics.update(dt);
     }
 
-    if (this.gravity) {
-      this.gravity.update(dt);
-    }
+
 
     if (this.shop) {
       this.shop.update(dt, this.player);

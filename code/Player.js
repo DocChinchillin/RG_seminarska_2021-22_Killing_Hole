@@ -1,4 +1,4 @@
-import { vec3, mat4 } from '../lib/gl-matrix-module.js';
+import { vec3, mat4, quat } from '../lib/gl-matrix-module.js';
 
 import { Utils } from './Utils.js';
 import { Node } from './Node.js';
@@ -19,7 +19,7 @@ export class Player extends Node {
         this.mousedownHandler = this.mousedownHandler.bind(this);
         this.mouseupHandler = this.mouseupHandler.bind(this);
         this.look = vec3.create()
-        vec3.normalize(this.look,this.rotation)
+        //vec3.normalize(this.look,this.rotation)
 
         this.keys = {};
 
@@ -70,8 +70,14 @@ export class Player extends Node {
     }
 
     update(dt) {
+        //console.log(this)
+        // let a = mat4.clone(this.camera.matrix)
+        // mat4.mul(a,this.matrix,a)
+        // let b = quat.create()
+        // mat4.getRotation(b,a)
+        // let neki = vec3.set(vec3.create(), b[0], b[1],b[2] );
         vec3.normalize(this.look,this.rotation)
-        vec3.scale(this.look,this.look,10)
+        vec3.scale(this.look,this.look,1000)
         
         const c = this;
         //console.log(c.jumptime)
@@ -118,7 +124,7 @@ export class Player extends Node {
         this.jumptime = this.jumptime - dt
         const grav = vec3.set(vec3.create(),0, -2,0 );
         if(!c.can_jump){
-            vec3.scaleAndAdd(jump, jump, grav ,Math.abs(1-this.jumptime));
+            vec3.scaleAndAdd(jump, jump, grav ,1-this.jumptime);
         }
 
         //vclip

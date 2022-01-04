@@ -145,44 +145,20 @@ export class HitScan {
                 Math.max(...bVertices.map(v => v[2])),
             );
 
-            bOglj = [
-                vec3.fromValues(minb[0], minb[1], minb[2]),
-                vec3.fromValues(minb[0], minb[1], maxb[2]),
-                vec3.fromValues(minb[0], maxb[1], minb[2]),
-                vec3.fromValues(minb[0], maxb[1], maxb[2]),
 
-                vec3.fromValues(maxb[0], minb[1], minb[2]),
-                vec3.fromValues(maxb[0], minb[1], maxb[2]),
-                vec3.fromValues(maxb[0], maxb[1], minb[2]),
-                vec3.fromValues(maxb[0], maxb[1], maxb[2]),
+            planes = [
+                [minb,[1,0,0]],
+                [minb,[0,1,0]],
+                [minb,[0,0,1]],
+
+                [maxb,[1,0,0]],
+                [maxb,[0,1,0]],
+                [maxb,[0,0,1]]
             ]
-
-            trikot = [
-                [bOglj[0],bOglj[1],bOglj[2]],
-                [bOglj[0],bOglj[1],bOglj[3]],
-                [bOglj[0],bOglj[2],bOglj[3]],
-
-                [bOglj[8],bOglj[7],bOglj[6]],
-                [bOglj[8],bOglj[7],bOglj[5]],
-                [bOglj[8],bOglj[6],bOglj[5]]
-            ]
-            planes = []
-            n = vec3.create()
-            n1 = vec3.create()
-            n2 = vec3.create()
-            trikot.forEach(el => {
-                //console.log(el)
-                //vec3.sub(n1,el[1],el[0])
-                // vec3.sub(n2,el[2],el[1])
-                // vec3.cross(n,n1,n2)
-
-                planes.push([el,vec3.clone(n)])
-                
+   
+            planes.forEach(pl => {
+                this.intersectCube(mincam,maxcam,minb,maxb)
             });
-            
-            
-            v2 = this.intersectCube(mincam,maxcam,minb,maxb)
-            con = v2[0] < v2[1]
             if(con){
                 break
             }

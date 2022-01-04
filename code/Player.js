@@ -32,6 +32,7 @@ export class Player extends Node {
 
     changeToGun(n){
         this.children[0].stopReload()
+        this.children[0].bang.stop();
         //this.children[0].isEquiped = false;
         //this.player.guns[0].isEquiped = true;
         this.children = [];

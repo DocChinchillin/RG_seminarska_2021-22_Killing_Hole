@@ -3,6 +3,7 @@ import { mat4 } from '../lib/gl-matrix-module.js';
 import { WebGL } from '../common/engine/WebGL.js';
 
 import { shaders } from './shaders.js';
+import { Player } from './Player.js';
 
 // This class prepares all assets for use with WebGL
 // and takes care of rendering.
@@ -185,7 +186,13 @@ export class Renderer {
 
         const mvpMatrix = this.getViewProjectionMatrix(camera);
         for (const node of scene.nodes) {
+            if (node instanceof Player) {
+                gl.depthRange(0.0001, 0.1);
+            }
             this.renderNode(node, mvpMatrix);
+            if (node instanceof Player) {
+                gl.depthRange(0, 1);
+            }
         }
     }
 

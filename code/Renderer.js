@@ -138,7 +138,6 @@ export class Renderer {
                     accessor.byteOffset);
             }
         }
-
         this.glObjects.set(primitive, vao);
         return vao;
     }
@@ -184,6 +183,7 @@ export class Renderer {
         const program = this.programs.simple;
         gl.useProgram(program.program);
         gl.uniform1i(program.uniforms.uTexture, 0);
+        
 
         const mvpMatrix = this.getViewProjectionMatrix(camera);
         for (const node of scene.nodes) {
@@ -205,6 +205,7 @@ export class Renderer {
 
         if (node.mesh) {
             const program = this.programs.simple;
+            gl.uniform1f(program.uniforms.uRedness, node.red || 0);
             gl.uniformMatrix4fv(program.uniforms.uMvpMatrix, false, mvpMatrix);
             for (const primitive of node.mesh.primitives) {
                 this.renderPrimitive(primitive);

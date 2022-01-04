@@ -171,7 +171,8 @@ export class HitScan {
             n1 = vec3.create()
             n2 = vec3.create()
             trikot.forEach(el => {
-                // vec3.sub(n1,el[1],el[0])
+                //console.log(el)
+                //vec3.sub(n1,el[1],el[0])
                 // vec3.sub(n2,el[2],el[1])
                 // vec3.cross(n,n1,n2)
 

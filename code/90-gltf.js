@@ -134,5 +134,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const canvas = document.querySelector("canvas");
   const app = new App(canvas);
   const gui = new GUI();
+  setTimeout(() => {
+    gui.addColor(app.light, 'ambientColor');
+    gui.addColor(app.light, 'diffuseColor');
+    gui.addColor(app.light, 'specularColor');
+    gui.add(app.light, 'shininess', 0.0, 1000.0);
+    for (let i = 0; i < 3; i++) {
+        gui.add(app.light.position, i, -200.0, 200.0).name('position.' + String.fromCharCode('x'.charCodeAt(0) + i));
+    }
+  }, 3000)
   gui.add(app, "enableCamera");
 });

@@ -17,19 +17,17 @@ out float vAttenuation;
 out float vRedness;
 
 void main() {
-    // vec3 vertexPosition = (uMvpMatrix * vec4(aPosition)).xyz;
-    // vec3 lightPosition = (uMvpMatrix * vec4(uLightPosition, 1)).xyz;
-    // vEye = -vertexPosition;
-    // vLight = lightPosition - vertexPosition;
-    // vNormal = (uMvpMatrix * vec4(aNormal, 0)).xyz;
+    vec3 vertexPosition = (uMvpMatrix * vec4(aPosition)).xyz;
+    vec3 lightPosition = (uMvpMatrix * vec4(uLightPosition, 1)).xyz;
+    vEye = -vertexPosition;
+    vLight = lightPosition - vertexPosition;
+    vNormal = (uMvpMatrix * vec4(aNormal, 0)).xyz;
     vTexCoord = aTexCoord;
 
-    // float d = distance(vertexPosition, lightPosition);
-    // vAttenuation = 1.0 / dot(uLightAttenuation, vec3(1, d, d * d));
+    float d = distance(vertexPosition, lightPosition);
+    vAttenuation = 1.0 / dot(uLightAttenuation, vec3(1, d, d * d));
 
-    // gl_Position = uProjection * vec4(vertexPosition, 1);
-    vTexCoord = aTexCoord;
-    gl_Position = uMvpMatrix * aPosition;
+    gl_Position = uProjection * vec4(vertexPosition, 1);
 }
 `;
 
@@ -70,7 +68,6 @@ void main() {
     vec3 light = (ambient + diffuse + specular) * vAttenuation;
 
     oColor = texture(uTexture, vTexCoord) * vec4(light, 1);
-    oColor = texture(uTexture, vTexCoord);
     oColor = oColor + vec4(uRedness,0,0,0);
 }
 `;

@@ -39,16 +39,16 @@ export class HitScan {
             
         }
         if(match){
-            match.hit()
+            //match.hit()
         }
         
         if(shop){
             if(match instanceof ShopModel){
                 shop.setCurModel(match)
-                document.getElementsByClassName("cross")[0].innerHTML = match.type
+                //document.getElementsByClassName("cross")[0].innerHTML = match.type
             }else{
                 shop.setCurModel(null)
-                document.getElementsByClassName("cross")[0].innerHTML = "+"
+                //document.getElementsByClassName("cross")[0].innerHTML = "+"
             }
     }
 

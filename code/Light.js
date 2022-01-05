@@ -5,14 +5,12 @@ export class Light extends Node {
         super();
 
         Object.assign(this, {
-            position         : [-0.4165380001068115,
-                3.5336101055145264,
-                54.970298767089844],
-            ambientColor     : [51, 51, 51],
-            diffuseColor     : [204, 204, 204],
+            position         : [10,-10,25],
+            ambientColor     : [255,255,255],
+            diffuseColor     : [255,255,255],
             specularColor    : [255, 255, 255],
             shininess        : 10,
-            attenuatuion     : [1.0, 0, 0.02]
+            attenuatuion     : [1.0, 0.0, 0.02]
         });
     }
 

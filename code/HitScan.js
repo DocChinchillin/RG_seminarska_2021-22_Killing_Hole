@@ -11,71 +11,28 @@ export class HitScan {
     }
     
     update(dt) {
-        let col = 0
+        let col
         this.scene.traverse(cam => {
             if (cam instanceof Player) {
                 this.scene.traverse(other => {
                     if (cam !== other) {
                         //if(other instanceof ShopModel)
-                            col+=this.resolveCollision(cam, other,true)
+                            col=this.resolveCollision(cam, other,true)
+                            if(col){
+                                
+                            }
                     }
                 });
             }
             
         });
-        if(col == 0){
-            document.getElementsByClassName("cross")[0].innerHTML = "+"
-        }
+        // if(col == 0){
+        //     document.getElementsByClassName("cross")[0].innerHTML = "+"
+        // }
         //console.log(col)
     }
 
-    // all args are Vec3, Hit will be filled by this algo
-    checkLineBox( B1, B2, L1, L2, Hit){
-        if (L2[0] < B1[0] && L1[0] < B1[0]) return false;
-        if (L2[0] > B2[0] && L1[0] > B2[0]) return false;
-        if (L2[1] < B1[1] && L1[1] < B1[1]) return false;
-        if (L2[1] > B2[1] && L1[1] > B2[1]) return false;
-        if (L2[2] < B1[2] && L1[2] < B1[2]) return false;
-        if (L2[2] > B2[2] && L1[2] > B2[2]) return false;
-        if (L1[0] > B1[0] && L1[0] < B2[0] &&
-            L1[1] > B1[1] && L1[1] < B2[1] &&
-            L1[2] > B1[2] && L1[2] < B2[2])
-        {
-            vec3.set( L1, Hit);
-            return true;
-        }
-
-    if ((this.getIntersection(L1[0] - B1[0], L2[0] - B1[0], L1, L2, Hit) && this.inBox(Hit, B1, B2, 1))
-      || (this.getIntersection(L1[1] - B1[1], L2[1] - B1[1], L1, L2, Hit) && this.inBox(Hit, B1, B2, 2))
-      || (this.getIntersection(L1[2] - B1[2], L2[2] - B1[2], L1, L2, Hit) && this.inBox(Hit, B1, B2, 3))
-      || (this.getIntersection(L1[0] - B2[0], L2[0] - B2[0], L1, L2, Hit) && this.inBox(Hit, B1, B2, 1))
-      || (this.getIntersection(L1[1] - B2[1], L2[1] - B2[1], L1, L2, Hit) && this.inBox(Hit, B1, B2, 2))
-      || (this.getIntersection(L1[2] - B2[2], L2[2] - B2[2], L1, L2, Hit) && this.inBox(Hit, B1, B2, 3)))
-        return true;
-
-    return false;
-}
-
-    
-    getIntersection( fDst1, fDst2, P1, P2, Hit)
-    {
-        if ((fDst1 * fDst2) >= 0) return false;
-        if (fDst1 == fDst2) return false;
-
-        vec3.subtract(P2, P1, this.temp);
-        vec3.scale( this.temp, (-fDst1 / (fDst2 - fDst1)));
-        vec3.add( this.temp, P1, Hit);
-
-        return true;
-    }
-
-    inBox(Hit, B1, B2, Axis)
-    {
-        if (Axis == 1 && Hit[2] > B1[2] && Hit[2] < B2[2] && Hit[1] > B1[1] && Hit[1] < B2[1]) return true;
-        if (Axis == 2 && Hit[2] > B1[2] && Hit[2] < B2[2] && Hit[0] > B1[0] && Hit[0] < B2[0]) return true;
-        if (Axis == 3 && Hit[0] > B1[0] && Hit[0] < B2[0] && Hit[1] > B1[1] && Hit[1] < B2[1]) return true;
-        return false;
-    }
+   
 
     intersectCube(origin,direction,bmin,bmax) {
         let tmin = vec3.create()
@@ -93,11 +50,58 @@ export class HitScan {
         vec3.max(t2,tmin, tmax);
 
         let tnear = Math.max(t1[0],t1[1],t1[2])
-        let tfar = Math.max(t2[0],t2[1],t2[2])
+        let tfar = Math.min(t2[0],t2[1],t2[2])
         
         //če je dolžina neg ne seka
         return vec2.fromValues(tnear, tfar);
     }
+
+    isect_line_plane(p0, p1, p_co, p_no ){
+    /*
+    p0, p1: Define the line.
+    p_co, p_no: define the plane:
+        p_co Is a point on the plane (plane coordinate).
+        p_no Is a normal vector defining the plane direction;
+             (does not need to be normalized).
+
+    Return a Vector or None (when the intersection can't be found).
+    */
+    let epsilon=1e-6
+    let u = vec3.create()
+    let w = vec3.create()
+    let fac 
+    vec3.sub(u,p1, p0)
+    let dot = vec3.dot(p_no, u)
+    let ret = vec3.create()
+
+    if (Math.abs(dot) > epsilon){
+        // The factor of the point between p0 -> p1 (0 - 1)
+        // if 'fac' is between (0 - 1) the point intersects with the segment.
+        // # Otherwise:
+        // #  < 0.0: behind p0.
+        // #  > 1.0: infront of p1.
+        vec3.sub(w,p0, p_co)
+        fac = vec3.dot(p_no, w) / dot
+        vec3.scale(u,u, -fac)
+        vec3.add(ret,p0, u)
+        //console.log(ret)
+        return fac//vec3.clone(ret)
+    }
+    //# The segment is parallel to plane.
+    return 
+    }
+    getViewProjectionMatrix(camera) {
+        const mvpMatrix = mat4.clone(camera.matrix);
+        let parent = camera.parent;
+        while (parent) {
+            mat4.mul(mvpMatrix, parent.matrix, mvpMatrix);
+            parent = parent.parent;
+        }
+        mat4.invert(mvpMatrix, mvpMatrix);
+        mat4.mul(mvpMatrix, camera.camera.matrix, mvpMatrix);
+        return mvpMatrix;
+    }
+
 
 
     resolveCollision(cam, b, looking) {
@@ -105,6 +109,18 @@ export class HitScan {
         // Update bounding boxes with global translation.
         const tcam = cam.getGlobalTransform();
         const tb = b.getGlobalTransform();
+
+        const vp = this.getViewProjectionMatrix(cam) 
+        mat4.invert(vp,vp)
+
+        const tocka = vec3.fromValues(0,0,-1)
+        const tocka1 = vec3.fromValues(0,0,1)
+        const smer = vec3.create()
+        vec3.sub(smer,tocka1,tocka)
+
+        vec3.transformMat4(tocka,tocka,vp)
+        vec3.transformMat4(tocka1,tocka1,vp)
+        
 
         const poscam = mat4.getTranslation(vec3.create(), tcam);
         const posb = mat4.getTranslation(vec3.create(), tb);
@@ -114,6 +130,9 @@ export class HitScan {
         let bVertices,bOglj
         let v2,n,n1,n2
         let trikot,planes
+        let ret
+        let to1 = vec3.create() 
+        let to2 = vec3.create() 
         const hit = vec3.create()
         for(let i = 0;i<b.mesh.primitives.length;i++){
             if(looking){
@@ -146,32 +165,31 @@ export class HitScan {
             );
 
 
-            planes = [
-                [minb,[1,0,0]],
-                [minb,[0,1,0]],
-                [minb,[0,0,1]],
+        
+            ret = this.intersectCube(tocka,smer,minb,maxb)
 
-                [maxb,[1,0,0]],
-                [maxb,[0,1,0]],
-                [maxb,[0,0,1]]
-            ]
-   
-            planes.forEach(pl => {
-                this.intersectCube(mincam,maxcam,minb,maxb)
-            });
-            if(con){
+            if(ret[0] < ret[1] && ret[1] > 0){
+                vec3.scaleAndAdd(to1,tocka,smer,ret[0])
+                vec3.scaleAndAdd(to2,tocka,smer,ret[1])
+
+                con = true
                 break
             }
+            
+            
+           
         }
         //console.log(b.constructor.name)
         if(con && looking){
-            //console.log(b.constructor.name)
+            console.log(b.constructor.name)
             //console.log("swap")
             //console.log(b.translation)
             //document.getElementsByClassName("cross")[0].innerHTML = b.type
+            console.log(ret[0],ret[1])
+            return [to1,to2]
         }
         
-        return con;
+        
 
    
         

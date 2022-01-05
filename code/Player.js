@@ -78,10 +78,9 @@ export class Player extends Node {
         // mat4.getRotation(b,a)
         // let neki = vec3.set(vec3.create(), b[0], b[1],b[2] );
         vec3.normalize(this.look,this.rotation)
-        vec3.scale(this.look,this.look,1000)
+        //vec3.scale(this.look,this.look,1000)
         
         const c = this;
-        //console.log(c.jumptime)
         const forward = vec3.set(vec3.create(),
             -Math.sin(c.rotation[1]), 0, -Math.cos(c.rotation[1]));
         const right = vec3.set(vec3.create(),

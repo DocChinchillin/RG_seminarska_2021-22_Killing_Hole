@@ -16,7 +16,7 @@ export class Gravity {
                 camera = cam
                 this.scene.traverse(other => {
                     if (cam !== other) {
-                        if(!(other instanceof Gun)){
+                        if(!(other instanceof Gun) && (!other.deco)){
                             //if(other.jumpable){ //ko bojo jump hitboxi odkomenitraj
                                 col +=this.resolveCollision(cam, other);
                             // }

@@ -25,6 +25,9 @@ export class Node {
         this.camera = options.camera || null;
         this.mesh = options.mesh || null;
         this.red = options.red || null;
+        this.name = options.name || null;
+        if(options.extras)
+            this.deco = options.extras.decoration || null;
 
         this.children = [...(options.children || [])];
         for (const child of this.children) {

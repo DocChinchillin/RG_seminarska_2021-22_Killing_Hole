@@ -81,6 +81,10 @@ export class Node {
         }
     }
 
+    hit(){
+        this.red = 1
+    }
+
     clone() {
         return new Node({
             ...this,

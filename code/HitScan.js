@@ -7,12 +7,10 @@ export class HitScan {
 
     constructor(scene) {
         this.scene = scene;
-        this.temp = vec3.create();
     }
     
-    update(dt) {
+    update(dt,shop) {
         let col = {}
-        let st = 0
         let res
         this.scene.traverse(cam => {
             if (cam instanceof Player) {
@@ -20,10 +18,10 @@ export class HitScan {
                     if (cam !== other) {
                         if(!other.deco){
                             res = this.resolveCollision(cam, other)
-                            
                             if(res){
-                                col[res[1]] = res[0]                                     
-                                st++
+                                if(res[1] < 10){
+                                    col[res[1]] = res[0]    
+                                }                                 
                             }
                         }
                     }
@@ -38,17 +36,23 @@ export class HitScan {
             match = col[lowest]
             //console.log(match)
             //console.log(lowest,match)
+            
         }
-        if(match instanceof ShopModel){
-            document.getElementsByClassName("cross")[0].innerHTML = match.type
-        }else{
-            document.getElementsByClassName("cross")[0].innerHTML = "+"
+        if(match){
+            match.hit()
         }
-
+        
+        if(shop){
+            if(match instanceof ShopModel){
+                shop.setCurModel(match)
+                document.getElementsByClassName("cross")[0].innerHTML = match.type
+            }else{
+                shop.setCurModel(null)
+                document.getElementsByClassName("cross")[0].innerHTML = "+"
+            }
     }
 
-   
-
+    }
     intersectCube(origin,direction,bmin,bmax) {
         let tmin = vec3.create()
         let tmax = vec3.create()
@@ -102,9 +106,9 @@ export class HitScan {
 
         vec3.sub(smer,tocka1,tocka)
 
-        const poscam = mat4.getTranslation(vec3.create(), tcam);
-        const posb = mat4.getTranslation(vec3.create(), tb);
-        let mincam,maxcam;
+        // const poscam = mat4.getTranslation(vec3.create(), tcam);
+        // const posb = mat4.getTranslation(vec3.create(), tb);
+        // let mincam,maxcam;
         
         let minb,maxb,con,bVertices,ret;
         let to1 = vec3.create() 

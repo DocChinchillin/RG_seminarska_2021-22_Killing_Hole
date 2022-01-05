@@ -10,6 +10,9 @@ export class Physics {
 
     update(dt) {
         this.scene.traverse(node => {
+            if(node.red && node.red > 0){
+                node.red -= dt
+              }
             if (node.velocity) {
                 //console.log(node)
                 vec3.scaleAndAdd(node.translation, node.translation, node.velocity, dt);
@@ -47,7 +50,7 @@ export class Physics {
             return
         }
         let aVertices,mina,maxa
-        for(let i = 0;i<b.mesh.primitives.length;i++){
+        for(let i = 0;i<1;i++){ //b.mesh.primitives.length
             if(a.max){
                 aVertices = [
                     vec3.fromValues(a.min[0], a.min[1], a.min[2]),

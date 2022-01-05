@@ -99,14 +99,13 @@ class App extends Application {
       this.physics.update(dt);
     }
 
-
-
     if (this.shop) {
       this.shop.update(dt, this.player);
     }
     if (this.hitScan) {
-      this.hitScan.update(dt);
+      this.hitScan.update(dt,this.shop);
     }
+
 
 
   }

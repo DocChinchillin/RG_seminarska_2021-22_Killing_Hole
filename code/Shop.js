@@ -5,8 +5,13 @@ export class Shop {
     this.shopModels = [];
     this.gate;
     this.gateOpen = false;
+    this.curModel = null
 
     this.timeout;
+  }
+  setCurModel(node){
+    this.curModel = node
+
   }
 
   update(dt, player) {

@@ -16,7 +16,7 @@ export class HitScan {
             if (cam instanceof Player) {
                 this.scene.traverse(other => {    
                     if (cam !== other) {
-                        if(!other.deco){
+                        if((!other.deco) && !(other instanceof Gun)){
                             res = this.resolveCollision(cam, other)
                             if(res){
                                 if(res[1] < 10){

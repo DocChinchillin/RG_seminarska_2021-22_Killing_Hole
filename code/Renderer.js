@@ -1,4 +1,4 @@
-import { mat4 } from '../lib/gl-matrix-module.js';
+import { mat4, vec3 } from '../lib/gl-matrix-module.js';
 
 import { WebGL } from '../common/engine/WebGL.js';
 
@@ -175,7 +175,7 @@ export class Renderer {
         return mvpMatrix;
     }
 
-    render(scene, camera) {
+    render(scene, camera, light) {
         const gl = this.gl;
 
         gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
@@ -184,6 +184,20 @@ export class Renderer {
         gl.useProgram(program.program);
         gl.uniform1i(program.uniforms.uTexture, 0);
         
+        gl.uniformMatrix4fv(program.uniforms.uProjection, false, this.getViewProjectionMatrix(camera));
+        
+        let color = vec3.clone(light.ambientColor);
+        vec3.scale(color, color, 1.0 / 255.0);
+        gl.uniform3fv(program.uniforms.uAmbientColor, color);
+        color = vec3.clone(light.diffuseColor);
+        vec3.scale(color, color, 1.0 / 255.0);
+        gl.uniform3fv(program.uniforms.uDiffuseColor, color);
+        color = vec3.clone(light.specularColor);
+        vec3.scale(color, color, 1.0 / 255.0);
+        gl.uniform3fv(program.uniforms.uSpecularColor, color);
+        gl.uniform1f(program.uniforms.uShininess, light.shininess);
+        gl.uniform3fv(program.uniforms.uLightPosition, light.position);
+        gl.uniform3fv(program.uniforms.uLightAttenuation, light.attenuatuion);
 
         const mvpMatrix = this.getViewProjectionMatrix(camera);
         for (const node of scene.nodes) {

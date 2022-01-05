@@ -9,6 +9,7 @@ import { Gravity } from "./Gravity.js";
 import { mat4, vec3 } from "../lib/gl-matrix-module.js";
 import { Shop } from "./Shop.js";
 import { HitScan } from "./HitScan.js";
+import { Light } from "./Light.js";
 
 class App extends Application {
   async start() {
@@ -28,6 +29,7 @@ class App extends Application {
     })
     this.gun.showAmmo();
 
+    this.light = new Light();
     this.shop = new Shop();
     this.shop.shopModels.push(await this.loader.loadShop("Gun1SHOP"));
     this.shop.shopModels.push(await this.loader.loadShop("Gun2SHOP"));
@@ -39,7 +41,7 @@ class App extends Application {
     console.log(this.player)
     console.log(this.scene);
 
-
+console.log(this.light)
     if (!this.scene || !this.player) {
       throw new Error("Scene or Camera not present in glTF");
     }
@@ -113,7 +115,7 @@ class App extends Application {
 
   render() {
     if (this.renderer) {
-      this.renderer.render(this.scene, this.player);
+      this.renderer.render(this.scene, this.player, this.light);
     }
   }
 

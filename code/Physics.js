@@ -50,7 +50,7 @@ export class Physics {
             return
         }
         let aVertices,mina,maxa
-        for(let i = 0;i<1;i++){ //b.mesh.primitives.length
+        for(let i = 0;i<b.mesh.primitives.length;i++){ //b.mesh.primitives.length
             if(a.max){
                 aVertices = [
                     vec3.fromValues(a.min[0], a.min[1], a.min[2]),
@@ -130,7 +130,7 @@ export class Physics {
             });
 
             if (!isColliding) {
-                return;
+                continue;
             }
             //console.log(b.deco)
             //console.log("collison")

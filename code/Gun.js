@@ -9,26 +9,27 @@ export class Gun extends Node{
         this.ammoDisplay = document.getElementsByClassName("ammo")[0];
         this.cross = document.getElementsByClassName("cross")[0];
         //firerate
-        this.fireRate = options.extras.fireRate || 500//spec.fireRate;
+        this.fireRate = options.extras.fireRate || 500
         this.lastFire = 0
+        this.dmg = options.extras.dmg || 1
 
         //sounds
-        this.bang = new Sound(options.extras.shoot || "../common/sounds/rifle.mp3")//spec.shoot);
+        this.bang = new Sound(options.extras.shoot || "../common/sounds/rifle.mp3")
         this.bang.setVolume(0.5);
 
-        this.fireEmpty = new Sound(options.extras.emptyShoot || "../common/sounds/empty.mp3")//spec.emptyShot);
+        this.fireEmpty = new Sound(options.extras.emptyShoot || "../common/sounds/empty.mp3")
         this.fireEmpty.setVolume(0.5);
 
-        this.reloadSound = new Sound(options.extras.reloadSound || "../common/sounds/clean-revolver-reload.mp3")//spec.reloadSound);
+        this.reloadSound = new Sound(options.extras.reloadSound || "../common/sounds/clean-revolver-reload.mp3")
         this.fireEmpty.setVolume(0.5);
 
         //ammo
-        this.magSize = options.extras.magSize || 30//spec.magSize
+        this.magSize = options.extras.magSize || 30
         this.magAmmo = this.magSize
-        this.totalAmmo = options.extras.totalAmmo || 100//spec.totalAmmo
+        this.totalAmmo = options.extras.totalAmmo || 100
 
         //reload
-        this.reloadTime = options.extras.reloadTime || 3//spec.reloadTime //v sek
+        this.reloadTime = options.extras.reloadTime || 3 //v sek
         this.reloadProg = 0
         this.reloadingInProgress = 0 //ali trenutno reload-amo
 
@@ -38,12 +39,13 @@ export class Gun extends Node{
         this.name = options.extras.name;    //ime guna, da vemo kaj v shopu kupiti
     }
     triggerPull(){
-        
+        let zark
         if( Date.now() - this.lastFire > this.fireRate){
             this.bang.stop();
-            this.fire();
+            zark = this.fire();
             this.lastFire = Date.now();
         }
+        return zark
 
     }
 
@@ -54,6 +56,7 @@ export class Gun extends Node{
             this.bang.play();
             this.magAmmo--;
             this.showAmmo();
+            return this.dmg
         }else{
             this.fireEmpty.play();
         }

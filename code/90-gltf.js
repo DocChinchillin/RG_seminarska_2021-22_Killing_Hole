@@ -9,6 +9,7 @@ import { Gravity } from "./Gravity.js";
 import { mat4, vec3 } from "../lib/gl-matrix-module.js";
 import { Shop } from "./Shop.js";
 import { HitScan } from "./HitScan.js";
+import { Sound } from "./Sound.js";
 
 class App extends Application {
   async start() {
@@ -27,6 +28,9 @@ class App extends Application {
       this.player.addChild(gun);
     })
     this.gun.showAmmo();
+    this.BGM = new Sound("../common/sounds/BGM.mp3")
+    this.BGM.setVolume(0.1)
+    
 
     this.shop = new Shop();
     this.shop.shopModels.push(await this.loader.loadShop("Gun1SHOP"));
@@ -67,6 +71,7 @@ class App extends Application {
 
   enableCamera() {
     this.canvas.requestPointerLock();
+    this.BGM.play()
   }
 
   pointerlockchangeHandler() {
@@ -82,6 +87,7 @@ class App extends Application {
   }
 
   update() {
+    
     const t = (this.time = Date.now());
     const dt = (this.time - this.startTime) * 0.001;
     this.startTime = this.time;
@@ -103,7 +109,7 @@ class App extends Application {
       this.shop.update(dt, this.player);
     }
     if (this.hitScan) {
-      this.hitScan.update(dt,this.shop);
+      this.hitScan.update(dt,this.shop,this.player);
     }
 
 

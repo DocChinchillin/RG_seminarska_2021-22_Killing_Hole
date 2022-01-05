@@ -9,26 +9,23 @@ export class HitScan {
         this.scene = scene;
     }
     
-    update(dt,shop) {
+    update(dt,shop,cam) {
         let col = {}
         let res
-        this.scene.traverse(cam => {
-            if (cam instanceof Player) {
-                this.scene.traverse(other => {    
-                    if (cam !== other) {
-                        if((!other.deco) && !(other instanceof Gun)){
-                            res = this.resolveCollision(cam, other)
-                            if(res){
-                                if(res[1] < 10){
-                                    col[res[1]] = res[0]    
-                                }                                 
-                            }
-                        }
+
+        this.scene.traverse(other => {    
+            if (cam !== other) {
+                if((!other.deco) && !(other instanceof Gun)){
+                    res = this.resolveCollision(cam, other,null)
+                    if(res){
+                        if(res[1] < 15){
+                            col[res[1]] = res[0]    
+                        }                                 
                     }
-                });
+                }
             }
-            
         });
+       
         let keys,match,lowest
         if(col){
             keys   = Object.keys(col).sort(function(a,b) { return col[a] - col[b]; });
@@ -36,11 +33,9 @@ export class HitScan {
             match = col[lowest]
             //console.log(match)
             //console.log(lowest,match)
-            
+
         }
-        if(match){
-            match.hit()
-        }
+        
         
         if(shop){
             if(match instanceof ShopModel){
@@ -51,6 +46,33 @@ export class HitScan {
                 document.getElementsByClassName("cross")[0].innerHTML = "+"
             }
     }
+    cam.shots.forEach(shot => {
+        this.scene.traverse(other => {    
+            if (cam !== other) {
+                if((!other.deco) && !(other instanceof Gun)){
+                    res = this.resolveCollision(cam, other,shot)
+                    if(res){
+                        col[res[1]] = res[0]                                      
+                    }
+                }
+            }
+        });
+        match = null
+        if(col){
+            keys   = Object.keys(col).sort(function(a,b) { return col[a] - col[b]; });
+            lowest = keys[0]
+            match = col[lowest]
+            //console.log(match)
+            //console.log(lowest,match)
+
+        }
+        if(match){
+            match.hit()
+        }
+    });
+    cam.shots = []
+    
+    
 
     }
     intersectCube(origin,direction,bmin,bmax) {
@@ -88,23 +110,28 @@ export class HitScan {
 
 
 
-    resolveCollision(cam, b) {
+    resolveCollision(cam, b,shot = null) {
         // Update bounding boxes with global translation.
         const tcam = cam.getGlobalTransform();
         const tb = b.getGlobalTransform();
+        let tocka,smer
+        if(!shot){
+            const vp = this.getViewProjectionMatrix(cam) 
+            mat4.invert(vp,vp)
 
-        const vp = this.getViewProjectionMatrix(cam) 
-        mat4.invert(vp,vp)
+            tocka = vec3.fromValues(0,0,-1)
+            const tocka1 = vec3.fromValues(0,0,1)
+            smer = vec3.create()
+            
 
-        const tocka = vec3.fromValues(0,0,-1)
-        const tocka1 = vec3.fromValues(0,0,1)
-        const smer = vec3.create()
-        
+            vec3.transformMat4(tocka,tocka,vp)
+            vec3.transformMat4(tocka1,tocka1,vp) 
 
-        vec3.transformMat4(tocka,tocka,vp)
-        vec3.transformMat4(tocka1,tocka1,vp) 
-
-        vec3.sub(smer,tocka1,tocka)
+            vec3.sub(smer,tocka1,tocka)
+        }else{
+            tocka = shot.origin
+            smer = shot.dir
+        }
 
         // const poscam = mat4.getTranslation(vec3.create(), tcam);
         // const posb = mat4.getTranslation(vec3.create(), tb);

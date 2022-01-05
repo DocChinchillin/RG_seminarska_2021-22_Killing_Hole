@@ -3,6 +3,7 @@ import { mat4 } from '../lib/gl-matrix-module.js';
 import { WebGL } from '../common/engine/WebGL.js';
 
 import { shaders } from './shaders.js';
+import { Player } from './Player.js';
 
 // This class prepares all assets for use with WebGL
 // and takes care of rendering.
@@ -115,8 +116,9 @@ export class Renderer {
         const attributeNameToIndexMap = {
             POSITION   : 0,
             TEXCOORD_0 : 1,
+            redness    : 2,
         };
-
+        
         for (const name in primitive.attributes) {
             const accessor = primitive.attributes[name];
             const bufferView = accessor.bufferView;
@@ -136,7 +138,6 @@ export class Renderer {
                     accessor.byteOffset);
             }
         }
-
         this.glObjects.set(primitive, vao);
         return vao;
     }
@@ -182,10 +183,17 @@ export class Renderer {
         const program = this.programs.simple;
         gl.useProgram(program.program);
         gl.uniform1i(program.uniforms.uTexture, 0);
+        
 
         const mvpMatrix = this.getViewProjectionMatrix(camera);
         for (const node of scene.nodes) {
+            if (node instanceof Player) {
+                gl.depthRange(0.0001, 0.1);
+            }
             this.renderNode(node, mvpMatrix);
+            if (node instanceof Player) {
+                gl.depthRange(0, 1);
+            }
         }
     }
 
@@ -197,6 +205,7 @@ export class Renderer {
 
         if (node.mesh) {
             const program = this.programs.simple;
+            gl.uniform1f(program.uniforms.uRedness, node.red || 0);
             gl.uniformMatrix4fv(program.uniforms.uMvpMatrix, false, mvpMatrix);
             for (const primitive of node.mesh.primitives) {
                 this.renderPrimitive(primitive);

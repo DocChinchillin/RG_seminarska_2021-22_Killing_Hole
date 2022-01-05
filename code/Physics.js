@@ -13,6 +13,7 @@ export class Physics {
             if (node.velocity) {
                 //console.log(node)
                 vec3.scaleAndAdd(node.translation, node.translation, node.velocity, dt);
+                vec3.scaleAndAdd(node.translation, node.translation, node.padc, dt);
                 node.updatePos();
                 this.scene.traverse(other => {
                     if (node !== other) {
@@ -45,29 +46,50 @@ export class Physics {
         if(!b.mesh){
             return
         }
-        //console.log(a)
-        //console.log(b)
-        const aVertices = [
-            vec3.fromValues(a.min[0], a.min[1], a.min[2]),
-            vec3.fromValues(a.min[0], a.min[1], a.max[2]),
-            vec3.fromValues(a.min[0], a.max[1], a.min[2]),
-            vec3.fromValues(a.min[0], a.max[1], a.max[2]),
-            vec3.fromValues(a.max[0], a.min[1], a.min[2]),
-            vec3.fromValues(a.max[0], a.min[1], a.max[2]),
-            vec3.fromValues(a.max[0], a.max[1], a.min[2]),
-            vec3.fromValues(a.max[0], a.max[1], a.max[2]),
-        ].map(v => vec3.transformMat4(v, v, ta));
-        const mina = vec3.fromValues(
-            Math.min(...aVertices.map(v => v[0])),
-            Math.min(...aVertices.map(v => v[1])),
-            Math.min(...aVertices.map(v => v[2])),
-        );
-        const maxa = vec3.fromValues(
-            Math.max(...aVertices.map(v => v[0])),
-            Math.max(...aVertices.map(v => v[1])),
-            Math.max(...aVertices.map(v => v[2])),
-        );
-
+        let aVertices,mina,maxa
+        if(a.max){
+            aVertices = [
+                vec3.fromValues(a.min[0], a.min[1], a.min[2]),
+                vec3.fromValues(a.min[0], a.min[1], a.max[2]),
+                vec3.fromValues(a.min[0], a.max[1], a.min[2]),
+                vec3.fromValues(a.min[0], a.max[1], a.max[2]),
+                vec3.fromValues(a.max[0], a.min[1], a.min[2]),
+                vec3.fromValues(a.max[0], a.min[1], a.max[2]),
+                vec3.fromValues(a.max[0], a.max[1], a.min[2]),
+                vec3.fromValues(a.max[0], a.max[1], a.max[2]),
+            ].map(v => vec3.transformMat4(v, v, ta));
+            mina = vec3.fromValues(
+                Math.min(...aVertices.map(v => v[0])),
+                Math.min(...aVertices.map(v => v[1])),
+                Math.min(...aVertices.map(v => v[2])),
+            );
+            maxa = vec3.fromValues(
+                Math.max(...aVertices.map(v => v[0])),
+                Math.max(...aVertices.map(v => v[1])),
+                Math.max(...aVertices.map(v => v[2])),
+            );
+        }else{
+            aVertices = [
+                vec3.fromValues(a.mesh.primitives[0].attributes.POSITION.min[0], a.mesh.primitives[0].attributes.POSITION.min[1], a.mesh.primitives[0].attributes.POSITION.min[2]),
+                vec3.fromValues(a.mesh.primitives[0].attributes.POSITION.min[0], a.mesh.primitives[0].attributes.POSITION.min[1], a.mesh.primitives[0].attributes.POSITION.max[2]),
+                vec3.fromValues(a.mesh.primitives[0].attributes.POSITION.min[0], a.mesh.primitives[0].attributes.POSITION.max[1], a.mesh.primitives[0].attributes.POSITION.min[2]),
+                vec3.fromValues(a.mesh.primitives[0].attributes.POSITION.min[0], a.mesh.primitives[0].attributes.POSITION.max[1], a.mesh.primitives[0].attributes.POSITION.max[2]),
+                vec3.fromValues(a.mesh.primitives[0].attributes.POSITION.max[0], a.mesh.primitives[0].attributes.POSITION.min[1], a.mesh.primitives[0].attributes.POSITION.min[2]),
+                vec3.fromValues(a.mesh.primitives[0].attributes.POSITION.max[0], a.mesh.primitives[0].attributes.POSITION.min[1], a.mesh.primitives[0].attributes.POSITION.max[2]),
+                vec3.fromValues(a.mesh.primitives[0].attributes.POSITION.max[0], a.mesh.primitives[0].attributes.POSITION.max[1], a.mesh.primitives[0].attributes.POSITION.min[2]),
+                vec3.fromValues(a.mesh.primitives[0].attributes.POSITION.max[0], a.mesh.primitives[0].attributes.POSITION.max[1], a.mesh.primitives[0].attributes.POSITION.max[2]),
+            ].map(v => vec3.transformMat4(v, v, ta));
+            mina = vec3.fromValues(
+                Math.min(...aVertices.map(v => v[0])),
+                Math.min(...aVertices.map(v => v[1])),
+                Math.min(...aVertices.map(v => v[2])),
+            );
+            maxa = vec3.fromValues(
+                Math.max(...aVertices.map(v => v[0])),
+                Math.max(...aVertices.map(v => v[1])),
+                Math.max(...aVertices.map(v => v[2])),
+                );
+        }
 
         const bVertices = [
             vec3.fromValues(b.mesh.primitives[0].attributes.POSITION.min[0], b.mesh.primitives[0].attributes.POSITION.min[1], b.mesh.primitives[0].attributes.POSITION.min[2]),

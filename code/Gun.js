@@ -40,6 +40,7 @@ export class Gun extends Node{
     triggerPull(){
         
         if( Date.now() - this.lastFire > this.fireRate){
+            this.bang.stop();
             this.fire();
             this.lastFire = Date.now();
         }

@@ -2,4 +2,6 @@
 # Killing Hole
 
 Seminarska naloga pri predmetu Računalniška grafika <br/>
-Člani: Rok Švikart, Žiga Keržan in Anže Oblak
+Člani: Rok Švikart, Žiga Keržan in Anže Oblak <br/>
+
+Background Music: www.bensound.com

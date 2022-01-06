@@ -10,6 +10,7 @@ import { mat4, vec3 } from "../lib/gl-matrix-module.js";
 import { Shop } from "./Shop.js";
 import { HitScan } from "./HitScan.js";
 import { Light } from "./Light.js";
+import { Sound } from "./Sound.js";
 
 class App extends Application {
   async start() {
@@ -28,6 +29,9 @@ class App extends Application {
       this.player.addChild(gun);
     })
     this.gun.showAmmo();
+    this.BGM = new Sound("../common/sounds/BGM.mp3")
+    this.BGM.setVolume(0.1)
+    
 
     this.light = new Light();
     this.shop = new Shop();
@@ -69,6 +73,7 @@ console.log(this.light)
 
   enableCamera() {
     this.canvas.requestPointerLock();
+    this.BGM.play()
   }
 
   pointerlockchangeHandler() {
@@ -84,6 +89,7 @@ console.log(this.light)
   }
 
   update() {
+    
     const t = (this.time = Date.now());
     const dt = (this.time - this.startTime) * 0.001;
     this.startTime = this.time;
@@ -105,7 +111,7 @@ console.log(this.light)
       this.shop.update(dt, this.player);
     }
     if (this.hitScan) {
-      this.hitScan.update(dt,this.shop);
+      this.hitScan.update(dt,this.shop,this.player);
     }
 
 

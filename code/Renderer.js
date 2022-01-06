@@ -185,10 +185,10 @@ export class Renderer {
         gl.uniform1i(program.uniforms.uTexture, 0);
         
         let matrix = mat4.create();
-        const viewMatrix = camera.getGlobalTransform();
+        const viewMatrix = camera.matrix //camera.getGlobalTransform();
         mat4.invert(viewMatrix, viewMatrix);
         mat4.copy(matrix, viewMatrix);
-        gl.uniformMatrix4fv(program.uniforms.uProjection, false, camera.camera.matrix);
+        gl.uniformMatrix4fv(program.uniforms.uProjection, false, this.getViewProjectionMatrix(camera) /*camera.camera.matrix*/);
         
         let color = vec3.clone(light.ambientColor);
         vec3.scale(color, color, 1.0 / 255.0);
@@ -201,11 +201,12 @@ export class Renderer {
         gl.uniform3fv(program.uniforms.uSpecularColor, color);
         gl.uniform1f(program.uniforms.uShininess, light.shininess);
         let globalLight = vec3.fromValues(light.position[0],light.position[1],light.position[2]);
-        vec3.transformMat4(globalLight, globalLight, camera.camera.matrix);
+        let mvpMatrix = this.getViewProjectionMatrix(camera);
+        //mat4.invert(mvpMatrix, mvpMatrix)
+        vec3.transformMat4(globalLight, globalLight, matrix);
         gl.uniform3fv(program.uniforms.uLightPosition, globalLight);
         gl.uniform3fv(program.uniforms.uLightAttenuation, light.attenuatuion);
 
-        const mvpMatrix = this.getViewProjectionMatrix(camera);
         //mat4.invert(mvpMatrix,mvpMatrix)
         for (const node of scene.nodes) {
             if (node instanceof Player) {

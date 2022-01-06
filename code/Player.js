@@ -20,11 +20,23 @@ export class Player extends Node {
         this.mouseupHandler = this.mouseupHandler.bind(this);
         this.look = vec3.create()
         //vec3.normalize(this.look,this.rotation)
-
+        this.shots = []
         this.keys = {};
 
         this.inventory = {money: 100, health: 100}
     }
+    getViewProjectionMatrix(camera) {
+        const mvpMatrix = mat4.clone(camera.matrix);
+        let parent = camera.parent;
+        while (parent) {
+            mat4.mul(mvpMatrix, parent.matrix, mvpMatrix);
+            parent = parent.parent;
+        }
+        mat4.invert(mvpMatrix, mvpMatrix);
+        mat4.mul(mvpMatrix, camera.camera.matrix, mvpMatrix);
+        return mvpMatrix;
+    }
+
 
     updateProjection() {
         mat4.perspective(this.projection, this.fov, this.aspect, this.near, this.far);
@@ -50,7 +62,7 @@ export class Player extends Node {
     }
 
     updateGuns(){
-        
+        let novRay,dmg
         if(this.keys['Digit1']) {
             if (this.inventory.guns[0].inInventory === "true")
                 this.changeToGun(0)
@@ -60,9 +72,30 @@ export class Player extends Node {
             if (this.inventory.guns[1].inInventory === "true")
             this.changeToGun(1)
         }
-
+        
         if(this.keys["mouse0"]){
-            this.children[0].triggerPull()
+            dmg = this.children[0].triggerPull()
+        }
+
+        if(dmg){
+            const vp = this.getViewProjectionMatrix(this) 
+            mat4.invert(vp,vp)
+
+            const tocka = vec3.fromValues(0,0,-1)
+            const tocka1 = vec3.fromValues(0,0,1)
+            const smer = vec3.create()
+            
+            vec3.transformMat4(tocka,tocka,vp)
+            vec3.transformMat4(tocka1,tocka1,vp) 
+
+            vec3.sub(smer,tocka1,tocka)
+            novRay = {
+                "dmg": dmg,
+                "origin" : tocka,
+                "dir" : smer
+            }
+            this.shots.push(novRay)
+            //console.log(this.shots)
         }
 
         if(this.keys["KeyR"]){

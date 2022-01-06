@@ -140,7 +140,7 @@ console.log(this.light)
 
   render() {
     if (this.renderer) {
-      this.renderer.render(this.scene, this.player, this.light);
+      this.renderer.render(this.scene, this.player, this.light, this.test);
     }
   }
 

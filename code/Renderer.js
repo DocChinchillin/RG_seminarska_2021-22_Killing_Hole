@@ -175,7 +175,7 @@ export class Renderer {
         return mvpMatrix;
     }
 
-    render(scene, camera, light) {
+    render(scene, camera, light, test) {
         const gl = this.gl;
 
         gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
@@ -190,6 +190,7 @@ export class Renderer {
         mat4.copy(matrix, mvpMatrix);*/
 
         const mvpMatrix = this.getViewProjectionMatrix(camera);
+        const uNormalMatrix = mat4.create();
 
         const projMatrix = mat4.clone(camera.camera.matrix);
         const modelViewMatrix = mat4.create();
@@ -197,11 +198,15 @@ export class Renderer {
         mat4.invert(projMatrix,projMatrix);
         mat4.mul(modelViewMatrix,mvpMatrix,projMatrix);
 
-        /*mat4.invert(uNormalMatrix, modelViewMatrix);
-        mat4.transpose(uNormalMatrix, uNormalMatrix)*/
+        mat4.invert(uNormalMatrix, modelViewMatrix);
+        mat4.transpose(uNormalMatrix, uNormalMatrix)
 
-        
+        gl.uniformMatrix4fv(program.uniforms.uNormalMatrix,false,uNormalMatrix);
         //gl.uniformMatrix4fv(program.uniforms.uProjection, false, );
+        test.translation = [light.position[0],light.position[1],light.position[2]]
+        test.scale = [10, 10, 10]
+    
+        test.updateMatrix()
         
         let color = vec3.clone(light.ambientColor);
         vec3.scale(color, color, 1.0 / 255.0);

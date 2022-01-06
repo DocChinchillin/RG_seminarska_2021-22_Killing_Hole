@@ -6,6 +6,7 @@ layout (location = 2) in vec3 aNormal;
 
 uniform mat4 uMvpMatrix;
 uniform mat4 uProjection;
+uniform mat4 uNormalMatrix;
 uniform vec3 uLightPosition;
 uniform vec3 uLightAttenuation;
 
@@ -21,7 +22,7 @@ void main() {
     vec3 lightPosition = (uMvpMatrix * vec4(normalize(vec3(uLightPosition)), 1)).xyz;
     vEye = -vertexPosition;
     vLight = lightPosition - vertexPosition;
-    vNormal = (uMvpMatrix * vec4(aNormal, 0)).xyz;
+    vNormal = (uNormalMatrix * vec4(aNormal, 1)).xyz;
     vTexCoord = aTexCoord;
 
     float d = distance(vertexPosition, lightPosition);

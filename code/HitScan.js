@@ -15,7 +15,7 @@ export class HitScan {
 
         this.scene.traverse(other => {    
             if (cam !== other) {
-                if((!other.deco) && !(other instanceof Gun)){
+                if((other instanceof ShopModel) && shop.gateOpen){
                     res = this.resolveCollision(cam, other,null)
                     if(res){
                         if(res[1] < 15){

@@ -136,7 +136,7 @@ export class HitScan {
         // const posb = mat4.getTranslation(vec3.create(), tb);
         // let mincam,maxcam;
         
-        let minb,maxb,con,bVertices,ret;
+        let minb,maxb,con,bVertices,ret,minDist,dist
         let to1 = vec3.create() 
         let to2 = vec3.create() 
         for(let i = 0;i<b.mesh.primitives.length;i++){
@@ -169,9 +169,11 @@ export class HitScan {
             if(ret[0] < ret[1] && ret[1] > 0){
                 vec3.scaleAndAdd(to1,tocka,smer,ret[0])
                 vec3.scaleAndAdd(to2,tocka,smer,ret[1])
-
+                dist = vec3.dist(to1,tocka)
+                if(!minDist || dist < minDist)
+                    minDist = dist
                 con = true
-                break
+                //break
             }
             
             
@@ -184,7 +186,7 @@ export class HitScan {
             //document.getElementsByClassName("cross")[0].innerHTML = b.type
             //console.log(ret[0],ret[1])
             //console.log(vec3.dist(to1,tocka))
-            return [b,vec3.dist(to1,tocka)]
+            return [b,minDist]
         }
         
         

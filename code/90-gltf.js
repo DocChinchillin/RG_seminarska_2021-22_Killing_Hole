@@ -73,7 +73,7 @@ console.log(this.light)
 
   enableCamera() {
     this.canvas.requestPointerLock();
-    this.BGM.play()
+    
   }
 
   pointerlockchangeHandler() {
@@ -83,8 +83,10 @@ console.log(this.light)
 
     if (document.pointerLockElement === this.canvas) {
       this.player.enable();
+      this.BGM.play()
     } else {
       this.player.disable();
+      this.BGM.pause()
     }
   }
 

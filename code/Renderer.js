@@ -185,10 +185,23 @@ export class Renderer {
         gl.uniform1i(program.uniforms.uTexture, 0);
         
         let matrix = mat4.create();
-        const viewMatrix = camera.matrix //camera.getGlobalTransform();
-        mat4.invert(viewMatrix, viewMatrix);
-        mat4.copy(matrix, viewMatrix);
-        gl.uniformMatrix4fv(program.uniforms.uProjection, false, this.getViewProjectionMatrix(camera) /*camera.camera.matrix*/);
+        /*const mvpMatrix = camera.getGlobalTransform();
+        mat4.invert(mvpMatrix,mvpMatrix);
+        mat4.copy(matrix, mvpMatrix);*/
+
+        const mvpMatrix = this.getViewProjectionMatrix(camera);
+
+        const projMatrix = mat4.clone(camera.camera.matrix);
+        const modelViewMatrix = mat4.create();
+
+        mat4.invert(projMatrix,projMatrix);
+        mat4.mul(modelViewMatrix,mvpMatrix,projMatrix);
+
+        /*mat4.invert(uNormalMatrix, modelViewMatrix);
+        mat4.transpose(uNormalMatrix, uNormalMatrix)*/
+
+        
+        //gl.uniformMatrix4fv(program.uniforms.uProjection, false, );
         
         let color = vec3.clone(light.ambientColor);
         vec3.scale(color, color, 1.0 / 255.0);
@@ -201,25 +214,24 @@ export class Renderer {
         gl.uniform3fv(program.uniforms.uSpecularColor, color);
         gl.uniform1f(program.uniforms.uShininess, light.shininess);
         let globalLight = vec3.fromValues(light.position[0],light.position[1],light.position[2]);
-        let mvpMatrix = this.getViewProjectionMatrix(camera);
-        //mat4.invert(mvpMatrix, mvpMatrix)
-        vec3.transformMat4(globalLight, globalLight, matrix);
+        //vec3.transformMat4(globalLight, globalLight, this.getViewProjectionMatrix(camera));
         gl.uniform3fv(program.uniforms.uLightPosition, globalLight);
         gl.uniform3fv(program.uniforms.uLightAttenuation, light.attenuatuion);
-
+        
+        //let mvpMatrix = this.getViewProjectionMatrix(camera);
         //mat4.invert(mvpMatrix,mvpMatrix)
         for (const node of scene.nodes) {
             if (node instanceof Player) {
                 gl.depthRange(0.0001, 0.1);
             }
-            this.renderNode(node, matrix);
+            this.renderNode(node, mvpMatrix);
             if (node instanceof Player) {
                 gl.depthRange(0, 1);
             }
         }
     }
 
-    renderNode(node, mvpMatrix) {
+    renderNode(node, mvpMatrix, uNormalMatrix) {
         const gl = this.gl;
 
         mvpMatrix = mat4.clone(mvpMatrix);
@@ -229,6 +241,7 @@ export class Renderer {
             const program = this.programs.simple;
             gl.uniform1f(program.uniforms.uRedness, node.red || 0);
             gl.uniformMatrix4fv(program.uniforms.uMvpMatrix, false, mvpMatrix);
+            //gl.uniformMatrix4fv(program.uniforms.uNormalMatrix,false,uNormalMatrix);
             for (const primitive of node.mesh.primitives) {
                 this.renderPrimitive(primitive);
             }

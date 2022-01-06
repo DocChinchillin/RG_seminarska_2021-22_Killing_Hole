@@ -10,7 +10,7 @@ export class Light extends Node {
             diffuseColor     : [255,255,255],
             specularColor    : [255, 255, 255],
             shininess        : 10,
-            attenuatuion     : [1.0, 0.0, 0.02]
+            attenuatuion     : [1.0, 0.02, 0]
         });
     }
 

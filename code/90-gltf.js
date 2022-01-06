@@ -30,7 +30,7 @@ class App extends Application {
     })
     this.gun.showAmmo();
     this.BGM = new Sound("../common/sounds/BGM.mp3")
-    this.BGM.setVolume(0.1)
+    this.BGM.setVolume(0.0)
     
 
     this.light = new Light();

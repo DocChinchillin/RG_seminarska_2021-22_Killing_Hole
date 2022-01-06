@@ -18,7 +18,7 @@ out float vRedness;
 
 void main() {
     vec3 vertexPosition = (uMvpMatrix * vec4(aPosition)).xyz;
-    vec3 lightPosition = (uMvpMatrix * vec4(uLightPosition, 1)).xyz;
+    vec3 lightPosition = (uMvpMatrix * vec4(normalize(vec3(uLightPosition)), 1)).xyz;
     vEye = -vertexPosition;
     vLight = lightPosition - vertexPosition;
     vNormal = (uMvpMatrix * vec4(aNormal, 0)).xyz;
@@ -27,7 +27,7 @@ void main() {
     float d = distance(vertexPosition, lightPosition);
     vAttenuation = 1.0 / dot(uLightAttenuation, vec3(1, d, d * d));
 
-    gl_Position = uProjection * vec4(vertexPosition, 1);
+    gl_Position = uMvpMatrix * aPosition;
 }
 `;
 
@@ -67,7 +67,7 @@ void main() {
 
     vec3 light = (ambient + diffuse + specular) * vAttenuation;
 
-    oColor = texture(uTexture, vTexCoord) * vec4(light, 1);
+    oColor = oColor + texture(uTexture, vTexCoord) * vec4(light, 1);
     oColor = oColor + vec4(uRedness,0,0,0);
 }
 `;
@@ -75,3 +75,55 @@ void main() {
 export const shaders = {
     simple: { vertex, fragment }
 };
+
+// const vertex = `#version 300 es
+// layout (location = 0) in vec4 aPosition;
+// layout (location = 1) in vec2 aTexCoord;
+// layout (location = 2) in vec3 aNormal;
+
+// const vec3 lightDirection = normalize(vec3(0.6, 0.4, 0));
+
+// uniform mat4 uMvpMatrix;
+// uniform mat4 uNormalMatrix;
+
+
+// out float vBrightness;
+// out vec2 vTexCoord;
+// out vec3 vLight;
+// out float vRedness;
+
+
+// void main() {
+//   vTexCoord = aTexCoord;
+//   gl_Position = uMvpMatrix * aPosition;
+
+//   vec3 worldNormal = (uNormalMatrix * vec4(aNormal,1.0)).xyz;
+//   float diffuse = max(0.1, dot(worldNormal, lightDirection));
+
+//   vBrightness = diffuse + 0.4;
+// }
+// `;
+
+// const fragment = `#version 300 es
+// precision mediump float;
+// uniform mediump sampler2D uTexture;
+
+// uniform float uRedness;
+
+// in vec2 vTexCoord;
+// in vec3 vLight;
+// in float vBrightness;
+
+// out vec4 oColor;
+// void main() {
+//     oColor = texture(uTexture, vTexCoord);
+//     oColor = oColor + vec4(uRedness,0,0,0);
+//     oColor.xyz *= vBrightness;
+
+// }
+// `;
+
+// export const shaders = {
+//     simple: { vertex, fragment }
+
+// };

@@ -16,9 +16,11 @@ class App extends Application {
     this.loader = new GLTFLoader();
     await this.loader.load("../common/models/map.gltf");
 
-    let test = await this.loader.loadNode("TEST");
-    console.log("test: ", test)
-
+    this.test = await this.loader.loadNode("TEST");
+    console.log("test: ", this.test)
+    this.test.translation = vec3.fromValues(20, 20, 20)
+    this.test.scale = vec3.fromValues(0.2, .2, 0.2)
+    this.test.updateMatrix()
     this.player = await this.loader.loadPlayer("Player");
     this.playerRef = await this.loader.loadNode("Camera");
     this.gun = await this.loader.loadGun("Gun1");
@@ -114,7 +116,7 @@ class App extends Application {
       this.shop.update(dt, this.player);
     }
     if (this.hitScan) {
-      this.hitScan.update(dt,this.shop,this.player);
+      this.hitScan.update(dt,this.shop,this.player,this.test);
     }
 
 

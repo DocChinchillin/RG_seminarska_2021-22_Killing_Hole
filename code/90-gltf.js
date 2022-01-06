@@ -16,6 +16,9 @@ class App extends Application {
     this.loader = new GLTFLoader();
     await this.loader.load("../common/models/map.gltf");
 
+    let test = await this.loader.loadNode("TEST");
+    console.log("test: ", test)
+
     this.player = await this.loader.loadPlayer("Player");
     this.playerRef = await this.loader.loadNode("Camera");
     this.gun = await this.loader.loadGun("Gun1");

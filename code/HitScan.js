@@ -15,7 +15,7 @@ export class HitScan {
 
         this.scene.traverse(other => {    
             if (cam !== other) {
-                if((!other.deco) && !(other instanceof Gun)){
+                if((other instanceof ShopModel) && shop.gateOpen){
                     res = this.resolveCollision(cam, other,null)
                     if(res){
                         if(res[1] < 15){
@@ -27,7 +27,7 @@ export class HitScan {
         });
        
         let keys,match,lowest
-        if(col){
+        if(col  && Object.keys(col).length !== 0){
             keys   = Object.keys(col)
             lowest = parseFloat(keys[0])
             for(let i = 1; i<keys.length ; i++){
@@ -65,7 +65,7 @@ export class HitScan {
             }
         });
         match = null
-        if(col1){
+        if(col1 && Object.keys(col1).length !== 0 ){
             keys   = Object.keys(col1)
             lowest = parseFloat(keys[0])
             for(let i = 1; i<keys.length ; i++){
@@ -74,7 +74,7 @@ export class HitScan {
             }
             
             match = col1[lowest]
-
+            
             test.translation = lok[lowest]
     
             test.updateMatrix()

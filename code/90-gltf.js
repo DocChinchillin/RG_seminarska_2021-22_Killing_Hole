@@ -71,7 +71,7 @@ class App extends Application {
 
   enableCamera() {
     this.canvas.requestPointerLock();
-    this.BGM.play()
+    
   }
 
   pointerlockchangeHandler() {
@@ -81,8 +81,10 @@ class App extends Application {
 
     if (document.pointerLockElement === this.canvas) {
       this.player.enable();
+      this.BGM.play()
     } else {
       this.player.disable();
+      this.BGM.pause()
     }
   }
 

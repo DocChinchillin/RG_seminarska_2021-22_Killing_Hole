@@ -17,6 +17,11 @@ export class Sound {
         this.sound.currentTime = 0;
     }
 
+    pause(){
+        this.sound.pause();
+    }
+
+
     setVolume(vol){
         this.sound.volume = vol;
     }

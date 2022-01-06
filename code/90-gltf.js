@@ -10,6 +10,7 @@ import { mat4, vec3 } from "../lib/gl-matrix-module.js";
 import { Shop } from "./Shop.js";
 import { HitScan } from "./HitScan.js";
 import { Sound } from "./Sound.js";
+import { Enemy } from "./Enemy.js"
 
 class App extends Application {
   async start() {
@@ -42,8 +43,14 @@ class App extends Application {
     this.shop.shopModels.push(await this.loader.loadShop("Gun2SHOP"));
     this.shop.shopModels.push(await this.loader.loadShop("Medpack"));
 
-    this.shop.gate = await this.loader.loadNode("Gate")
-    
+    this.shop.gate = await this.loader.loadNode("Gate");
+
+    this.enemy = await this.loader.loadEnemy("enemy1");
+    //this.enemy2 = await this.loader.loadEnemy("enemy2");
+    //this.enemy3 = await this.loader.loadEnemy("enemy3");
+    //this.enemy4 = await this.loader.loadEnemy("enemy4");
+    console.log(this.enemy.rotation)
+
     this.scene = await this.loader.loadScene(this.loader.defaultScene);
     console.log(this.player)
     console.log(this.scene);
@@ -98,7 +105,7 @@ class App extends Application {
     const t = (this.time = Date.now());
     const dt = (this.time - this.startTime) * 0.001;
     this.startTime = this.time;
-
+    
     if (this.player && this.player.camera) {
       this.player.update(dt);
       //console.log(this.player.look)
@@ -117,6 +124,12 @@ class App extends Application {
     }
     if (this.hitScan) {
       this.hitScan.update(dt,this.shop,this.player,this.test);
+    }
+    if (this.enemy && this.player) {
+      this.enemy.update(dt, this.player);
+      //this.enemy2.update(dt, this.player);
+      //this.enemy3.update(dt, this.player);
+      //sthis.enemy4.update(dt, this.player);
     }
 
 

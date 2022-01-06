@@ -9,13 +9,13 @@ export class HitScan {
         this.scene = scene;
     }
     
-    update(dt,shop,cam) {
+    update(dt,shop,cam,test) {
         let col = {}
         let res
 
         this.scene.traverse(other => {    
             if (cam !== other) {
-                if((!other.deco) && !(other instanceof Gun)){
+                if((other instanceof ShopModel) && shop.gateOpen){
                     res = this.resolveCollision(cam, other,null)
                     if(res){
                         if(res[1] < 15){
@@ -27,9 +27,13 @@ export class HitScan {
         });
        
         let keys,match,lowest
-        if(col){
-            keys   = Object.keys(col).sort(function(a,b) { return col[a] - col[b]; });
-            lowest = keys[0]
+        if(col  && Object.keys(col).length !== 0){
+            keys   = Object.keys(col)
+            lowest = parseFloat(keys[0])
+            for(let i = 1; i<keys.length ; i++){
+                if(parseFloat(keys[i]) < lowest)
+                    lowest = parseFloat(keys[i])
+            }
             match = col[lowest]
             //console.log(match)
             //console.log(lowest,match)
@@ -45,22 +49,35 @@ export class HitScan {
                 //document.getElementsByClassName("cross")[0].innerHTML = "+"
             }
     }
+    let col1 = {}
+    let lok = {}
     cam.shots.forEach(shot => {
         this.scene.traverse(other => {    
             if (cam !== other) {
                 if((!other.deco) && !(other instanceof Gun)){
                     res = this.resolveCollision(cam, other,shot)
                     if(res){
-                        col[res[1]] = res[0]                                      
+                        col1[res[1]] = res[0]  
+                        lok[res[1]] = res[2]                                   
                     }
                 }
             }
         });
         match = null
-        if(col){
-            keys   = Object.keys(col).sort(function(a,b) { return col[a] - col[b]; });
-            lowest = keys[0]
-            match = col[lowest]
+        if(col1 && Object.keys(col1).length !== 0 ){
+            keys   = Object.keys(col1)
+            lowest = parseFloat(keys[0])
+            for(let i = 1; i<keys.length ; i++){
+                if(parseFloat(keys[i]) < lowest)
+                    lowest = parseFloat(keys[i])
+            }
+            
+            match = col1[lowest]
+            
+            test.translation = lok[lowest]
+    
+            test.updateMatrix()
+
             //console.log(match)
             //console.log(lowest,match)
 
@@ -136,7 +153,7 @@ export class HitScan {
         // const posb = mat4.getTranslation(vec3.create(), tb);
         // let mincam,maxcam;
         
-        let minb,maxb,con,bVertices,ret,minDist,dist
+        let minb,maxb,con,bVertices,ret,minDist,dist,mint
         let to1 = vec3.create() 
         let to2 = vec3.create() 
         for(let i = 0;i<b.mesh.primitives.length;i++){
@@ -170,8 +187,10 @@ export class HitScan {
                 vec3.scaleAndAdd(to1,tocka,smer,ret[0])
                 vec3.scaleAndAdd(to2,tocka,smer,ret[1])
                 dist = vec3.dist(to1,tocka)
-                if(!minDist || dist < minDist)
+                if(!minDist || dist < minDist){
                     minDist = dist
+                    mint = vec3.clone(to1)
+                }
                 con = true
                 //break
             }
@@ -186,7 +205,7 @@ export class HitScan {
             //document.getElementsByClassName("cross")[0].innerHTML = b.type
             //console.log(ret[0],ret[1])
             //console.log(vec3.dist(to1,tocka))
-            return [b,minDist]
+            return [b,minDist,mint]
         }
         
         

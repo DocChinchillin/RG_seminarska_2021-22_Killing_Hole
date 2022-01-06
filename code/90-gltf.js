@@ -11,12 +11,18 @@ import { Shop } from "./Shop.js";
 import { HitScan } from "./HitScan.js";
 import { Light } from "./Light.js";
 import { Sound } from "./Sound.js";
+import { Enemy } from "./Enemy.js"
 
 class App extends Application {
   async start() {
     this.loader = new GLTFLoader();
     await this.loader.load("../common/models/map.gltf");
 
+    this.test = await this.loader.loadNode("TEST");
+    console.log("test: ", this.test)
+    this.test.translation = vec3.fromValues(20, 20, 20)
+    this.test.scale = vec3.fromValues(0.2, .2, 0.2)
+    this.test.updateMatrix()
     this.player = await this.loader.loadPlayer("Player");
     this.playerRef = await this.loader.loadNode("Camera");
     this.gun = await this.loader.loadGun("Gun1");
@@ -39,8 +45,14 @@ class App extends Application {
     this.shop.shopModels.push(await this.loader.loadShop("Gun2SHOP"));
     this.shop.shopModels.push(await this.loader.loadShop("Medpack"));
 
-    this.shop.gate = await this.loader.loadNode("Gate")
-    
+    this.shop.gate = await this.loader.loadNode("Gate");
+
+    this.enemy = await this.loader.loadEnemy("enemy1");
+    //this.enemy2 = await this.loader.loadEnemy("enemy2");
+    //this.enemy3 = await this.loader.loadEnemy("enemy3");
+    //this.enemy4 = await this.loader.loadEnemy("enemy4");
+    console.log(this.enemy.rotation)
+
     this.scene = await this.loader.loadScene(this.loader.defaultScene);
     console.log(this.player)
     console.log(this.scene);
@@ -95,7 +107,7 @@ console.log(this.light)
     const t = (this.time = Date.now());
     const dt = (this.time - this.startTime) * 0.001;
     this.startTime = this.time;
-
+    
     if (this.player && this.player.camera) {
       this.player.update(dt);
       //console.log(this.player.look)
@@ -113,7 +125,13 @@ console.log(this.light)
       this.shop.update(dt, this.player);
     }
     if (this.hitScan) {
-      this.hitScan.update(dt,this.shop,this.player);
+      this.hitScan.update(dt,this.shop,this.player,this.test);
+    }
+    if (this.enemy && this.player) {
+      this.enemy.update(dt, this.player);
+      //this.enemy2.update(dt, this.player);
+      //this.enemy3.update(dt, this.player);
+      //sthis.enemy4.update(dt, this.player);
     }
 
 

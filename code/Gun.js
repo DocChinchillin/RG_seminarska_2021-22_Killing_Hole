@@ -9,7 +9,7 @@ export class Gun extends Node{
         this.ammoDisplay = document.getElementsByClassName("ammo")[0];
         this.cross = document.getElementsByClassName("cross")[0];
         //firerate
-        this.fireRate = options.extras.fireRate || 500
+        this.fireRate = options.extras.fireRate || 1000
         this.lastFire = 0
         this.dmg = options.extras.dmg || 1
 

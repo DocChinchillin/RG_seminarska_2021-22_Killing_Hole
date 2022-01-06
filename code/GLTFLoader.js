@@ -12,6 +12,7 @@ import { Scene } from './Scene.js';
 import { Player } from './Player.js';
 import { Gun } from './Gun.js';
 import { ShopModel } from './ShopModel.js';
+import { Enemy } from './Enemy.js';
 
 // This class loads all GLTF resources and instantiates
 // the corresponding classes. Keep in mind that it loads
@@ -377,6 +378,24 @@ export class GLTFLoader {
         }
 
         const node = new Gun(options);
+        this.cache.set(gltfSpec, node);
+        return node;
+    }
+
+    async loadEnemy(nameOrIndex) {
+        const gltfSpec = this.findByNameOrIndex(this.gltf.nodes, nameOrIndex);
+        
+        if (this.cache.has(gltfSpec)) {
+            return this.cache.get(gltfSpec);
+        }
+        
+        let options = { ...gltfSpec, children: [] };
+
+        if (gltfSpec.mesh !== undefined) {
+            options.mesh = await this.loadMesh(gltfSpec.mesh);
+        }
+
+        const node = new Enemy(options);
         this.cache.set(gltfSpec, node);
         return node;
     }

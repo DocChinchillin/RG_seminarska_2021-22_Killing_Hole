@@ -5,7 +5,7 @@ export class Light extends Node {
         super();
 
         Object.assign(this, {
-            position         : [10,-10,25],
+            position         : [10,35,25],
             ambientColor     : [255,255,255],
             diffuseColor     : [255,255,255],
             specularColor    : [255, 255, 255],

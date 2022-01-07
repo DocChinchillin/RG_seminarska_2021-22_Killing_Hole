@@ -47,11 +47,15 @@ class App extends Application {
 
     this.shop.gate = await this.loader.loadNode("Gate");
 
-    this.enemy = await this.loader.loadEnemy("enemy1");
+    this.enemies = new Array();
+    for(let i = 1; i <= 4; i++) {
+      this.enemies.push(await this.loader.loadEnemy("enemy" + i))
+    }
+    //this.enemy = await this.loader.loadEnemy("enemy1");
     //this.enemy2 = await this.loader.loadEnemy("enemy2");
     //this.enemy3 = await this.loader.loadEnemy("enemy3");
     //this.enemy4 = await this.loader.loadEnemy("enemy4");
-    console.log(this.enemy.rotation)
+    //console.log(this.enemy.rotation)
 
     this.scene = await this.loader.loadScene(this.loader.defaultScene);
     console.log(this.player)
@@ -108,15 +112,21 @@ console.log(this.light)
     const dt = (this.time - this.startTime) * 0.001;
     this.startTime = this.time;
     
-    if (this.player && this.player.camera) {
+    if (this.player && this.player.camera && this.scene) {
       this.player.update(dt);
     }
 
     if (this.gravity) {
       this.gravity.update(dt);
     }
-
-    if (this.physics) {
+    
+    if (this.enemies && this.enemies.length && this.player) {
+      this.enemies[0].update(dt, this.player);
+      //this.enemy2.update(dt, this.player);
+      //this.enemy3.update(dt, this.player);
+      //sthis.enemy4.update(dt, this.player);
+    }
+    if (this.physics && this.scene) {
       this.physics.update(dt);
     }
 
@@ -125,12 +135,6 @@ console.log(this.light)
     }
     if (this.hitScan) {
       this.hitScan.update(dt,this.shop,this.player,this.test);
-    }
-    if (this.enemy && this.player) {
-      this.enemy.update(dt, this.player);
-      //this.enemy2.update(dt, this.player);
-      //this.enemy3.update(dt, this.player);
-      //sthis.enemy4.update(dt, this.player);
     }
 
 

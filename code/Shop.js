@@ -22,6 +22,7 @@ export class Shop {
         this.gate.updateMatrix();
         this.gateOpen = false;
         player.keys["KeyF"] = false;
+        document.querySelector(".infoText").innerText = "";
         return;
       }
       if (this.curModel) {

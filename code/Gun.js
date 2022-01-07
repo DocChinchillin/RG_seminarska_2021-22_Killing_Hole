@@ -11,7 +11,7 @@ export class Gun extends Node{
         //firerate
         this.fireRate = options.extras.fireRate || 1000
         this.lastFire = 0
-        this.dmg = options.extras.dmg || 1
+        this.dmg = options.extras.damage || 1
 
         //sounds
         this.bang = new Sound(options.extras.shoot || "../common/sounds/rifle.mp3")

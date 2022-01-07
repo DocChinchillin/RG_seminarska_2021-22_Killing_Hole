@@ -22,6 +22,9 @@ export class Player extends Node {
         this.keys = {};
 
         this.inventory = {money: 100, health: 100}
+
+        // pretekli čas od zadnjega odbitka hp-ja. Zato, da ti enemy ne more takoj zbiti vseh 100%
+        this.timeSinceDamageTaken = 1.0;
     }
     getViewProjectionMatrix(camera) {
         const mvpMatrix = mat4.clone(camera.matrix);
@@ -279,5 +282,6 @@ Player.defaults = {
     jumptime         : 0,
     maxFall          : 5,
     maxAir           : 1,
-    premik           :0
+    premik           :0,
+    timeSinceDamageTaken: 1
 };

@@ -80,7 +80,7 @@ export class HitScan {
 
         }
         if(match.hp){
-            match.hit()
+            match.hit(shot, cam)
         }
     });
     cam.shots = []

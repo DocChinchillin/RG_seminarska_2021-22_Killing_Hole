@@ -78,11 +78,8 @@ export class HitScan {
     
             test.updateMatrix()
 
-            //console.log(match)
-            //console.log(lowest,match)
-
         }
-        if(match){
+        if(match.hp){
             match.hit()
         }
     });

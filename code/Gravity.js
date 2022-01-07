@@ -17,18 +17,16 @@ export class Gravity {
                 this.scene.traverse(other => {
                     if (cam !== other) {
                         if(!(other instanceof Gun) && (!other.deco)){
-                            //if(other.jumpable){ //ko bojo jump hitboxi odkomenitraj
+                            if(other.jumpable){ //ko bojo jump hitboxi odkomenitraj
                                 col +=this.resolveCollision(cam, other);
-                            // }
+                             }
                         }
                     }
                 });
             }
            
         });
-        if(col == 0){  //ce se ne dotikam tal začnem padat //maybe wrong
-            //camera.can_jump = 0
-        }
+       
         
     }
 

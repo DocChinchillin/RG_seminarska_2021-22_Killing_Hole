@@ -108,6 +108,9 @@
     ],
     "nodes" : [
         {
+            "extras" : {
+                "jumpable" : "jumpable"
+            },
             "mesh" : 0,
             "name" : "ground",
             "rotation" : [
@@ -128,6 +131,9 @@
             ]
         },
         {
+            "extras" : {
+                "jumpable" : "jumpable"
+            },
             "mesh" : 1,
             "name" : "rock2",
             "rotation" : [
@@ -143,6 +149,9 @@
             ]
         },
         {
+            "extras" : {
+                "jumpable" : "jumpable"
+            },
             "mesh" : 2,
             "name" : "rock1",
             "rotation" : [
@@ -158,6 +167,9 @@
             ]
         },
         {
+            "extras" : {
+                "jumpable" : "jumpable"
+            },
             "mesh" : 3,
             "name" : "rock3",
             "rotation" : [
@@ -173,6 +185,9 @@
             ]
         },
         {
+            "extras" : {
+                "jumpable" : "jumpable"
+            },
             "mesh" : 4,
             "name" : "rock4",
             "rotation" : [
@@ -188,6 +203,9 @@
             ]
         },
         {
+            "extras" : {
+                "jumpable" : "jumpable"
+            },
             "mesh" : 5,
             "name" : "rock5",
             "rotation" : [
@@ -203,6 +221,9 @@
             ]
         },
         {
+            "extras" : {
+                "jumpable" : "jumpable"
+            },
             "mesh" : 6,
             "name" : "rock6",
             "rotation" : [
@@ -218,6 +239,9 @@
             ]
         },
         {
+            "extras" : {
+                "jumpable" : "jumpable"
+            },
             "mesh" : 7,
             "name" : "rock7",
             "rotation" : [
@@ -233,6 +257,9 @@
             ]
         },
         {
+            "extras" : {
+                "jumpable" : "jumpable"
+            },
             "mesh" : 8,
             "name" : "rock8",
             "rotation" : [
@@ -248,6 +275,9 @@
             ]
         },
         {
+            "extras" : {
+                "jumpable" : "jumpable"
+            },
             "mesh" : 9,
             "name" : "rock9",
             "rotation" : [
@@ -263,6 +293,9 @@
             ]
         },
         {
+            "extras" : {
+                "jumpable" : "jumpable"
+            },
             "mesh" : 10,
             "name" : "rock10",
             "rotation" : [
@@ -278,6 +311,9 @@
             ]
         },
         {
+            "extras" : {
+                "jumpable" : "jumpable"
+            },
             "mesh" : 11,
             "name" : "rock11",
             "rotation" : [
@@ -293,6 +329,9 @@
             ]
         },
         {
+            "extras" : {
+                "jumpable" : "jumpable"
+            },
             "mesh" : 12,
             "name" : "box2",
             "rotation" : [
@@ -308,6 +347,9 @@
             ]
         },
         {
+            "extras" : {
+                "jumpable" : "jumpable"
+            },
             "mesh" : 13,
             "name" : "box1",
             "rotation" : [
@@ -323,6 +365,9 @@
             ]
         },
         {
+            "extras" : {
+                "jumpable" : "jumpable"
+            },
             "mesh" : 14,
             "name" : "box3",
             "rotation" : [
@@ -338,6 +383,9 @@
             ]
         },
         {
+            "extras" : {
+                "jumpable" : "jumpable"
+            },
             "mesh" : 15,
             "name" : "box4",
             "rotation" : [
@@ -353,6 +401,9 @@
             ]
         },
         {
+            "extras" : {
+                "jumpable" : "jumpable"
+            },
             "mesh" : 16,
             "name" : "box5",
             "rotation" : [
@@ -368,6 +419,9 @@
             ]
         },
         {
+            "extras" : {
+                "jumpable" : "jumpable"
+            },
             "mesh" : 17,
             "name" : "box6",
             "rotation" : [
@@ -383,6 +437,9 @@
             ]
         },
         {
+            "extras" : {
+                "jumpable" : "jumpable"
+            },
             "mesh" : 18,
             "name" : "box7",
             "rotation" : [
@@ -398,6 +455,9 @@
             ]
         },
         {
+            "extras" : {
+                "jumpable" : "jumpable"
+            },
             "mesh" : 19,
             "name" : "box8",
             "rotation" : [
@@ -413,6 +473,9 @@
             ]
         },
         {
+            "extras" : {
+                "jumpable" : "jumpable"
+            },
             "mesh" : 20,
             "name" : "box9",
             "rotation" : [
@@ -428,6 +491,9 @@
             ]
         },
         {
+            "extras" : {
+                "jumpable" : "jumpable"
+            },
             "mesh" : 21,
             "name" : "box10",
             "rotation" : [
@@ -443,6 +509,9 @@
             ]
         },
         {
+            "extras" : {
+                "jumpable" : "jumpable"
+            },
             "mesh" : 22,
             "name" : "box11",
             "rotation" : [
@@ -458,6 +527,9 @@
             ]
         },
         {
+            "extras" : {
+                "jumpable" : "jumpable"
+            },
             "mesh" : 23,
             "name" : "box12",
             "rotation" : [
@@ -473,6 +545,9 @@
             ]
         },
         {
+            "extras" : {
+                "jumpable" : "jumpable"
+            },
             "mesh" : 24,
             "name" : "box13",
             "rotation" : [
@@ -488,6 +563,9 @@
             ]
         },
         {
+            "extras" : {
+                "jumpable" : "jumpable"
+            },
             "mesh" : 25,
             "name" : "box14",
             "rotation" : [
@@ -503,6 +581,9 @@
             ]
         },
         {
+            "extras" : {
+                "jumpable" : "jumpable"
+            },
             "mesh" : 26,
             "name" : "box15",
             "rotation" : [
@@ -1050,7 +1131,8 @@
         {
             "extras" : {
                 "hp" : 100,
-                "money" : 2
+                "money" : 2,
+                "dmg" : 10
             },
             "mesh" : 48,
             "name" : "enemy1",
@@ -1074,7 +1156,8 @@
         {
             "extras" : {
                 "hp" : 100,
-                "money" : 2
+                "money" : 2,
+                "dmg" : 10
             },
             "mesh" : 49,
             "name" : "enemy2",
@@ -1090,15 +1173,16 @@
                 0.17502474784851074
             ],
             "translation" : [
-                2.0667057037353516,
-                1.4635300636291504,
-                35.629547119140625
+                2.0667202472686768,
+                1.4635437726974487,
+                35.62954330444336
             ]
         },
         {
             "extras" : {
                 "hp" : 100,
-                "money" : 2
+                "money" : 2,
+                "dmg" : 10
             },
             "mesh" : 50,
             "name" : "enemy3",
@@ -1122,7 +1206,8 @@
         {
             "extras" : {
                 "hp" : 100,
-                "money" : 2
+                "money" : 2,
+                "dmg" : 10
             },
             "mesh" : 51,
             "name" : "enemy4",
@@ -1146,7 +1231,8 @@
         {
             "extras" : {
                 "hp" : 200,
-                "money" : 10
+                "money" : 10,
+                "dmg" : 50
             },
             "mesh" : 52,
             "name" : "boss",
@@ -8011,23 +8097,15 @@
         },
         {
             "sampler" : 0,
-            "source" : 1
+            "source" : 15
         },
         {
             "sampler" : 0,
-            "source" : 1
+            "source" : 15
         },
         {
             "sampler" : 0,
-            "source" : 1
-        },
-        {
-            "sampler" : 0,
-            "source" : 1
-        },
-        {
-            "sampler" : 0,
-            "source" : 13
+            "source" : 15
         },
         {
             "sampler" : 0,
@@ -8039,7 +8117,7 @@
         },
         {
             "sampler" : 0,
-            "source" : 15
+            "source" : 16
         },
         {
             "sampler" : 0,
@@ -8047,7 +8125,7 @@
         },
         {
             "sampler" : 0,
-            "source" : 15
+            "source" : 16
         },
         {
             "sampler" : 0,
@@ -8055,7 +8133,7 @@
         },
         {
             "sampler" : 0,
-            "source" : 15
+            "source" : 16
         },
         {
             "sampler" : 0,
@@ -8063,7 +8141,7 @@
         },
         {
             "sampler" : 0,
-            "source" : 15
+            "source" : 16
         },
         {
             "sampler" : 0,
@@ -8071,7 +8149,7 @@
         },
         {
             "sampler" : 0,
-            "source" : 15
+            "source" : 16
         },
         {
             "sampler" : 0,
@@ -8079,7 +8157,7 @@
         },
         {
             "sampler" : 0,
-            "source" : 15
+            "source" : 16
         },
         {
             "sampler" : 0,
@@ -8087,7 +8165,7 @@
         },
         {
             "sampler" : 0,
-            "source" : 15
+            "source" : 16
         },
         {
             "sampler" : 0,
@@ -8095,7 +8173,7 @@
         },
         {
             "sampler" : 0,
-            "source" : 15
+            "source" : 16
         },
         {
             "sampler" : 0,
@@ -8103,7 +8181,7 @@
         },
         {
             "sampler" : 0,
-            "source" : 15
+            "source" : 16
         },
         {
             "sampler" : 0,
@@ -8111,7 +8189,7 @@
         },
         {
             "sampler" : 0,
-            "source" : 15
+            "source" : 16
         },
         {
             "sampler" : 0,
@@ -8119,7 +8197,7 @@
         },
         {
             "sampler" : 0,
-            "source" : 15
+            "source" : 16
         },
         {
             "sampler" : 0,
@@ -8127,7 +8205,7 @@
         },
         {
             "sampler" : 0,
-            "source" : 15
+            "source" : 16
         },
         {
             "sampler" : 0,
@@ -8135,7 +8213,7 @@
         },
         {
             "sampler" : 0,
-            "source" : 15
+            "source" : 16
         },
         {
             "sampler" : 0,
@@ -8143,7 +8221,7 @@
         },
         {
             "sampler" : 0,
-            "source" : 15
+            "source" : 16
         },
         {
             "sampler" : 0,
@@ -8151,7 +8229,7 @@
         },
         {
             "sampler" : 0,
-            "source" : 15
+            "source" : 16
         },
         {
             "sampler" : 0,
@@ -8159,7 +8237,15 @@
         },
         {
             "sampler" : 0,
-            "source" : 15
+            "source" : 16
+        },
+        {
+            "sampler" : 0,
+            "source" : 13
+        },
+        {
+            "sampler" : 0,
+            "source" : 16
         },
         {
             "sampler" : 0,
@@ -8175,7 +8261,7 @@
         },
         {
             "sampler" : 0,
-            "source" : 15
+            "source" : 16
         },
         {
             "sampler" : 0,
@@ -8183,7 +8269,7 @@
         },
         {
             "sampler" : 0,
-            "source" : 15
+            "source" : 16
         },
         {
             "sampler" : 0,
@@ -8191,7 +8277,7 @@
         },
         {
             "sampler" : 0,
-            "source" : 15
+            "source" : 16
         },
         {
             "sampler" : 0,
@@ -8199,7 +8285,7 @@
         },
         {
             "sampler" : 0,
-            "source" : 15
+            "source" : 16
         },
         {
             "sampler" : 0,
@@ -8281,6 +8367,11 @@
             "mimeType" : "image/png",
             "name" : "yellow",
             "uri" : "yellow.png"
+        },
+        {
+            "mimeType" : "image/png",
+            "name" : "ground",
+            "uri" : "ground.png"
         },
         {
             "mimeType" : "image/png",
@@ -10648,14 +10739,14 @@
             "componentType" : 5126,
             "count" : 11480,
             "max" : [
-                0.7431215643882751,
-                3.7244977951049805,
-                4.734859943389893
+                0.7431100606918335,
+                3.724454164505005,
+                4.734891414642334
             ],
             "min" : [
-                -8.539697647094727,
-                0.28526055812835693,
-                -1.5944108963012695
+                -8.539709091186523,
+                0.2852168083190918,
+                -1.5943794250488281
             ],
             "type" : "VEC3"
         },
@@ -10676,14 +10767,14 @@
             "componentType" : 5126,
             "count" : 14362,
             "max" : [
-                10.777185440063477,
-                2.7913455963134766,
-                5.2815093994140625
+                10.77717399597168,
+                2.791301965713501,
+                5.281540870666504
             ],
             "min" : [
-                -6.470869541168213,
-                -4.168705940246582,
-                -26.12726402282715
+                -6.47088098526001,
+                -4.168749809265137,
+                -26.12723159790039
             ],
             "type" : "VEC3"
         },
@@ -10704,14 +10795,14 @@
             "componentType" : 5126,
             "count" : 17978,
             "max" : [
-                6.405632019042969,
-                2.943927764892578,
-                5.84956693649292
+                6.405620574951172,
+                2.9438841342926025,
+                5.849598407745361
             ],
             "min" : [
-                -6.085807800292969,
-                -2.4482240676879883,
-                -21.91242218017578
+                -6.085819244384766,
+                -2.448267698287964,
+                -21.912389755249023
             ],
             "type" : "VEC3"
         },

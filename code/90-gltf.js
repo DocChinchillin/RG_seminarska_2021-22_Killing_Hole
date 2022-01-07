@@ -110,7 +110,6 @@ console.log(this.light)
     
     if (this.player && this.player.camera) {
       this.player.update(dt);
-      //console.log(this.player.look)
     }
 
     if (this.gravity) {

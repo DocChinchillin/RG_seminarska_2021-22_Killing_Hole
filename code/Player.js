@@ -18,8 +18,6 @@ export class Player extends Node {
 
         this.mousedownHandler = this.mousedownHandler.bind(this);
         this.mouseupHandler = this.mouseupHandler.bind(this);
-        this.look = vec3.create()
-        //vec3.normalize(this.look,this.rotation)
         this.shots = []
         this.keys = {};
 
@@ -104,15 +102,7 @@ export class Player extends Node {
     }
 
     update(dt) {
-        //console.log(this)
-        // let a = mat4.clone(this.camera.matrix)
-        // mat4.mul(a,this.matrix,a)
-        // let b = quat.create()
-        // mat4.getRotation(b,a)
-        // let neki = vec3.set(vec3.create(), b[0], b[1],b[2] );
-        vec3.normalize(this.look,this.rotation)
-        //vec3.scale(this.look,this.look,1000)
-        
+             
         const c = this;
         const forward = vec3.set(vec3.create(),
             -Math.sin(c.rotation[1]), 0, -Math.cos(c.rotation[1]));
@@ -120,11 +110,18 @@ export class Player extends Node {
             Math.cos(c.rotation[1]), 0, -Math.sin(c.rotation[1]));
 
         const up = vec3.set(vec3.create(), 0, 1 ,0 );
+        
+        if(this.jumptime < 0){
+        this.min[1] = (Math.abs(Math.sin(this.premik*5))*0.15) -3
+        }else{
+            this.min[1] = -3
+        }
+      
+        
+        c.updateGuns()
 
-        this.updateGuns()
-
-        if(this.children[0]){
-            this.children[0].reloading(dt)
+        if(c.children[0]){
+            c.children[0].reloading(dt)
         }
 
         // 1: add movement acceleration
@@ -148,7 +145,7 @@ export class Player extends Node {
             if (this.keys['Space'] || c.jumptime > 0) {
                 vec3.add(jump, jump, up);
                 if(this.jumptime <= 0)
-                    this.jumptime = 1
+                    this.jumptime = this.maxAir
                 c.can_jump = 0
             }
             
@@ -157,9 +154,9 @@ export class Player extends Node {
         this.jumptime = this.jumptime - dt
         const grav = vec3.set(vec3.create(),0, -2,0 );
         
-        if(!c.can_jump){
-            vec3.scaleAndAdd(jump, jump, grav ,1-this.jumptime);
-        }
+        //if(!c.can_jump){
+            vec3.scaleAndAdd(jump, jump, grav ,this.maxAir-this.jumptime);
+        //}
 
         //vclip
         if (this.keys['KeyC']) {
@@ -182,6 +179,9 @@ export class Player extends Node {
         {
             vec3.scale(c.velocity, c.velocity, 1 - c.friction);
         }
+        else{
+            this.premik +=dt
+        }
 
         // if (!this.keys['Space'])
         // {
@@ -190,6 +190,7 @@ export class Player extends Node {
 
         // 4: limit speed
         let len = vec3.len(c.velocity);
+        //console.log(len)
         if (len > c.maxSpeed) {
             vec3.scale(c.velocity, c.velocity, c.maxSpeed / len);
         }
@@ -276,5 +277,7 @@ Player.defaults = {
     jump             : 100,
     can_jump         : 1,
     jumptime         : 0,
-    maxFall          : 5
+    maxFall          : 5,
+    maxAir           : 1,
+    premik           :0
 };

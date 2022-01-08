@@ -23,7 +23,6 @@ export class Physics {
             if (!(other instanceof Gun) && !other.deco) {
               let collision = this.resolveCollision(node, other);
               if (node instanceof Player && other instanceof Enemy) {
-                  console.log(collision)
                 if (collision) {
                   if (node.timeSinceDamageTaken >= 1) {
                     node.inventory.health -= other.dmg;

@@ -57,7 +57,6 @@ export class Shop {
         t[1] -= 20;
         this.gate.updateMatrix();
         this.gateOpen = true;
-        console.log(this.gate);
         player.keys["KeyF"] = false;
       }
     }

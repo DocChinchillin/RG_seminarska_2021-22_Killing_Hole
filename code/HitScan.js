@@ -9,7 +9,7 @@ export class HitScan {
         this.scene = scene;
     }
     
-    update(dt,shop,cam,test) {
+    update(dt,shop,cam) {
         let col = {}
         let res
 
@@ -74,9 +74,6 @@ export class HitScan {
             
             match = col1[lowest]
             
-            test.translation = lok[lowest]
-    
-            test.updateMatrix()
 
         }
         if(match.hp){

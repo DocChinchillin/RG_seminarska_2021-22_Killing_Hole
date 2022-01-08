@@ -1,10 +1,12 @@
 const vertex = `#version 300 es
 
-layout (location = 0) in vec4 aPosition;
+layout (location = 0) in vec3 aPosition;
 layout (location = 1) in vec2 aTexCoord;
 layout (location = 2) in vec3 aNormal;
 
 uniform mat4 uMvpMatrix;
+uniform mat4 uViewModel;
+uniform mat4 uView;
 uniform mat4 uProjection;
 uniform mat4 uNormalMatrix;
 uniform vec3 uLightPosition;
@@ -18,17 +20,21 @@ out float vAttenuation;
 out float vRedness;
 
 void main() {
-    vec3 vertexPosition = (uMvpMatrix * vec4(aPosition)).xyz;
-    vec3 lightPosition = (uMvpMatrix * vec4(normalize(vec3(uLightPosition)), 1)).xyz;
-    vEye = -vertexPosition;
-    vLight = lightPosition - vertexPosition;
-    vNormal = (uNormalMatrix * vec4(aNormal, 1)).xyz;
+    vec4 vertexPosition = (uViewModel * vec4(aPosition,1));
+    vec3 lightPosition = (uView * vec4(uLightPosition, 1)).xyz;
+    vec3 fragPos = vertexPosition.xyz / vertexPosition.w;
+    vEye = -vertexPosition.xyz;
+   
+    
+    vLight = lightPosition - vertexPosition.xyz;
+ 
+    vNormal = (uNormalMatrix * vec4(aNormal, 0)).xyz;
     vTexCoord = aTexCoord;
 
-    float d = distance(vertexPosition, lightPosition);
+    float d = distance(vertexPosition.xyz, lightPosition);
     vAttenuation = 1.0 / dot(uLightAttenuation, vec3(1, d, d * d));
-
-    gl_Position = uMvpMatrix * aPosition;
+    
+    gl_Position = uProjection * vertexPosition;
 }
 `;
 
@@ -65,8 +71,9 @@ void main() {
     vec3 ambient = uAmbientColor;
     vec3 diffuse = uDiffuseColor * lambert;
     vec3 specular = uSpecularColor * phong;
+    
 
-    vec3 light = (ambient + diffuse + specular) * vAttenuation;
+    vec3 light = (ambient + diffuse + specular)* vAttenuation;
 
     oColor = texture(uTexture, vTexCoord) * vec4(light, 1);
     oColor = oColor + vec4(uRedness,0,0,0);

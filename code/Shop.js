@@ -16,7 +16,7 @@ export class Shop {
 
   update(dt, player) {
     if (this.gateOpen) {
-      if (player.keys["KeyF"]) {
+      /*if (player.keys["KeyF"]) {
         let t = this.gate.translation;
         t[1] += 20;
         this.gate.updateMatrix();
@@ -24,7 +24,7 @@ export class Shop {
         player.keys["KeyF"] = false;
         document.querySelector(".infoText").innerText = "";
         return;
-      }
+      }*/
       if (this.curModel) {
         if (this.curModel.type === "health") {
           document.querySelector(".infoText").innerText =
@@ -52,14 +52,14 @@ export class Shop {
         }
       } else document.querySelector(".infoText").innerText = "";
     } else {
-      if (player.keys["KeyF"]) {
+      /*if (player.keys["KeyF"]) {
         let t = this.gate.translation;
         t[1] -= 20;
         this.gate.updateMatrix();
         this.gateOpen = true;
         console.log(this.gate);
         player.keys["KeyF"] = false;
-      }
+      }*/
     }
   }
 
@@ -126,6 +126,22 @@ export class Shop {
     text.style.animation = "none";
     div.offsetHeight;
     text.style.animation = null;
+  }
+
+  openCloseGate() {
+    if (this.gateOpen) {
+        let t = this.gate.translation;
+        t[1] += 20;
+        this.gate.updateMatrix();
+        this.gateOpen = false;
+        document.querySelector(".infoText").innerText = "";
+    }
+    else {
+        let t = this.gate.translation;
+        t[1] -= 20;
+        this.gate.updateMatrix();
+        this.gateOpen = true;
+    }
   }
 
   intervalIntersection(min1, max1, min2, max2) {

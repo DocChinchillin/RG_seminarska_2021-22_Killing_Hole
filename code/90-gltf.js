@@ -12,6 +12,7 @@ import { HitScan } from "./HitScan.js";
 import { Light } from "./Light.js";
 import { Sound } from "./Sound.js";
 import { Enemy } from "./Enemy.js"
+import { WaveGenerator } from "./WaveGenerator.js";
 
 class App extends Application {
   async start() {
@@ -44,6 +45,7 @@ class App extends Application {
     this.shop.shopModels.push(await this.loader.loadShop("Gun1SHOP"));
     this.shop.shopModels.push(await this.loader.loadShop("Gun2SHOP"));
     this.shop.shopModels.push(await this.loader.loadShop("Medpack"));
+    console.log(this.shop)
 
     this.shop.gate = await this.loader.loadNode("Gate");
 
@@ -60,6 +62,8 @@ class App extends Application {
     this.scene = await this.loader.loadScene(this.loader.defaultScene);
     console.log(this.player)
     console.log(this.scene);
+
+    this.waveGenerator = new WaveGenerator(this.enemies, this.scene);
 
 console.log(this.light)
     if (!this.scene || !this.player) {
@@ -107,7 +111,6 @@ console.log(this.light)
   }
 
   update() {
-    
     const t = (this.time = Date.now());
     const dt = (this.time - this.startTime) * 0.001;
     this.startTime = this.time;
@@ -120,8 +123,22 @@ console.log(this.light)
       this.gravity.update(dt);
     }
     
-    if (this.enemies && this.enemies.length && this.player) {
-      this.enemies[0].update(dt, this.player);
+    if (this.enemies && this.enemies.length && this.player && this.waveGenerator) {
+      let onSceneCount = 0;
+      this.enemies.forEach(enemy => {
+        enemy.isInScene ? onSceneCount++ : onSceneCount;
+        enemy.update(dt, this.player);
+      })
+
+      if (!onSceneCount && this.waveGenerator.startNew) {
+        if (this.waveGenerator.waveNumber >= 1){
+          this.shop.openCloseGate();
+          this.waveGenerator.startCountdown(5, this.shop);
+        }
+        else
+          this.waveGenerator.startCountdown(0);
+      }
+      //this.enemies[0].update(dt, this.player);
       //this.enemy2.update(dt, this.player);
       //this.enemy3.update(dt, this.player);
       //sthis.enemy4.update(dt, this.player);
@@ -163,7 +180,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const canvas = document.querySelector("canvas");
   const app = new App(canvas);
   const gui = new GUI();
-  setTimeout(() => {
+  /*setTimeout(() => {
     gui.addColor(app.light, 'ambientColor');
     gui.addColor(app.light, 'diffuseColor');
     gui.addColor(app.light, 'specularColor');
@@ -171,6 +188,6 @@ document.addEventListener("DOMContentLoaded", () => {
     for (let i = 0; i < 3; i++) {
         gui.add(app.light.position, i, -200.0, 200.0).name('position.' + String.fromCharCode('x'.charCodeAt(0) + i));
     }
-  }, 3000)
+  }, 3000)*/
   gui.add(app, "enableCamera");
 });

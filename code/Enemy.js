@@ -7,7 +7,8 @@ export class Enemy extends Node {
         super(options);
 
         this.hp = options.extras.hp;
-        this.isInScene = true;
+        this.startingHp = options.extras.hp;
+        this.isInScene = false;
         this.moveSpeed = 1;
         this.drop = options.extras.money;
         this.dmg = options.extras.dmg;
@@ -61,7 +62,7 @@ export class Enemy extends Node {
         if (this.hp <= 0) {
             this.isInScene = false;
             this.translation[1] -= 20;
-            player.inventory.money += this.drop;
+            player.inventory.money += Math.floor(this.drop);
             player.showMoney();
         }
     }

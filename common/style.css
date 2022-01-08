@@ -136,6 +136,16 @@ a.cross {
   color: white;
 }
 
+.hudCountdown {
+  position: absolute;
+  left: 50%;
+  top: 3vh;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  display: none;
+  color: red;
+}
+
 .moving {
   -webkit-animation: moving 3s;
   animation: moving 3s;

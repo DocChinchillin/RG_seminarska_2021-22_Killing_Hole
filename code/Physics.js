@@ -8,7 +8,7 @@ export class Physics {
     this.scene = scene;
   }
 
-  update(dt) {
+  update(dt, playerEnemyCol = true) {
     this.scene.traverse((node) => {
       if (node.red && node.red > 0) {
         node.red -= dt;
@@ -22,25 +22,26 @@ export class Physics {
           if (node !== other) {
             if (!(other instanceof Gun) && !other.deco) {
               let collision = this.resolveCollision(node, other);
-              if (node instanceof Player && other instanceof Enemy) {
-                if (collision) {
-                  if (node.timeSinceDamageTaken >= 1) {
-                    node.inventory.health -= other.dmg;
-                    node.showHealth();
-                    node.timeSinceDamageTaken = 0;
-                  }
-                  node.timeSinceDamageTaken = node.timeSinceDamageTaken + dt;
-                } else node.timeSinceDamageTaken = 1;
-              }
-              else if (node instanceof Enemy && other instanceof Player) {
-                if (collision) {
-                  if (other.timeSinceDamageTaken >= 1) {
-                    other.inventory.health -= node.dmg;
-                    other.showHealth();
-                    other.timeSinceDamageTaken = 0;
-                  }
-                  other.timeSinceDamageTaken += dt;
-                } else other.timeSinceDamageTaken = 1;
+              if (playerEnemyCol) {
+                if (node instanceof Player && other instanceof Enemy) {
+                  if (collision) {
+                    if (node.timeSinceDamageTaken >= 1) {
+                      node.inventory.health -= other.dmg;
+                      node.showHealth();
+                      node.timeSinceDamageTaken = 0;
+                    }
+                    node.timeSinceDamageTaken = node.timeSinceDamageTaken + dt;
+                  } else node.timeSinceDamageTaken = 1;
+                } else if (node instanceof Enemy && other instanceof Player) {
+                  if (collision) {
+                    if (other.timeSinceDamageTaken >= 1) {
+                      other.inventory.health -= node.dmg;
+                      other.showHealth();
+                      other.timeSinceDamageTaken = 0;
+                    }
+                    other.timeSinceDamageTaken += dt;
+                  } else other.timeSinceDamageTaken = 1;
+                }
               }
             }
           }

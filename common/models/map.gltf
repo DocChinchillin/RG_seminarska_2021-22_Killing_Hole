@@ -35,8 +35,6 @@
                 24,
                 25,
                 26,
-                38,
-                39,
                 40,
                 41,
                 42,
@@ -102,7 +100,9 @@
                 102,
                 103,
                 104,
-                105
+                105,
+                106,
+                107
             ]
         }
     ],
@@ -632,7 +632,6 @@
         },
         {
             "extras" : {
-                "inInventory" : "false",
                 "shoot" : "../common/sounds/rifle.mp3",
                 "reloadSound" : "../common/sounds/clean-revolver-reload.mp3",
                 "magSize" : 30,
@@ -641,7 +640,8 @@
                 "name" : "assault_rifle",
                 "emptyShoot" : "../common/sounds/empty.mp3",
                 "fireRate" : 300,
-                "damage" : 15
+                "damage" : 15,
+                "inInventory" : "false"
             },
             "mesh" : 28,
             "name" : "Gun2",
@@ -681,41 +681,53 @@
             "children" : [
                 30
             ],
-            "name" : "Node_30.002"
+            "name" : "Node_30.004"
         },
         {
             "children" : [
                 31
             ],
-            "name" : "Node_30.001"
+            "name" : "Node_30.003"
         },
         {
             "children" : [
                 32
             ],
-            "name" : "Node_30"
+            "name" : "Node_30.002"
         },
         {
             "children" : [
                 33
             ],
-            "name" : "Node_38.003"
+            "name" : "Node_30.001"
         },
         {
             "children" : [
                 34
             ],
-            "name" : "Node_38.002"
+            "name" : "Node_30"
         },
         {
             "children" : [
                 35
             ],
-            "name" : "Node_38.001"
+            "name" : "Node_38.003"
         },
         {
             "children" : [
                 36
+            ],
+            "name" : "Node_38.002"
+        },
+        {
+            "children" : [
+                37
+            ],
+            "name" : "Node_38.001"
+        },
+        {
+            "children" : [
+                38
             ],
             "name" : "Node_38",
             "rotation" : [
@@ -729,12 +741,12 @@
             "children" : [
                 27,
                 28,
-                37
+                39
             ],
             "name" : "Player",
             "translation" : [
                 -0.4165380001068115,
-                3.5336101055145264,
+                4.233610153198242,
                 54.970298767089844
             ]
         },
@@ -1240,7 +1252,8 @@
             "extras" : {
                 "hp" : 200,
                 "money" : 10,
-                "dmg" : 20
+                "dmg" : 20,
+                "boss" : "true"
             },
             "mesh" : 52,
             "name" : "boss",
@@ -1257,7 +1270,7 @@
             ],
             "translation" : [
                 -24.76786994934082,
-                3.2775158882141113,
+                -16.72248077392578,
                 19.9124698638916
             ]
         },
@@ -2116,7 +2129,7 @@
     ],
     "cameras" : [
         {
-            "name" : "Camera.002",
+            "name" : "Camera.001",
             "perspective" : {
                 "aspectRatio" : 1.7777777777777777,
                 "yfov" : 1,
@@ -2129,7 +2142,7 @@
     "materials" : [
         {
             "doubleSided" : true,
-            "name" : "Material.007",
+            "name" : "Material.001",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 0
@@ -2140,7 +2153,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.009",
+            "name" : "Material.002",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 1
@@ -2151,7 +2164,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.011",
+            "name" : "Material.003",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 2
@@ -2162,7 +2175,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.013",
+            "name" : "Material.004",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 3
@@ -2173,7 +2186,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.015",
+            "name" : "Material.005",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 4
@@ -2184,7 +2197,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.017",
+            "name" : "Material.006",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 5
@@ -2195,7 +2208,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.060",
+            "name" : "Material.007",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 6
@@ -2206,7 +2219,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.067",
+            "name" : "Material.008",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 7
@@ -2217,7 +2230,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.068",
+            "name" : "Material.009",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 8
@@ -2228,7 +2241,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.069",
+            "name" : "Material.010",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 9
@@ -2239,7 +2252,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.070",
+            "name" : "Material.011",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 10
@@ -2250,7 +2263,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.071",
+            "name" : "Material.012",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 11
@@ -2261,7 +2274,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.072",
+            "name" : "Material.013",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 12
@@ -2272,7 +2285,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.073",
+            "name" : "Material.014",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 13
@@ -2283,7 +2296,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.074",
+            "name" : "Material.015",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 14
@@ -2294,7 +2307,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.075",
+            "name" : "Material.016",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 15
@@ -2305,7 +2318,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.076",
+            "name" : "Material.017",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 16
@@ -2316,7 +2329,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.077",
+            "name" : "Material.018",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 17
@@ -2327,7 +2340,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.078",
+            "name" : "Material.019",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 18
@@ -2338,7 +2351,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.079",
+            "name" : "Material.020",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 19
@@ -2349,7 +2362,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.080",
+            "name" : "Material.021",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 20
@@ -2360,7 +2373,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.081",
+            "name" : "Material.022",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 21
@@ -2371,7 +2384,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.082",
+            "name" : "Material.023",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 22
@@ -2382,7 +2395,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.083",
+            "name" : "Material.024",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 23
@@ -2393,7 +2406,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.084",
+            "name" : "Material.025",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 24
@@ -2404,7 +2417,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.085",
+            "name" : "Material.026",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 25
@@ -2415,7 +2428,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.086",
+            "name" : "Material.027",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 26
@@ -2426,7 +2439,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "handgun.002",
+            "name" : "handgun.001",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 27
@@ -2437,7 +2450,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "handgun_handgun_C.jpg.002",
+            "name" : "handgun_handgun_C.jpg.001",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 28
@@ -2448,7 +2461,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.087",
+            "name" : "Material.028",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 29
@@ -2459,7 +2472,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Leaves.002",
+            "name" : "Leaves.001",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 30
@@ -2470,7 +2483,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Bark.002",
+            "name" : "Bark.001",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 31
@@ -2481,7 +2494,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Leaves.003",
+            "name" : "Leaves.002",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 32
@@ -2492,7 +2505,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Bark.003",
+            "name" : "Bark.002",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 33
@@ -2503,7 +2516,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Leaves.004",
+            "name" : "Leaves.003",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 34
@@ -2514,7 +2527,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Bark.004",
+            "name" : "Bark.003",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 35
@@ -2525,7 +2538,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Leaves.005",
+            "name" : "Leaves.004",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 36
@@ -2536,7 +2549,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Bark.005",
+            "name" : "Bark.004",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 37
@@ -2547,7 +2560,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Leaves.006",
+            "name" : "Leaves.005",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 38
@@ -2558,7 +2571,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Bark.006",
+            "name" : "Bark.005",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 39
@@ -2569,7 +2582,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Leaves.007",
+            "name" : "Leaves.006",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 40
@@ -2580,7 +2593,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Bark.007",
+            "name" : "Bark.006",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 41
@@ -2591,7 +2604,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Leaves.008",
+            "name" : "Leaves.007",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 42
@@ -2602,7 +2615,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Bark.008",
+            "name" : "Bark.007",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 43
@@ -2613,7 +2626,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Leaves.009",
+            "name" : "Leaves.008",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 44
@@ -2624,7 +2637,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Bark.009",
+            "name" : "Bark.008",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 45
@@ -2635,7 +2648,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Leaves.010",
+            "name" : "Leaves.009",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 46
@@ -2646,7 +2659,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Bark.010",
+            "name" : "Bark.009",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 47
@@ -2657,7 +2670,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Leaves.011",
+            "name" : "Leaves.010",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 48
@@ -2668,7 +2681,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Bark.011",
+            "name" : "Bark.010",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 49
@@ -2679,7 +2692,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Leaves.012",
+            "name" : "Leaves.011",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 50
@@ -2690,7 +2703,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Bark.012",
+            "name" : "Bark.011",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 51
@@ -2701,7 +2714,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Leaves.013",
+            "name" : "Leaves.012",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 52
@@ -2712,7 +2725,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Bark.013",
+            "name" : "Bark.012",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 53
@@ -2723,7 +2736,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Leaves.014",
+            "name" : "Leaves.013",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 54
@@ -2734,7 +2747,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Bark.014",
+            "name" : "Bark.013",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 55
@@ -2745,7 +2758,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Leaves.015",
+            "name" : "Leaves.014",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 56
@@ -2756,7 +2769,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Bark.015",
+            "name" : "Bark.014",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 57
@@ -2767,7 +2780,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.088",
+            "name" : "Material.029",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 58
@@ -2778,7 +2791,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "handgun.003",
+            "name" : "handgun.002",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 59
@@ -2789,7 +2802,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "handgun_handgun_C.jpg.003",
+            "name" : "handgun_handgun_C.jpg.002",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 60
@@ -2800,7 +2813,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.089",
+            "name" : "Material.030",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 61
@@ -2811,7 +2824,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.090",
+            "name" : "Material.031",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 62
@@ -2822,7 +2835,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.091",
+            "name" : "Material.032",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 63
@@ -2833,7 +2846,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.092",
+            "name" : "Material.033",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 64
@@ -2844,7 +2857,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.093",
+            "name" : "Material.034",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 65
@@ -2855,7 +2868,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.094",
+            "name" : "Material.035",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 66
@@ -2866,7 +2879,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.095",
+            "name" : "Material.036",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 67
@@ -2877,7 +2890,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.096",
+            "name" : "Material.037",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 68
@@ -2888,7 +2901,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.097",
+            "name" : "Material.038",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 69
@@ -2899,7 +2912,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.098",
+            "name" : "Material.039",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 70
@@ -2910,7 +2923,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.099",
+            "name" : "Material.040",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 71
@@ -2921,7 +2934,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.100",
+            "name" : "Material.041",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 72
@@ -2932,7 +2945,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.101",
+            "name" : "Material.042",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 73
@@ -2943,7 +2956,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.102",
+            "name" : "Material.043",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 74
@@ -2954,7 +2967,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.103",
+            "name" : "Material.044",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 75
@@ -2965,7 +2978,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.104",
+            "name" : "Material.045",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 76
@@ -2976,7 +2989,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.105",
+            "name" : "Material.046",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 77
@@ -2987,7 +3000,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.106",
+            "name" : "Material.047",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 78
@@ -2998,7 +3011,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.107",
+            "name" : "Material.048",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 79
@@ -3009,7 +3022,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.108",
+            "name" : "Material.049",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 80
@@ -3020,7 +3033,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.109",
+            "name" : "Material.050",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 81
@@ -3031,7 +3044,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.110",
+            "name" : "Material.051",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 82
@@ -3042,7 +3055,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.111",
+            "name" : "Material.052",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 83
@@ -3053,7 +3066,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.112",
+            "name" : "Material.053",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 84
@@ -3064,7 +3077,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.113",
+            "name" : "Material.054",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 85
@@ -3075,7 +3088,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.114",
+            "name" : "Material.055",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 86
@@ -3086,7 +3099,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.115",
+            "name" : "Material.056",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 87
@@ -3097,7 +3110,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.116",
+            "name" : "Material.057",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 88
@@ -3108,7 +3121,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.117",
+            "name" : "Material.058",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 89
@@ -3119,7 +3132,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.118",
+            "name" : "Material.059",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 90
@@ -3130,7 +3143,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.119",
+            "name" : "Material.060",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 91
@@ -3141,7 +3154,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.120",
+            "name" : "Material.061",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 92
@@ -3152,7 +3165,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.121",
+            "name" : "Material.062",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 93
@@ -3163,7 +3176,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.122",
+            "name" : "Material.063",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 94
@@ -3174,7 +3187,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.123",
+            "name" : "Material.064",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 95
@@ -3185,7 +3198,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.124",
+            "name" : "Material.065",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 96
@@ -3196,7 +3209,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.125",
+            "name" : "Material.066",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 97
@@ -3207,7 +3220,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.126",
+            "name" : "Material.067",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 98
@@ -3218,7 +3231,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.127",
+            "name" : "Material.068",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 99
@@ -3229,7 +3242,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.128",
+            "name" : "Material.069",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 100
@@ -3240,7 +3253,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.129",
+            "name" : "Material.070",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 101
@@ -3251,7 +3264,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.130",
+            "name" : "Material.071",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 102
@@ -3262,7 +3275,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.131",
+            "name" : "Material.072",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 103
@@ -3273,7 +3286,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.132",
+            "name" : "Material.073",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 104
@@ -3284,7 +3297,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.133",
+            "name" : "Material.074",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 105
@@ -3295,7 +3308,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.134",
+            "name" : "Material.075",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 106
@@ -3306,7 +3319,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.135",
+            "name" : "Material.076",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 107
@@ -3317,7 +3330,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.136",
+            "name" : "Material.077",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 108
@@ -3328,7 +3341,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.137",
+            "name" : "Material.078",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 109
@@ -3339,7 +3352,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.138",
+            "name" : "Material.079",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 110
@@ -3350,7 +3363,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.139",
+            "name" : "Material.080",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 111
@@ -3361,7 +3374,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.140",
+            "name" : "Material.081",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 112
@@ -3372,7 +3385,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.141",
+            "name" : "Material.082",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 113
@@ -3383,7 +3396,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.142",
+            "name" : "Material.083",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 114
@@ -3394,7 +3407,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.143",
+            "name" : "Material.084",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 115
@@ -3405,7 +3418,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.144",
+            "name" : "Material.085",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 116
@@ -3416,7 +3429,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.145",
+            "name" : "Material.086",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 117
@@ -3427,7 +3440,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.146",
+            "name" : "Material.087",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 118
@@ -3438,7 +3451,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.147",
+            "name" : "Material.088",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 119
@@ -3449,7 +3462,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.148",
+            "name" : "Material.089",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 120
@@ -3460,7 +3473,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.149",
+            "name" : "Material.090",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 121
@@ -3471,7 +3484,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.150",
+            "name" : "Material.091",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 122
@@ -3482,7 +3495,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.151",
+            "name" : "Material.092",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 123
@@ -3493,7 +3506,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.152",
+            "name" : "Material.093",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 124
@@ -3504,7 +3517,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.153",
+            "name" : "Material.094",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 125
@@ -3515,7 +3528,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.154",
+            "name" : "Material.095",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 126
@@ -3526,7 +3539,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.155",
+            "name" : "Material.096",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 127
@@ -3537,7 +3550,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.156",
+            "name" : "Material.097",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 128
@@ -3548,7 +3561,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.157",
+            "name" : "Material.098",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 129
@@ -3559,7 +3572,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.158",
+            "name" : "Material.099",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 130
@@ -3570,7 +3583,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.159",
+            "name" : "Material.100",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 131
@@ -3581,7 +3594,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.160",
+            "name" : "Material.101",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 132
@@ -3592,7 +3605,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.161",
+            "name" : "Material.102",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 133
@@ -3603,7 +3616,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.162",
+            "name" : "Material.103",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 134
@@ -3614,7 +3627,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.163",
+            "name" : "Material.104",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 135
@@ -3625,7 +3638,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.164",
+            "name" : "Material.105",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 136
@@ -3636,7 +3649,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.165",
+            "name" : "Material.106",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 137
@@ -3647,7 +3660,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.166",
+            "name" : "Material.107",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 138
@@ -3658,7 +3671,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.167",
+            "name" : "Material.108",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 139
@@ -3669,7 +3682,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.168",
+            "name" : "Material.109",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 140
@@ -3680,7 +3693,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.169",
+            "name" : "Material.110",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 141
@@ -3691,7 +3704,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.170",
+            "name" : "Material.111",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 142
@@ -3702,7 +3715,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.171",
+            "name" : "Material.112",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 143
@@ -3713,7 +3726,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.172",
+            "name" : "Material.113",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 144
@@ -3724,7 +3737,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.173",
+            "name" : "Material.114",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 145
@@ -3735,7 +3748,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.174",
+            "name" : "Material.115",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 146
@@ -3746,7 +3759,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.175",
+            "name" : "Material.116",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 147
@@ -3757,7 +3770,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.176",
+            "name" : "Material.117",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 148
@@ -3768,7 +3781,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.177",
+            "name" : "Material.118",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 149
@@ -3779,7 +3792,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.178",
+            "name" : "Material.119",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 150
@@ -3790,7 +3803,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.179",
+            "name" : "Material.120",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 151
@@ -3801,7 +3814,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.180",
+            "name" : "Material.121",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 152
@@ -3812,7 +3825,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.181",
+            "name" : "Material.122",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 153
@@ -3823,7 +3836,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.182",
+            "name" : "Material.123",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 154
@@ -3834,7 +3847,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.183",
+            "name" : "Material.124",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 155
@@ -3845,7 +3858,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.184",
+            "name" : "Material.125",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 156
@@ -3856,7 +3869,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.185",
+            "name" : "Material.126",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 157
@@ -3867,7 +3880,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.186",
+            "name" : "Material.127",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 158
@@ -3878,7 +3891,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.187",
+            "name" : "Material.128",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 159
@@ -3889,7 +3902,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.188",
+            "name" : "Material.129",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 160
@@ -3900,7 +3913,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.189",
+            "name" : "Material.130",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 161
@@ -3911,7 +3924,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.190",
+            "name" : "Material.131",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 162
@@ -3922,7 +3935,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.191",
+            "name" : "Material.132",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 163
@@ -3933,7 +3946,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.192",
+            "name" : "Material.133",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 164
@@ -3944,7 +3957,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.193",
+            "name" : "Material.134",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 165
@@ -3955,7 +3968,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.194",
+            "name" : "Material.135",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 166
@@ -3966,7 +3979,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.195",
+            "name" : "Material.136",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 167
@@ -3977,7 +3990,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.196",
+            "name" : "Material.137",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 168
@@ -3988,7 +4001,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.197",
+            "name" : "Material.138",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 169
@@ -3999,7 +4012,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.198",
+            "name" : "Material.139",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 170
@@ -4010,7 +4023,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.199",
+            "name" : "Material.140",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 171
@@ -4021,7 +4034,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.200",
+            "name" : "Material.141",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 172
@@ -4032,7 +4045,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.201",
+            "name" : "Material.142",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 173
@@ -4043,7 +4056,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.202",
+            "name" : "Material.143",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 174
@@ -4054,7 +4067,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.203",
+            "name" : "Material.144",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 175
@@ -4065,7 +4078,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.204",
+            "name" : "Material.145",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 176
@@ -4076,7 +4089,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.205",
+            "name" : "Material.146",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 177
@@ -4087,7 +4100,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.206",
+            "name" : "Material.147",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 178
@@ -4098,7 +4111,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.207",
+            "name" : "Material.148",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 179
@@ -4109,7 +4122,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.208",
+            "name" : "Material.149",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 180
@@ -4120,7 +4133,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.209",
+            "name" : "Material.150",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 181
@@ -4131,7 +4144,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.210",
+            "name" : "Material.151",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 182
@@ -4142,7 +4155,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.211",
+            "name" : "Material.152",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 183
@@ -4153,7 +4166,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.212",
+            "name" : "Material.153",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 184
@@ -4164,7 +4177,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.213",
+            "name" : "Material.154",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 185
@@ -4175,7 +4188,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.214",
+            "name" : "Material.155",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 186
@@ -4186,7 +4199,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.215",
+            "name" : "Material.156",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 187
@@ -4197,7 +4210,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.216",
+            "name" : "Material.157",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 188
@@ -4208,7 +4221,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.217",
+            "name" : "Material.158",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 189
@@ -4219,7 +4232,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.218",
+            "name" : "Material.159",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 190
@@ -4230,7 +4243,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.219",
+            "name" : "Material.160",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 191
@@ -4241,7 +4254,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.220",
+            "name" : "Material.161",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 192
@@ -4252,7 +4265,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.221",
+            "name" : "Material.162",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 193
@@ -4263,7 +4276,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.222",
+            "name" : "Material.163",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 194
@@ -4274,7 +4287,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.223",
+            "name" : "Material.164",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 195
@@ -4285,7 +4298,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.224",
+            "name" : "Material.165",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 196
@@ -4296,7 +4309,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.225",
+            "name" : "Material.166",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 197
@@ -4307,7 +4320,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.226",
+            "name" : "Material.167",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 198
@@ -4318,7 +4331,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.227",
+            "name" : "Material.168",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 199
@@ -4329,7 +4342,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.228",
+            "name" : "Material.169",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 200
@@ -4340,7 +4353,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.229",
+            "name" : "Material.170",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 201
@@ -4351,7 +4364,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.230",
+            "name" : "Material.171",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 202
@@ -4362,7 +4375,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.231",
+            "name" : "Material.172",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 203
@@ -4373,7 +4386,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.232",
+            "name" : "Material.173",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 204
@@ -4384,7 +4397,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.233",
+            "name" : "Material.174",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 205
@@ -4395,7 +4408,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.234",
+            "name" : "Material.175",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 206
@@ -4406,7 +4419,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.235",
+            "name" : "Material.176",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 207
@@ -4417,7 +4430,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.236",
+            "name" : "Material.177",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 208
@@ -4428,7 +4441,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.237",
+            "name" : "Material.178",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 209
@@ -4439,7 +4452,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.238",
+            "name" : "Material.179",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 210
@@ -4450,7 +4463,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.239",
+            "name" : "Material.180",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 211
@@ -4461,7 +4474,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.240",
+            "name" : "Material.181",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 212
@@ -4472,7 +4485,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.241",
+            "name" : "Material.182",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 213
@@ -4483,7 +4496,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.242",
+            "name" : "Material.183",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 214
@@ -4494,7 +4507,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.243",
+            "name" : "Material.184",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 215
@@ -4505,7 +4518,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.244",
+            "name" : "Material.185",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 216
@@ -4516,7 +4529,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.245",
+            "name" : "Material.186",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 217
@@ -4527,7 +4540,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.246",
+            "name" : "Material.187",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 218
@@ -4538,7 +4551,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.247",
+            "name" : "Material.188",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 219
@@ -4549,7 +4562,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.248",
+            "name" : "Material.189",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 220
@@ -4560,7 +4573,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.249",
+            "name" : "Material.190",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 221
@@ -4571,7 +4584,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.250",
+            "name" : "Material.191",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 222
@@ -4582,7 +4595,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.251",
+            "name" : "Material.192",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 223
@@ -4593,7 +4606,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Leaves.016",
+            "name" : "Leaves.015",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 224
@@ -4604,7 +4617,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Bark.016",
+            "name" : "Bark.015",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 225
@@ -4615,7 +4628,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.252",
+            "name" : "Material.193",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 226
@@ -4626,7 +4639,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.253",
+            "name" : "Material.194",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 227
@@ -4637,7 +4650,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.254",
+            "name" : "Material.195",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 228
@@ -4648,7 +4661,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.255",
+            "name" : "Material.196",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 229
@@ -4659,7 +4672,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.256",
+            "name" : "Material.197",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 230
@@ -4670,7 +4683,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.257",
+            "name" : "Material.198",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 231
@@ -4681,7 +4694,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.258",
+            "name" : "Material.199",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 232
@@ -4692,7 +4705,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.259",
+            "name" : "Material.200",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 233
@@ -4703,7 +4716,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.260",
+            "name" : "Material.201",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 234
@@ -4715,7 +4728,7 @@
     ],
     "meshes" : [
         {
-            "name" : "Cube.002",
+            "name" : "Cube.001",
             "primitives" : [
                 {
                     "attributes" : {
@@ -4729,7 +4742,7 @@
             ]
         },
         {
-            "name" : "Cube.003",
+            "name" : "Cube.002",
             "primitives" : [
                 {
                     "attributes" : {
@@ -4743,7 +4756,7 @@
             ]
         },
         {
-            "name" : "Cube.004",
+            "name" : "Cube.003",
             "primitives" : [
                 {
                     "attributes" : {
@@ -4757,7 +4770,7 @@
             ]
         },
         {
-            "name" : "Cube.005",
+            "name" : "Cube.004",
             "primitives" : [
                 {
                     "attributes" : {
@@ -4771,7 +4784,7 @@
             ]
         },
         {
-            "name" : "Cube.006",
+            "name" : "Cube.005",
             "primitives" : [
                 {
                     "attributes" : {
@@ -4785,7 +4798,7 @@
             ]
         },
         {
-            "name" : "Cube.007",
+            "name" : "Cube.006",
             "primitives" : [
                 {
                     "attributes" : {
@@ -4799,7 +4812,7 @@
             ]
         },
         {
-            "name" : "Cube.008",
+            "name" : "Cube.007",
             "primitives" : [
                 {
                     "attributes" : {
@@ -4813,7 +4826,7 @@
             ]
         },
         {
-            "name" : "Cube.009",
+            "name" : "Cube.008",
             "primitives" : [
                 {
                     "attributes" : {
@@ -4827,7 +4840,7 @@
             ]
         },
         {
-            "name" : "Cube.022",
+            "name" : "Cube.009",
             "primitives" : [
                 {
                     "attributes" : {
@@ -4841,7 +4854,7 @@
             ]
         },
         {
-            "name" : "Cube.042",
+            "name" : "Cube.010",
             "primitives" : [
                 {
                     "attributes" : {
@@ -4855,7 +4868,7 @@
             ]
         },
         {
-            "name" : "Cube.045",
+            "name" : "Cube.011",
             "primitives" : [
                 {
                     "attributes" : {
@@ -4869,7 +4882,7 @@
             ]
         },
         {
-            "name" : "Cube.046",
+            "name" : "Cube.012",
             "primitives" : [
                 {
                     "attributes" : {
@@ -4883,7 +4896,7 @@
             ]
         },
         {
-            "name" : "Cube.047",
+            "name" : "Cube.013",
             "primitives" : [
                 {
                     "attributes" : {
@@ -4897,7 +4910,7 @@
             ]
         },
         {
-            "name" : "Cube.048",
+            "name" : "Cube.014",
             "primitives" : [
                 {
                     "attributes" : {
@@ -4911,7 +4924,7 @@
             ]
         },
         {
-            "name" : "Cube.049",
+            "name" : "Cube.015",
             "primitives" : [
                 {
                     "attributes" : {
@@ -4925,7 +4938,7 @@
             ]
         },
         {
-            "name" : "Cube.050",
+            "name" : "Cube.016",
             "primitives" : [
                 {
                     "attributes" : {
@@ -4939,7 +4952,7 @@
             ]
         },
         {
-            "name" : "Cube.051",
+            "name" : "Cube.017",
             "primitives" : [
                 {
                     "attributes" : {
@@ -4953,7 +4966,7 @@
             ]
         },
         {
-            "name" : "Cube.052",
+            "name" : "Cube.018",
             "primitives" : [
                 {
                     "attributes" : {
@@ -4967,7 +4980,7 @@
             ]
         },
         {
-            "name" : "Cube.053",
+            "name" : "Cube.019",
             "primitives" : [
                 {
                     "attributes" : {
@@ -4981,7 +4994,7 @@
             ]
         },
         {
-            "name" : "Cube.054",
+            "name" : "Cube.020",
             "primitives" : [
                 {
                     "attributes" : {
@@ -4995,7 +5008,7 @@
             ]
         },
         {
-            "name" : "Cube.055",
+            "name" : "Cube.021",
             "primitives" : [
                 {
                     "attributes" : {
@@ -5009,7 +5022,7 @@
             ]
         },
         {
-            "name" : "Cube.056",
+            "name" : "Cube.022",
             "primitives" : [
                 {
                     "attributes" : {
@@ -5023,7 +5036,7 @@
             ]
         },
         {
-            "name" : "Cube.057",
+            "name" : "Cube.023",
             "primitives" : [
                 {
                     "attributes" : {
@@ -5037,7 +5050,7 @@
             ]
         },
         {
-            "name" : "Cube.058",
+            "name" : "Cube.024",
             "primitives" : [
                 {
                     "attributes" : {
@@ -5051,7 +5064,7 @@
             ]
         },
         {
-            "name" : "Cube.059",
+            "name" : "Cube.025",
             "primitives" : [
                 {
                     "attributes" : {
@@ -5065,7 +5078,7 @@
             ]
         },
         {
-            "name" : "Cube.060",
+            "name" : "Cube.026",
             "primitives" : [
                 {
                     "attributes" : {
@@ -5079,7 +5092,7 @@
             ]
         },
         {
-            "name" : "Cube.061",
+            "name" : "Cube.027",
             "primitives" : [
                 {
                     "attributes" : {
@@ -5093,7 +5106,7 @@
             ]
         },
         {
-            "name" : "Cube.002_Cube.002",
+            "name" : "Cube.002_Cube.001",
             "primitives" : [
                 {
                     "attributes" : {
@@ -5116,7 +5129,7 @@
             ]
         },
         {
-            "name" : "Cylinder.003",
+            "name" : "Cylinder.001",
             "primitives" : [
                 {
                     "attributes" : {
@@ -5130,7 +5143,7 @@
             ]
         },
         {
-            "name" : "Cylinder.004",
+            "name" : "Cylinder.002",
             "primitives" : [
                 {
                     "attributes" : {
@@ -5153,7 +5166,7 @@
             ]
         },
         {
-            "name" : "Cylinder.005",
+            "name" : "Cylinder.003",
             "primitives" : [
                 {
                     "attributes" : {
@@ -5176,7 +5189,7 @@
             ]
         },
         {
-            "name" : "Cylinder.006",
+            "name" : "Cylinder.004",
             "primitives" : [
                 {
                     "attributes" : {
@@ -5199,7 +5212,7 @@
             ]
         },
         {
-            "name" : "Cylinder.007",
+            "name" : "Cylinder.005",
             "primitives" : [
                 {
                     "attributes" : {
@@ -5222,7 +5235,7 @@
             ]
         },
         {
-            "name" : "Cylinder.008",
+            "name" : "Cylinder.006",
             "primitives" : [
                 {
                     "attributes" : {
@@ -5245,7 +5258,7 @@
             ]
         },
         {
-            "name" : "Cylinder.009",
+            "name" : "Cylinder.007",
             "primitives" : [
                 {
                     "attributes" : {
@@ -5268,7 +5281,7 @@
             ]
         },
         {
-            "name" : "Cylinder.010",
+            "name" : "Cylinder.008",
             "primitives" : [
                 {
                     "attributes" : {
@@ -5291,7 +5304,7 @@
             ]
         },
         {
-            "name" : "Cylinder.011",
+            "name" : "Cylinder.009",
             "primitives" : [
                 {
                     "attributes" : {
@@ -5314,7 +5327,7 @@
             ]
         },
         {
-            "name" : "Cylinder.012",
+            "name" : "Cylinder.010",
             "primitives" : [
                 {
                     "attributes" : {
@@ -5337,7 +5350,7 @@
             ]
         },
         {
-            "name" : "Cylinder.013",
+            "name" : "Cylinder.011",
             "primitives" : [
                 {
                     "attributes" : {
@@ -5360,7 +5373,7 @@
             ]
         },
         {
-            "name" : "Cylinder.014",
+            "name" : "Cylinder.012",
             "primitives" : [
                 {
                     "attributes" : {
@@ -5383,7 +5396,7 @@
             ]
         },
         {
-            "name" : "Cylinder.015",
+            "name" : "Cylinder.013",
             "primitives" : [
                 {
                     "attributes" : {
@@ -5406,7 +5419,7 @@
             ]
         },
         {
-            "name" : "Cylinder.016",
+            "name" : "Cylinder.014",
             "primitives" : [
                 {
                     "attributes" : {
@@ -5429,7 +5442,7 @@
             ]
         },
         {
-            "name" : "Cylinder.017",
+            "name" : "Cylinder.015",
             "primitives" : [
                 {
                     "attributes" : {
@@ -5452,7 +5465,7 @@
             ]
         },
         {
-            "name" : "Cube.062",
+            "name" : "Cube.028",
             "primitives" : [
                 {
                     "attributes" : {
@@ -5466,7 +5479,7 @@
             ]
         },
         {
-            "name" : "Cube.002_Cube.004",
+            "name" : "Cube.002_Cube.002",
             "primitives" : [
                 {
                     "attributes" : {
@@ -5489,7 +5502,7 @@
             ]
         },
         {
-            "name" : "Cylinder.018",
+            "name" : "Cylinder.016",
             "primitives" : [
                 {
                     "attributes" : {
@@ -5503,7 +5516,7 @@
             ]
         },
         {
-            "name" : "Cube.063",
+            "name" : "Cube.029",
             "primitives" : [
                 {
                     "attributes" : {
@@ -5580,7 +5593,7 @@
             ]
         },
         {
-            "name" : "Cube.064",
+            "name" : "Cube.030",
             "primitives" : [
                 {
                     "attributes" : {
@@ -5621,7 +5634,7 @@
             ]
         },
         {
-            "name" : "Sphere.022",
+            "name" : "Sphere.001",
             "primitives" : [
                 {
                     "attributes" : {
@@ -5653,7 +5666,7 @@
             ]
         },
         {
-            "name" : "Sphere.023",
+            "name" : "Sphere.002",
             "primitives" : [
                 {
                     "attributes" : {
@@ -5685,7 +5698,7 @@
             ]
         },
         {
-            "name" : "Sphere.024",
+            "name" : "Sphere.003",
             "primitives" : [
                 {
                     "attributes" : {
@@ -5717,7 +5730,7 @@
             ]
         },
         {
-            "name" : "Sphere.025",
+            "name" : "Sphere.004",
             "primitives" : [
                 {
                     "attributes" : {
@@ -5749,7 +5762,7 @@
             ]
         },
         {
-            "name" : "Sphere.026",
+            "name" : "Sphere.005",
             "primitives" : [
                 {
                     "attributes" : {
@@ -5793,7 +5806,7 @@
             "extras" : {
                 "decoration" : "decoration"
             },
-            "name" : "Sphere.027",
+            "name" : "Sphere.006",
             "primitives" : [
                 {
                     "attributes" : {
@@ -5855,7 +5868,7 @@
             "extras" : {
                 "decoration" : "decoration"
             },
-            "name" : "Sphere.028",
+            "name" : "Sphere.007",
             "primitives" : [
                 {
                     "attributes" : {
@@ -5917,7 +5930,7 @@
             "extras" : {
                 "decoration" : "decoration"
             },
-            "name" : "Sphere.029",
+            "name" : "Sphere.008",
             "primitives" : [
                 {
                     "attributes" : {
@@ -5979,7 +5992,7 @@
             "extras" : {
                 "decoration" : "decoration"
             },
-            "name" : "Sphere.030",
+            "name" : "Sphere.009",
             "primitives" : [
                 {
                     "attributes" : {
@@ -6041,7 +6054,7 @@
             "extras" : {
                 "decoration" : "decoration"
             },
-            "name" : "Sphere.031",
+            "name" : "Sphere.010",
             "primitives" : [
                 {
                     "attributes" : {
@@ -6103,7 +6116,7 @@
             "extras" : {
                 "decoration" : "decoration"
             },
-            "name" : "Sphere.032",
+            "name" : "Sphere.011",
             "primitives" : [
                 {
                     "attributes" : {
@@ -6165,7 +6178,7 @@
             "extras" : {
                 "decoration" : "decoration"
             },
-            "name" : "Sphere.033",
+            "name" : "Sphere.012",
             "primitives" : [
                 {
                     "attributes" : {
@@ -6227,7 +6240,7 @@
             "extras" : {
                 "decoration" : "decoration"
             },
-            "name" : "Sphere.034",
+            "name" : "Sphere.013",
             "primitives" : [
                 {
                     "attributes" : {
@@ -6289,7 +6302,7 @@
             "extras" : {
                 "decoration" : "decoration"
             },
-            "name" : "Sphere.035",
+            "name" : "Sphere.014",
             "primitives" : [
                 {
                     "attributes" : {
@@ -6351,7 +6364,7 @@
             "extras" : {
                 "decoration" : "decoration"
             },
-            "name" : "Sphere.036",
+            "name" : "Sphere.015",
             "primitives" : [
                 {
                     "attributes" : {
@@ -6413,7 +6426,7 @@
             "extras" : {
                 "decoration" : "decoration"
             },
-            "name" : "Sphere.037",
+            "name" : "Sphere.016",
             "primitives" : [
                 {
                     "attributes" : {
@@ -6475,7 +6488,7 @@
             "extras" : {
                 "decoration" : "decoration"
             },
-            "name" : "Sphere.038",
+            "name" : "Sphere.017",
             "primitives" : [
                 {
                     "attributes" : {
@@ -6537,7 +6550,7 @@
             "extras" : {
                 "decoration" : "decoration"
             },
-            "name" : "Sphere.039",
+            "name" : "Sphere.018",
             "primitives" : [
                 {
                     "attributes" : {
@@ -6599,7 +6612,7 @@
             "extras" : {
                 "decoration" : "decoration"
             },
-            "name" : "Sphere.040",
+            "name" : "Sphere.019",
             "primitives" : [
                 {
                     "attributes" : {
@@ -6661,7 +6674,7 @@
             "extras" : {
                 "decoration" : "decoration"
             },
-            "name" : "Sphere.041",
+            "name" : "Sphere.020",
             "primitives" : [
                 {
                     "attributes" : {
@@ -6723,7 +6736,7 @@
             "extras" : {
                 "decoration" : "decoration"
             },
-            "name" : "Sphere.042",
+            "name" : "Sphere.021",
             "primitives" : [
                 {
                     "attributes" : {
@@ -6782,7 +6795,7 @@
             ]
         },
         {
-            "name" : "Cube.065",
+            "name" : "Cube.031",
             "primitives" : [
                 {
                     "attributes" : {
@@ -6796,7 +6809,7 @@
             ]
         },
         {
-            "name" : "Cube.066",
+            "name" : "Cube.032",
             "primitives" : [
                 {
                     "attributes" : {
@@ -6810,7 +6823,7 @@
             ]
         },
         {
-            "name" : "Cube.067",
+            "name" : "Cube.033",
             "primitives" : [
                 {
                     "attributes" : {
@@ -6824,7 +6837,7 @@
             ]
         },
         {
-            "name" : "Cube.068",
+            "name" : "Cube.034",
             "primitives" : [
                 {
                     "attributes" : {
@@ -6838,7 +6851,7 @@
             ]
         },
         {
-            "name" : "NurbsPath.005",
+            "name" : "NurbsPath.001",
             "primitives" : [
                 {
                     "attributes" : {
@@ -6861,7 +6874,7 @@
             ]
         },
         {
-            "name" : "NurbsPath.006",
+            "name" : "NurbsPath.002",
             "primitives" : [
                 {
                     "attributes" : {
@@ -6884,7 +6897,7 @@
             ]
         },
         {
-            "name" : "NurbsPath.007",
+            "name" : "NurbsPath.003",
             "primitives" : [
                 {
                     "attributes" : {
@@ -6907,7 +6920,7 @@
             ]
         },
         {
-            "name" : "NurbsPath.008",
+            "name" : "NurbsPath.004",
             "primitives" : [
                 {
                     "attributes" : {
@@ -6930,7 +6943,7 @@
             ]
         },
         {
-            "name" : "NurbsPath.009",
+            "name" : "NurbsPath.005",
             "primitives" : [
                 {
                     "attributes" : {
@@ -6953,7 +6966,7 @@
             ]
         },
         {
-            "name" : "NurbsPath.010",
+            "name" : "NurbsPath.006",
             "primitives" : [
                 {
                     "attributes" : {
@@ -6976,7 +6989,7 @@
             ]
         },
         {
-            "name" : "NurbsPath.011",
+            "name" : "NurbsPath.007",
             "primitives" : [
                 {
                     "attributes" : {
@@ -6999,7 +7012,7 @@
             ]
         },
         {
-            "name" : "NurbsPath.012",
+            "name" : "NurbsPath.008",
             "primitives" : [
                 {
                     "attributes" : {
@@ -7022,7 +7035,7 @@
             ]
         },
         {
-            "name" : "NurbsPath.013",
+            "name" : "NurbsPath.009",
             "primitives" : [
                 {
                     "attributes" : {
@@ -7045,7 +7058,7 @@
             ]
         },
         {
-            "name" : "NurbsPath.014",
+            "name" : "NurbsPath.010",
             "primitives" : [
                 {
                     "attributes" : {
@@ -7068,7 +7081,7 @@
             ]
         },
         {
-            "name" : "NurbsPath.015",
+            "name" : "NurbsPath.011",
             "primitives" : [
                 {
                     "attributes" : {
@@ -7091,7 +7104,7 @@
             ]
         },
         {
-            "name" : "NurbsPath.016",
+            "name" : "NurbsPath.012",
             "primitives" : [
                 {
                     "attributes" : {
@@ -7114,7 +7127,7 @@
             ]
         },
         {
-            "name" : "NurbsPath.017",
+            "name" : "NurbsPath.013",
             "primitives" : [
                 {
                     "attributes" : {
@@ -7137,7 +7150,7 @@
             ]
         },
         {
-            "name" : "NurbsPath.018",
+            "name" : "NurbsPath.014",
             "primitives" : [
                 {
                     "attributes" : {
@@ -7160,7 +7173,7 @@
             ]
         },
         {
-            "name" : "NurbsPath.019",
+            "name" : "NurbsPath.015",
             "primitives" : [
                 {
                     "attributes" : {
@@ -7183,7 +7196,7 @@
             ]
         },
         {
-            "name" : "NurbsPath.020",
+            "name" : "NurbsPath.016",
             "primitives" : [
                 {
                     "attributes" : {
@@ -7206,7 +7219,7 @@
             ]
         },
         {
-            "name" : "NurbsPath.021",
+            "name" : "NurbsPath.017",
             "primitives" : [
                 {
                     "attributes" : {
@@ -7229,7 +7242,7 @@
             ]
         },
         {
-            "name" : "Cylinder.019",
+            "name" : "Cylinder.017",
             "primitives" : [
                 {
                     "attributes" : {
@@ -7252,7 +7265,7 @@
             ]
         },
         {
-            "name" : "NurbsPath.022",
+            "name" : "NurbsPath.018",
             "primitives" : [
                 {
                     "attributes" : {
@@ -7275,7 +7288,7 @@
             ]
         },
         {
-            "name" : "NurbsPath.023",
+            "name" : "NurbsPath.019",
             "primitives" : [
                 {
                     "attributes" : {
@@ -7298,7 +7311,7 @@
             ]
         },
         {
-            "name" : "NurbsPath.024",
+            "name" : "NurbsPath.020",
             "primitives" : [
                 {
                     "attributes" : {
@@ -7321,7 +7334,7 @@
             ]
         },
         {
-            "name" : "NurbsPath.025",
+            "name" : "NurbsPath.021",
             "primitives" : [
                 {
                     "attributes" : {
@@ -7344,7 +7357,7 @@
             ]
         },
         {
-            "name" : "Sphere.043",
+            "name" : "Sphere.022",
             "primitives" : [
                 {
                     "attributes" : {

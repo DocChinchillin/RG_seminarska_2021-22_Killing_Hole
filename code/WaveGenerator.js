@@ -11,34 +11,46 @@ export class WaveGenerator {
   generateWave() {
     this.waveNumber++;
     this.enemies.forEach((enemy) => {
-      let collision = true;
-      if (this.waveNumber > 1) {
+      if (enemy.isBoss && this.waveNumber % 5 !== 0) return;
+
+      if (enemy.isBoss) {
+        enemy.translation[1] += 20;
+        enemy.hp = enemy.startingHp;
+      }
+
+      if (this.waveNumber > 1 && !enemy.isBoss) {
         enemy.translation[1] += 20;
         enemy.hp = enemy.startingHp + (this.waveNumber - 1) * 5;
         enemy.dmg += 1;
         enemy.drop += 0.5;
       }
+
+      let collision = true;
+
       do {
-        let xPos = Math.floor(Math.random() * (55 - -54)) - 54; //Math.floor(Math.random() * (max - min)) + min;
-        let yPos = Math.floor(Math.random() * (64 - -65)) - 65; //Math.floor(Math.random() * (max - min)) + min;
+        collision = true;
+        let xPos = Math.floor(Math.random() * (52 - -52)) - 52; //Math.floor(Math.random() * (max - min)) + min;
+        let yPos = Math.floor(Math.random() * (64 - -64)) - 64; //Math.floor(Math.random() * (max - min)) + min;
         enemy.translation = vec3.fromValues(xPos, enemy.translation[1], yPos);
-        console.log(enemy.translation);
+        enemy.updateMatrix();
+        // console.log(enemy.translation);
         //Preverjej kolizijo enemyja z objekti na sceni
-        this.scene.nodes.every((node) => {
-          //console.log(node.name);
+        this.scene.nodes.some((node) => {
           if (node !== enemy && !node.deco && node.name !== "ground") {
-            collision = this.resolveCollision(node, enemy);
+            collision = this.resolveCollision(enemy, node);
             if (collision) {
               console.log(collision, node.name, enemy);
-              return false;
+              return true;
             }
           }
-          return true;
+          return false;
         });
       } while (collision);
+
       enemy.isInScene = true;
     });
     this.startNew = true;
+    document.querySelector("#wave").innerHTML = this.waveNumber;
   }
 
   startCountdown(time, shop) {
@@ -252,10 +264,7 @@ export class WaveGenerator {
         }
       );
 
-      if (!isColliding) {
-        continue;
-      }
-      console.log(a, b)
+      return isColliding;
       //console.log(b.deco)
       //console.log("collison")
       // Move node A minimally to avoid collision.
@@ -291,8 +300,6 @@ export class WaveGenerator {
 
       vec3.add(a.translation, a.translation, minDirection);
       a.updatePos();*/
-
-      return isColliding;
     }
   }
 }

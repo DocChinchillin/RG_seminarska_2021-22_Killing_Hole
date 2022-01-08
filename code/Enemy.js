@@ -12,6 +12,7 @@ export class Enemy extends Node {
         this.moveSpeed = 1;
         this.drop = options.extras.money;
         this.dmg = options.extras.dmg;
+        this.isBoss = options.extras.boss ? true : false;
         this.velocity  = [0, 0, 0];
         this.padc = [0, 0, 0];
         this.originalRotation = vec4.clone(this.rotation);

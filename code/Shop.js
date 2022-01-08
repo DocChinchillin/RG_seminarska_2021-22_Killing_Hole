@@ -84,6 +84,7 @@ export class Shop {
       player.inventory.money -= item.price;
       item.inInventory = "true";
       gun.inInventory = "true";
+      player.children[0].stopReload();
       player.children = [];
       player.addChild(gun);
       gun.showAmmo();

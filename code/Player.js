@@ -25,6 +25,8 @@ export class Player extends Node {
 
         // pretekli čas od zadnjega odbitka hp-ja. Zato, da ti enemy ne more takoj zbiti vseh 100%
         this.timeSinceDamageTaken = 1.0;
+
+        this.playing = true;
     }
     getViewProjectionMatrix(camera) {
         const mvpMatrix = mat4.clone(camera.matrix);
@@ -214,6 +216,7 @@ export class Player extends Node {
         document.addEventListener('mousedown', this.mousedownHandler);
         document.addEventListener('mouseup', this.mouseupHandler);
 
+        this.playing = true;
     }
 
     disable() {
@@ -222,6 +225,8 @@ export class Player extends Node {
         document.removeEventListener('keyup', this.keyupHandler);
         document.removeEventListener('mousedown', this.mousedownHandler);
         document.removeEventListener('mouseup', this.mouseupHandler);
+
+        this.playing = false;
 
         for (let key in this.keys) {
             this.keys[key] = false;

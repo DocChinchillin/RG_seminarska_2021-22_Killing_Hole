@@ -23,24 +23,19 @@ export class Physics {
             if (!(other instanceof Gun) && !other.deco) {
               let collision = this.resolveCollision(node, other);
               if (playerEnemyCol) {
-                if (node instanceof Player && other instanceof Enemy) {
-                  if (collision) {
-                    if (node.timeSinceDamageTaken >= 1) {
-                      node.inventory.health -= other.dmg;
-                      node.showHealth();
-                      node.timeSinceDamageTaken = 0;
-                    }
-                    node.timeSinceDamageTaken = node.timeSinceDamageTaken + dt;
-                  } else node.timeSinceDamageTaken = 1;
-                } else if (node instanceof Enemy && other instanceof Player) {
-                  if (collision) {
-                    if (other.timeSinceDamageTaken >= 1) {
-                      other.inventory.health -= node.dmg;
-                      other.showHealth();
-                      other.timeSinceDamageTaken = 0;
-                    }
-                    other.timeSinceDamageTaken += dt;
-                  } else other.timeSinceDamageTaken = 1;
+                let pl, en;
+                if(node instanceof Player && other instanceof Enemy){
+                    pl = node;
+                    en = other;
+                }else if(other instanceof Player && node instanceof Enemy){
+                    pl = other;
+                    en = node;
+                }
+                if (collision && pl && pl.timeSinceDamageTaken <= 0) {
+                    pl.inventory.health -= en.dmg;
+                    pl.dmgSound.play()
+                    pl.showHealth();
+                    pl.timeSinceDamageTaken = 1;
                 }
               }
             }
@@ -80,37 +75,13 @@ export class Physics {
     // Update bounding boxes with global translation.
     const ta = a.getGlobalTransform();
     const tb = b.getGlobalTransform();
-
-    // const posa = mat4.getTranslation(vec3.create(), ta);
-    // const posb = mat4.getTranslation(vec3.create(), tb);
-
+    
     if (!b.mesh) {
       return;
     }
     let aVertices, mina, maxa;
     for (let i = 0; i < b.mesh.primitives.length; i++) {
-      //b.mesh.primitives.length
       if (a.max) {
-        // aVertices = [
-        //   vec3.fromValues(a.min[0], a.min[1], a.min[2]),
-        //   vec3.fromValues(a.min[0], a.min[1], a.max[2]),
-        //   vec3.fromValues(a.min[0], a.max[1], a.min[2]),
-        //   vec3.fromValues(a.min[0], a.max[1], a.max[2]),
-        //   vec3.fromValues(a.max[0], a.min[1], a.min[2]),
-        //   vec3.fromValues(a.max[0], a.min[1], a.max[2]),
-        //   vec3.fromValues(a.max[0], a.max[1], a.min[2]),
-        //   vec3.fromValues(a.max[0], a.max[1], a.max[2]),
-        // ].map((v) => vec3.transformMat4(v, v, ta));
-        // mina = vec3.fromValues(
-        //   Math.min(...aVertices.map((v) => v[0])),
-        //   Math.min(...aVertices.map((v) => v[1])),
-        //   Math.min(...aVertices.map((v) => v[2]))
-        // );
-        // maxa = vec3.fromValues(
-        //   Math.max(...aVertices.map((v) => v[0])),
-        //   Math.max(...aVertices.map((v) => v[1])),
-        //   Math.max(...aVertices.map((v) => v[2]))
-        // );
         const posa = mat4.getTranslation(vec3.create(), ta);
         mina = vec3.add(vec3.create(), posa, a.min);
         maxa = vec3.add(vec3.create(), posa, a.max);
@@ -221,11 +192,6 @@ export class Physics {
         Math.max(...bVertices.map((v) => v[1])),
         Math.max(...bVertices.map((v) => v[2]))
       );
-      //const mina = vec3.add(vec3.create(), posa, a.min);
-      //const maxa = vec3.add(vec3.create(), posa, a.max);
-      // const minb = vec3.add(vec3.create(), posb, b.mesh.primitives[0].attributes.POSITION.min);
-      // const maxb = vec3.add(vec3.create(), posb, b.mesh.primitives[0].attributes.POSITION.max);
-
       // Check if there is collision.
       const isColliding = this.aabbIntersection(
         {
@@ -241,8 +207,6 @@ export class Physics {
       if (!isColliding) {
         continue;
       }
-      //console.log(b.deco)
-      //console.log("collison")
       // Move node A minimally to avoid collision.
       const diffa = vec3.sub(vec3.create(), maxb, mina);
       const diffb = vec3.sub(vec3.create(), maxa, minb);

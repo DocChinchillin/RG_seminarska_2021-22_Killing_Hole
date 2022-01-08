@@ -90,26 +90,29 @@ export class Physics {
     for (let i = 0; i < b.mesh.primitives.length; i++) {
       //b.mesh.primitives.length
       if (a.max) {
-        aVertices = [
-          vec3.fromValues(a.min[0], a.min[1], a.min[2]),
-          vec3.fromValues(a.min[0], a.min[1], a.max[2]),
-          vec3.fromValues(a.min[0], a.max[1], a.min[2]),
-          vec3.fromValues(a.min[0], a.max[1], a.max[2]),
-          vec3.fromValues(a.max[0], a.min[1], a.min[2]),
-          vec3.fromValues(a.max[0], a.min[1], a.max[2]),
-          vec3.fromValues(a.max[0], a.max[1], a.min[2]),
-          vec3.fromValues(a.max[0], a.max[1], a.max[2]),
-        ].map((v) => vec3.transformMat4(v, v, ta));
-        mina = vec3.fromValues(
-          Math.min(...aVertices.map((v) => v[0])),
-          Math.min(...aVertices.map((v) => v[1])),
-          Math.min(...aVertices.map((v) => v[2]))
-        );
-        maxa = vec3.fromValues(
-          Math.max(...aVertices.map((v) => v[0])),
-          Math.max(...aVertices.map((v) => v[1])),
-          Math.max(...aVertices.map((v) => v[2]))
-        );
+        // aVertices = [
+        //   vec3.fromValues(a.min[0], a.min[1], a.min[2]),
+        //   vec3.fromValues(a.min[0], a.min[1], a.max[2]),
+        //   vec3.fromValues(a.min[0], a.max[1], a.min[2]),
+        //   vec3.fromValues(a.min[0], a.max[1], a.max[2]),
+        //   vec3.fromValues(a.max[0], a.min[1], a.min[2]),
+        //   vec3.fromValues(a.max[0], a.min[1], a.max[2]),
+        //   vec3.fromValues(a.max[0], a.max[1], a.min[2]),
+        //   vec3.fromValues(a.max[0], a.max[1], a.max[2]),
+        // ].map((v) => vec3.transformMat4(v, v, ta));
+        // mina = vec3.fromValues(
+        //   Math.min(...aVertices.map((v) => v[0])),
+        //   Math.min(...aVertices.map((v) => v[1])),
+        //   Math.min(...aVertices.map((v) => v[2]))
+        // );
+        // maxa = vec3.fromValues(
+        //   Math.max(...aVertices.map((v) => v[0])),
+        //   Math.max(...aVertices.map((v) => v[1])),
+        //   Math.max(...aVertices.map((v) => v[2]))
+        // );
+        const posa = mat4.getTranslation(vec3.create(), ta);
+        mina = vec3.add(vec3.create(), posa, a.min);
+        maxa = vec3.add(vec3.create(), posa, a.max);
       } else {
         aVertices = [
           vec3.fromValues(

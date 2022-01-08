@@ -151,7 +151,7 @@ console.log(this.light)
       this.shop.update(dt, this.player);
     }
     if (this.hitScan) {
-      this.hitScan.update(dt,this.shop,this.player,this.test);
+      this.hitScan.update(dt,this.shop,this.player);
     }
 
 

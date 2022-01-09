@@ -107,6 +107,9 @@ class App extends Application {
       }
       this.player.enable();
       this.player.playing = true;
+      if(this.player.children[0].reloadProg != 0){
+        this.player.children[0].reloadSound.play()
+      }
       this.BGM.play();
       if (this.player.inventory.health > 0) {
         document.querySelector(".hudResume").style.display = "none";
@@ -124,6 +127,7 @@ class App extends Application {
 
       this.player.disable();
       this.player.playing = false;
+      this.player.children[0].reloadSound.pause()
       this.BGM.pause();
       if (this.player.inventory.health > 0) {
         document.querySelector(".cross").innerHTML = "";

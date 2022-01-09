@@ -1,4 +1,5 @@
 import { mat4, vec3 } from "../lib/gl-matrix-module.js";
+import { Sound } from "./Sound.js";
 
 export class Shop {
   constructor() {
@@ -7,6 +8,10 @@ export class Shop {
     this.gateOpen = false;
     this.curModel = null;
 
+    this.buySound = new Sound("../common/sounds/buy.wav");
+    this.buySound.setVolume(0.2)
+
+    
     this.timeout;
   }
 
@@ -32,6 +37,8 @@ export class Shop {
           if (player.keys["KeyE"]) {
             this.buyHealth(this.curModel, player);
             player.keys["KeyE"] = false;
+            this.buySound.stop()
+            this.buySound.play()
           }
         } else {
           if (this.curModel.inInventory === "true") {
@@ -40,6 +47,8 @@ export class Shop {
             if (player.keys["KeyE"]) {
               this.buyAmmo(this.curModel, player);
               player.keys["KeyE"] = false;
+              this.buySound.stop()
+              this.buySound.play()
             }
           } else {
             document.querySelector(".infoText").innerText =
@@ -47,6 +56,8 @@ export class Shop {
             if (player.keys["KeyE"]) {
               this.buyGun(this.curModel, player);
               player.keys["KeyE"] = false;
+              this.buySound.stop()
+              this.buySound.play()
             }
           }
         }

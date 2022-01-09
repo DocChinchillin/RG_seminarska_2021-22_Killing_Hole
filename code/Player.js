@@ -30,7 +30,7 @@ export class Player extends Node {
         // pretekli čas od zadnjega odbitka hp-ja. Zato, da ti enemy ne more takoj zbiti vseh 100%
         this.timeSinceDamageTaken = 1.0;
 
-        this.playing = true;
+        this.playing = false;
     }
     getViewProjectionMatrix(camera) {
         const mvpMatrix = mat4.clone(camera.matrix);

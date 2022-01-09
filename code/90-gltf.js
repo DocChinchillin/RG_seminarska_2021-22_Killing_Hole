@@ -38,7 +38,7 @@ class App extends Application {
     });
     this.gun.showAmmo();
     this.BGM = new Sound("../common/sounds/BGM.mp3");
-    this.BGM.setVolume(0.0);
+    this.BGM.setVolume(0.05);
 
     this.light = new Light();
     this.shop = new Shop();
@@ -94,18 +94,30 @@ class App extends Application {
     this.canvas.requestPointerLock();
   }
 
-  pointerlockchangeHandler() {
+  pointerlockchangeHandler(e) {
     if (!this.player) {
       return;
     }
 
-    console.log(document.pointerLockElement);
     if (document.pointerLockElement === this.canvas) {
       this.player.enable();
+      this.player.playing = true;
       this.BGM.play();
+      if (this.player.inventory.health > 0) {
+        document.querySelector(".hudResume").style.display = "none";
+        document.querySelector(".cross").innerHTML = " + ";
+      }
     } else {
       this.player.disable();
+      this.player.playing = false;
       this.BGM.pause();
+      if (this.player.inventory.health > 0) {
+        document.querySelector(".cross").innerHTML = "";
+        document.querySelector(".hudResume").style.display = "block";
+        document.querySelector(".hudResume").addEventListener("click", () => {
+          this.enableCamera();
+        });
+      }
     }
   }
 
@@ -121,10 +133,12 @@ class App extends Application {
           document.querySelector(".cross").innerHTML = "";
           document.querySelector(".hudGameOver").style.display = "block";
           document.exitPointerLock();
-          document.querySelector(".playAgainText").addEventListener("click", () => {
-            location.reload()
-            document.requestPointerLock();
-          })
+          document
+            .querySelector(".playAgainText")
+            .addEventListener("click", () => {
+              location.reload();
+              document.requestPointerLock();
+            });
         }
       }
 
@@ -147,7 +161,7 @@ class App extends Application {
         if (!onSceneCount && this.waveGenerator.startNew) {
           if (this.waveGenerator.waveNumber >= 1) {
             this.shop.openCloseGate();
-            this.waveGenerator.startCountdown(5, this.shop);
+            this.waveGenerator.startCountdown(20, this.shop);
           } else this.waveGenerator.startCountdown(0);
         }
         //this.enemies[0].update(dt, this.player);
@@ -189,7 +203,7 @@ class App extends Application {
 document.addEventListener("DOMContentLoaded", () => {
   const canvas = document.querySelector("canvas");
   const app = new App(canvas);
- // const gui = new GUI();
+  // const gui = new GUI();
   /*setTimeout(() => {
     gui.addColor(app.light, 'ambientColor');
     gui.addColor(app.light, 'diffuseColor');
@@ -203,6 +217,7 @@ document.addEventListener("DOMContentLoaded", () => {
     app.enableCamera();
     document.querySelector(".menuHud").style.display = "none";
     document.querySelector(".inGameHud").style.display = "block";
-  })
+    console.log("nastavi listener");
+  });
   //gui.add(app, "enableCamera");
 });

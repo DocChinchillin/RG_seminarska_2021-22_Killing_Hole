@@ -13,12 +13,13 @@ import { Light } from "./Light.js";
 import { Sound } from "./Sound.js";
 import { Enemy } from "./Enemy.js";
 import { WaveGenerator } from "./WaveGenerator.js";
+import { initFps, updateFps} from "./fps.js";
 
 class App extends Application {
   async start() {
     this.loader = new GLTFLoader();
     await this.loader.load("../common/models/map.gltf");
-
+    initFps()
     this.test = await this.loader.loadNode("TEST");
     console.log("test: ", this.test);
     this.test.translation = vec3.fromValues(20, 20, 20);
@@ -125,7 +126,7 @@ class App extends Application {
     const t = (this.time = Date.now());
     const dt = (this.time - this.startTime) * 0.001;
     this.startTime = this.time;
-
+    updateFps()
     if (this.player && this.player.playing) {
       if (this.player && this.player.camera && this.scene) {
         this.player.update(dt);

@@ -1,24 +1,24 @@
-import { GUI } from "../lib/dat.gui.module.js";
+import { GUI } from "./lib/dat.gui.module.js";
 
-import { Application } from "../common/engine/Application.js";
+import { Application } from "./common/engine/Application.js";
 
-import { GLTFLoader } from "./GLTFLoader.js";
-import { Renderer } from "./Renderer.js";
-import { Physics } from "./Physics.js";
-import { Gravity } from "./Gravity.js";
-import { mat4, vec3 } from "../lib/gl-matrix-module.js";
-import { Shop } from "./Shop.js";
-import { HitScan } from "./HitScan.js";
-import { Light } from "./Light.js";
-import { Sound } from "./Sound.js";
-import { Enemy } from "./Enemy.js";
-import { WaveGenerator } from "./WaveGenerator.js";
-import { initFps, updateFps} from "./fps.js";
+import { GLTFLoader } from "./code/GLTFLoader.js";
+import { Renderer } from "./code/Renderer.js";
+import { Physics } from "./code/Physics.js";
+import { Gravity } from "./code/Gravity.js";
+import { mat4, vec3 } from "./lib/gl-matrix-module.js";
+import { Shop } from "./code/Shop.js";
+import { HitScan } from "./code/HitScan.js";
+import { Light } from "./code/Light.js";
+import { Sound } from "./code/Sound.js";
+import { Enemy } from "./code/Enemy.js";
+import { WaveGenerator } from "./code/WaveGenerator.js";
+import { initFps, updateFps} from "./code/fps.js";
 
 class App extends Application {
   async start() {
     this.loader = new GLTFLoader();
-    await this.loader.load("../common/models/map.gltf");
+    await this.loader.load("./common/models/map.gltf");
     initFps()
     this.test = await this.loader.loadNode("TEST");
     this.test.translation = vec3.fromValues(20, 20, 20);
@@ -53,7 +53,7 @@ class App extends Application {
     for (let i = 1; i <= 4; i++) {
       this.enemies.push(await this.loader.loadEnemy("enemy" + i));
     }
-    this.boss = await this.loader.loadEnemy("boss");
+    this.enemies.push(await this.loader.loadEnemy("boss"));
     //this.enemy = await this.loader.loadEnemy("enemy1");
     //this.enemy2 = await this.loader.loadEnemy("enemy2");
     //this.enemy3 = await this.loader.loadEnemy("enemy3");

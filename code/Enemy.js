@@ -31,26 +31,20 @@ export class Enemy extends Node {
             vec3.mul(pom, pom, vec3.fromValues(1, 0, 1))
             vec3.sub(direction, pom, trans)
             vec3.normalize(direction, direction)
+
+            //Obračanje za playerjem in premikanje
             let rotationQuat = quat.create();
-            let rotation = Math.atan2(direction[2], direction[0]) / (2 * Math.PI);
-            //quat.fromEuler(rotationQuat, 0, rotation * 180 / Math.PI, 0)
-            //console.log(rotationQuat[0], rotationQuat[1], rotationQuat[2], rotationQuat[3])
-            //quat.set(this.rotation, rotationQuat[0],rotationQuat[1],rotationQuat[2],rotationQuat[3])
-            //quat.mul(this.rotation, rotationQuat, this.originalRotation)
-            //console.log( rotation * 180 / Math.PI)
-            //this.rotation = quat.fromValues(this.rotation[0], direction[0], this.rotation[2])
+            let rotation = -Math.atan2(direction[2], direction[0]);
+            quat.fromEuler(rotationQuat, 0, (rotation * 180 / Math.PI) + 80, 0)
+            quat.mul(this.rotation, rotationQuat, this.originalRotation)
             vec3.scale(direction, direction, 2)
-            //this.velocity = direction;
-            //console.log(direction)
-        
+            this.velocity = direction;
         }
     }
 
     updatePos() {
-        //this.updateMatrix();
         const t = this.matrix;
         const degrees = this.rotation.map(x => x * 180 / Math.PI);
-        //console.log(degrees)
         const q = quat.fromEuler(quat.create(), ...degrees);
         const v = vec3.clone(this.translation);
         const s = vec3.clone(this.scale);

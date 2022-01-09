@@ -8,7 +8,7 @@ export class Enemy extends Node {
         super(options);
 
         this.dmgSound = new Sound("../common/sounds/Zombie_Death.mp3");
-        this.dmgSound.setVolume(0.2)
+        this.dmgSound.setVolume(0.4)
 
         this.hp = options.extras.hp;
         this.startingHp = options.extras.hp;

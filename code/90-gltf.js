@@ -45,12 +45,13 @@ class App extends Application {
     this.shop.shopModels.push(await this.loader.loadShop("Gun2SHOP"));
     this.shop.shopModels.push(await this.loader.loadShop("Medpack"));
 
-    this.shop.gate = await this.loader.loadNode("Gate");
+    this.shop.gate = await this.loader.loadNode("door");
 
     this.enemies = new Array();
     for(let i = 1; i <= 4; i++) {
       this.enemies.push(await this.loader.loadEnemy("enemy" + i))
     }
+    this.boss = await this.loader.loadEnemy("boss");
     //this.enemy = await this.loader.loadEnemy("enemy1");
     //this.enemy2 = await this.loader.loadEnemy("enemy2");
     //this.enemy3 = await this.loader.loadEnemy("enemy3");
@@ -125,6 +126,9 @@ console.log(this.light)
       //this.enemy2.update(dt, this.player);
       //this.enemy3.update(dt, this.player);
       //sthis.enemy4.update(dt, this.player);
+    }
+    if (this.boss && this.player) {
+      this.boss.update(dt, this.player);
     }
     if (this.physics && this.scene) {
       this.physics.update(dt);

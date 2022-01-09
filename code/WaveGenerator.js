@@ -1,4 +1,5 @@
 import { vec3 } from "../lib/gl-matrix-module.js";
+import { Enemy } from "./Enemy.js";
 import { Player } from "./Player.js";
 
 export class WaveGenerator {
@@ -35,10 +36,16 @@ export class WaveGenerator {
         let yPos = Math.floor(Math.random() * (64 - -64)) - 64; //Math.floor(Math.random() * (max - min)) + min;
         enemy.translation = vec3.fromValues(xPos, enemy.translation[1], yPos);
         enemy.updateMatrix();
-        // console.log(enemy.translation);
         //Preverjej kolizijo enemyja z objekti na sceni
         this.scene.nodes.some((node) => {
           if (node !== enemy && !node.deco && node.name !== "ground") {
+            if (node instanceof Enemy) {
+              let distance = vec3.dist(node.translation, enemy.translation);
+              if (distance < 10) {
+                collision = true;
+                return true;
+              }
+            }
             if (node instanceof Player) {
               collision = this.resolveCollision(node, enemy);
               let distance = vec3.dist(node.translation, enemy.translation);
@@ -47,7 +54,7 @@ export class WaveGenerator {
                 return true;
               }
             } else collision = this.resolveCollision(enemy, node);
-            console.log(collision, "med objektoma", enemy.name, node.name);
+            //console.log(collision, "med objektoma", enemy.name, node.name);
             if (collision) {
               console.log(collision, node.name, enemy);
               return true;

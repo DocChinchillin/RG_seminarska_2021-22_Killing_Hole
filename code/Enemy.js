@@ -43,7 +43,7 @@ export class Enemy extends Node {
             //console.log( rotation * 180 / Math.PI)
             //this.rotation = quat.fromValues(this.rotation[0], direction[0], this.rotation[2])
             vec3.scale(direction, direction, 2)
-            this.velocity = direction;
+            //this.velocity = direction;
             //console.log(direction)
         
         }

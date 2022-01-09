@@ -1,4 +1,5 @@
 import { vec3 } from "../lib/gl-matrix-module.js";
+import { Player } from "./Player.js";
 
 export class WaveGenerator {
   constructor(enemies, scene) {
@@ -6,6 +7,7 @@ export class WaveGenerator {
     this.enemies = enemies;
     this.scene = scene;
     this.startNew = true;
+    this.time = 20;
   }
 
   generateWave() {
@@ -37,11 +39,20 @@ export class WaveGenerator {
         //Preverjej kolizijo enemyja z objekti na sceni
         this.scene.nodes.some((node) => {
           if (node !== enemy && !node.deco && node.name !== "ground") {
-            collision = this.resolveCollision(enemy, node);
+            if (node instanceof Player) {
+              collision = this.resolveCollision(node, enemy);
+              let distance = vec3.dist(node.translation, enemy.translation);
+              if (distance < 35) {
+                collision = true;
+                return true;
+              }
+            } else collision = this.resolveCollision(enemy, node);
+            console.log(collision, "med objektoma", enemy.name, node.name);
             if (collision) {
               console.log(collision, node.name, enemy);
               return true;
             }
+            return false;
           }
           return false;
         });
@@ -53,7 +64,7 @@ export class WaveGenerator {
     document.querySelector("#wave").innerHTML = this.waveNumber;
   }
 
-  startCountdown(time, shop) {
+  startCountdown(time, shop, dt) {
     this.startNew = false;
     if (time === 0) {
       this.generateWave();
@@ -62,21 +73,17 @@ export class WaveGenerator {
     let div = document.querySelector(".hudCountdown");
     let timer = document.querySelector("#countdown");
 
-    let seconds = time;
+    this.time -= dt;
 
-    timer.innerHTML = seconds;
+    timer.innerHTML = Math.ceil(this.time);
     div.style.display = "block";
 
-    let interval = setInterval(() => {
-      seconds--;
-      timer.innerHTML = seconds;
-      if (seconds < 0) {
-        shop.openCloseGate();
-        this.generateWave();
-        clearInterval(interval);
-        div.style.display = "none";
-      }
-    }, 1000);
+    if (this.time <= 0) {
+      shop.openCloseGate();
+      this.generateWave();
+      div.style.display = "none";
+      this.time = time;
+    }
   }
 
   intervalIntersection(min1, max1, min2, max2) {
@@ -114,6 +121,7 @@ export class WaveGenerator {
     // const posb = mat4.getTranslation(vec3.create(), tb);
 
     if (!b.mesh) {
+      console.log("grem ven");
       return;
     }
     let aVertices, mina, maxa;
@@ -264,7 +272,7 @@ export class WaveGenerator {
         }
       );
 
-      return isColliding;
+      if (isColliding) return true;
       //console.log(b.deco)
       //console.log("collison")
       // Move node A minimally to avoid collision.
@@ -301,5 +309,6 @@ export class WaveGenerator {
       vec3.add(a.translation, a.translation, minDirection);
       a.updatePos();*/
     }
+    return false;
   }
 }

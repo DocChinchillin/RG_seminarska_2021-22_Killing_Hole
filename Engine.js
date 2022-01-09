@@ -20,10 +20,6 @@ class App extends Application {
     this.loader = new GLTFLoader();
     await this.loader.load("./common/models/map.gltf");
     initFps()
-    this.test = await this.loader.loadNode("TEST");
-    this.test.translation = vec3.fromValues(20, 20, 20);
-    this.test.scale = vec3.fromValues(0.2, 0.2, 0.2);
-    this.test.updateMatrix();
     this.player = await this.loader.loadPlayer("Player");
     this.playerRef = await this.loader.loadNode("Camera");
     this.gun = await this.loader.loadGun("Gun1");
@@ -203,7 +199,7 @@ class App extends Application {
 
   render() {
     if (this.renderer) {
-      this.renderer.render(this.scene, this.player, this.light, this.test);
+      this.renderer.render(this.scene, this.player, this.light);
     }
   }
 

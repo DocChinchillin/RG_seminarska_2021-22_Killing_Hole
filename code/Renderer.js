@@ -176,7 +176,7 @@ export class Renderer {
         return mvpMatrix;
     }
 
-    render(scene, camera, light, test) {
+    render(scene, camera, light) {
         const gl = this.gl;
 
         gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
@@ -186,10 +186,6 @@ export class Renderer {
         gl.uniform1i(program.uniforms.uTexture, 0);
 
         //začetek barv luci
-        test.translation = [light.position[0],light.position[1],light.position[2]]
-        test.scale = [1, 1, 1]
-    
-        test.updateMatrix()
         
         let color = vec3.clone(light.ambientColor);
         vec3.scale(color, color, 1.0 / 255.0);

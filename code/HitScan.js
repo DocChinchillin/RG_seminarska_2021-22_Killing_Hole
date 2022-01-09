@@ -68,7 +68,7 @@ export class HitScan {
             match = col1[lowest]
             
         }
-        if(match.hp){
+        if(match && match.hp){
             match.hit(shot, cam)
         }
     });

@@ -77,6 +77,7 @@ console.log(this.light)
     this.renderer.prepareScene(this.scene);
     
     this.player.children.splice(1, this.player.children.length - 1);  //na sceni rabi bit samo se prvi gun
+    this.waveGenerator = new WaveGenerator(this.enemies, this.scene);
 
     this.physics = new Physics(this.scene);
     this.gravity = new Gravity(this.scene);
@@ -99,11 +100,26 @@ console.log(this.light)
     if (!this.player) {
       return;
     }
+    
 
     if (document.pointerLockElement === this.canvas) {
+      this.player.playing = true;
+      if (this.player.inventory.health > 0) {
+        document.querySelector(".hudResume").style.display = "none";
+        document.querySelector(".cross").innerHTML = " + ";
+      }
       this.player.enable();
       this.BGM.play()
     } else {
+      this.player.playing = false;
+      if (this.player.inventory.health > 0) {
+        document.querySelector(".cross").innerHTML = "";
+        document.querySelector(".hudResume").style.display = "block";
+        document.querySelector(".hudResume").addEventListener("click", () => {
+          this.enableCamera();
+        });
+      }
+
       this.player.disable();
       this.BGM.pause()
     }

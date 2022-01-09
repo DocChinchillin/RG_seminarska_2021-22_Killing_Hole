@@ -158,11 +158,12 @@ class App extends Application {
           enemy.update(dt, this.player);
         });
 
-        if (!onSceneCount && this.waveGenerator.startNew) {
+        if (!onSceneCount) {
           if (this.waveGenerator.waveNumber >= 1) {
-            this.shop.openCloseGate();
-            this.waveGenerator.startCountdown(20, this.shop);
-          } else this.waveGenerator.startCountdown(0);
+            if (this.waveGenerator.startNew)
+              this.shop.openCloseGate();
+            this.waveGenerator.startCountdown(20, this.shop, dt);
+          } else this.waveGenerator.startCountdown(0, this.shop, dt);
         }
         //this.enemies[0].update(dt, this.player);
         //this.enemy2.update(dt, this.player);

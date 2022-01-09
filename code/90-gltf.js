@@ -21,10 +21,10 @@ class App extends Application {
     await this.loader.load("../common/models/map.gltf");
     initFps()
     this.test = await this.loader.loadNode("TEST");
-    console.log("test: ", this.test);
-    this.test.translation = vec3.fromValues(20, 20, 20);
-    this.test.scale = vec3.fromValues(0.2, 0.2, 0.2);
-    this.test.updateMatrix();
+    console.log("test: ", this.test)
+    this.test.translation = vec3.fromValues(20, 20, 20)
+    this.test.scale = vec3.fromValues(0.2, .2, 0.2)
+    this.test.updateMatrix()
     this.player = await this.loader.loadPlayer("Player");
     this.playerRef = await this.loader.loadNode("Camera");
     this.gun = await this.loader.loadGun("Gun1");
@@ -33,28 +33,27 @@ class App extends Application {
     this.player.inventory.guns = gunInventory;
     this.player.camera = this.playerRef.camera;
     this.player.camera.updateMatrix();
-    gunInventory.forEach((gun) => {
-      //dodamo vse gune playerju, zato da bodo bli na sceni
+    gunInventory.forEach(gun => {   //dodamo vse gune playerju, zato da bodo bli na sceni
       this.player.addChild(gun);
-    });
+    })
     this.gun.showAmmo();
-    this.BGM = new Sound("../common/sounds/BGM.mp3");
-    this.BGM.setVolume(0.05);
+    this.BGM = new Sound("../common/sounds/BGM.mp3")
+    this.BGM.setVolume(0.0)
+    
 
     this.light = new Light();
     this.shop = new Shop();
     this.shop.shopModels.push(await this.loader.loadShop("Gun1SHOP"));
     this.shop.shopModels.push(await this.loader.loadShop("Gun2SHOP"));
     this.shop.shopModels.push(await this.loader.loadShop("Medpack"));
-    console.log(this.shop);
 
-    this.shop.gate = await this.loader.loadNode("Gate");
+    this.shop.gate = await this.loader.loadNode("door");
 
     this.enemies = new Array();
-    for (let i = 1; i <= 4; i++) {
-      this.enemies.push(await this.loader.loadEnemy("enemy" + i));
+    for(let i = 1; i <= 4; i++) {
+      this.enemies.push(await this.loader.loadEnemy("enemy" + i))
     }
-    this.enemies.push(await this.loader.loadEnemy("boss"));
+    this.boss = await this.loader.loadEnemy("boss");
     //this.enemy = await this.loader.loadEnemy("enemy1");
     //this.enemy2 = await this.loader.loadEnemy("enemy2");
     //this.enemy3 = await this.loader.loadEnemy("enemy3");
@@ -62,11 +61,10 @@ class App extends Application {
     //console.log(this.enemy.rotation)
 
     this.scene = await this.loader.loadScene(this.loader.defaultScene);
-    console.log(this.player);
+    console.log(this.player)
     console.log(this.scene);
 
-    this.waveGenerator = new WaveGenerator(this.enemies, this.scene);
-
+console.log(this.light)
     if (!this.scene || !this.player) {
       throw new Error("Scene or Camera not present in glTF");
     }
@@ -77,8 +75,8 @@ class App extends Application {
 
     this.renderer = new Renderer(this.gl);
     this.renderer.prepareScene(this.scene);
-
-    this.player.children.splice(1, this.player.children.length - 1); //na sceni rabi bit samo se prvi gun
+    
+    this.player.children.splice(1, this.player.children.length - 1);  //na sceni rabi bit samo se prvi gun
 
     this.physics = new Physics(this.scene);
     this.gravity = new Gravity(this.scene);
@@ -89,40 +87,30 @@ class App extends Application {
       "pointerlockchange",
       this.pointerlockchangeHandler
     );
+    
   }
 
   enableCamera() {
     this.canvas.requestPointerLock();
+    
   }
 
-  pointerlockchangeHandler(e) {
+  pointerlockchangeHandler() {
     if (!this.player) {
       return;
     }
 
     if (document.pointerLockElement === this.canvas) {
       this.player.enable();
-      this.player.playing = true;
-      this.BGM.play();
-      if (this.player.inventory.health > 0) {
-        document.querySelector(".hudResume").style.display = "none";
-        document.querySelector(".cross").innerHTML = " + ";
-      }
+      this.BGM.play()
     } else {
       this.player.disable();
-      this.player.playing = false;
-      this.BGM.pause();
-      if (this.player.inventory.health > 0) {
-        document.querySelector(".cross").innerHTML = "";
-        document.querySelector(".hudResume").style.display = "block";
-        document.querySelector(".hudResume").addEventListener("click", () => {
-          this.enableCamera();
-        });
-      }
+      this.BGM.pause()
     }
   }
 
   update() {
+    
     const t = (this.time = Date.now());
     const dt = (this.time - this.startTime) * 0.001;
     this.startTime = this.time;
@@ -182,6 +170,9 @@ class App extends Application {
         this.hitScan.update(dt, this.shop, this.player);
       }
     }
+
+
+
   }
 
   render() {
@@ -205,8 +196,8 @@ class App extends Application {
 document.addEventListener("DOMContentLoaded", () => {
   const canvas = document.querySelector("canvas");
   const app = new App(canvas);
-  // const gui = new GUI();
-  /*setTimeout(() => {
+  const gui = new GUI();
+  setTimeout(() => {
     gui.addColor(app.light, 'ambientColor');
     gui.addColor(app.light, 'diffuseColor');
     gui.addColor(app.light, 'specularColor');
@@ -214,12 +205,6 @@ document.addEventListener("DOMContentLoaded", () => {
     for (let i = 0; i < 3; i++) {
         gui.add(app.light.position, i, -200.0, 200.0).name('position.' + String.fromCharCode('x'.charCodeAt(0) + i));
     }
-  }, 3000)*/
-  document.querySelector(".startGameText").addEventListener("click", () => {
-    app.enableCamera();
-    document.querySelector(".menuHud").style.display = "none";
-    document.querySelector(".inGameHud").style.display = "block";
-    console.log("nastavi listener");
-  });
-  //gui.add(app, "enableCamera");
+  }, 3000)
+  gui.add(app, "enableCamera");
 });

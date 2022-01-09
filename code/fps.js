@@ -14,6 +14,8 @@ export function initFps() {
 }
 
 export function updateFps() {
+	if(!fpsCounter.span)
+		return
 	let t = performance.now() * 0.001;
 	let dt = t - fpsCounter.lastUpdated;
 	++fpsCounter.numFrames;

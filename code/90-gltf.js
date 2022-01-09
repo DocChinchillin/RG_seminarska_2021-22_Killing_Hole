@@ -13,12 +13,13 @@ import { Light } from "./Light.js";
 import { Sound } from "./Sound.js";
 import { Enemy } from "./Enemy.js";
 import { WaveGenerator } from "./WaveGenerator.js";
+import { initFps, updateFps} from "./fps.js";
 
 class App extends Application {
   async start() {
     this.loader = new GLTFLoader();
     await this.loader.load("../common/models/map.gltf");
-
+    initFps()
     this.test = await this.loader.loadNode("TEST");
     console.log("test: ", this.test);
     this.test.translation = vec3.fromValues(20, 20, 20);
@@ -76,8 +77,9 @@ class App extends Application {
 
     this.renderer = new Renderer(this.gl);
     this.renderer.prepareScene(this.scene);
-
-    this.player.children.splice(1, this.player.children.length - 1); //na sceni rabi bit samo se prvi gun
+    
+    this.player.children.splice(1, this.player.children.length - 1);  //na sceni rabi bit samo se prvi gun
+    this.waveGenerator = new WaveGenerator(this.enemies, this.scene);
 
     this.physics = new Physics(this.scene);
     this.gravity = new Gravity(this.scene);
@@ -98,8 +100,14 @@ class App extends Application {
     if (!this.player) {
       return;
     }
+    
 
     if (document.pointerLockElement === this.canvas) {
+      this.player.playing = true;
+      if (this.player.inventory.health > 0) {
+        document.querySelector(".hudResume").style.display = "none";
+        document.querySelector(".cross").innerHTML = " + ";
+      }
       this.player.enable();
       this.player.playing = true;
       this.BGM.play();
@@ -108,6 +116,15 @@ class App extends Application {
         document.querySelector(".cross").innerHTML = " + ";
       }
     } else {
+      this.player.playing = false;
+      if (this.player.inventory.health > 0) {
+        document.querySelector(".cross").innerHTML = "";
+        document.querySelector(".hudResume").style.display = "block";
+        document.querySelector(".hudResume").addEventListener("click", () => {
+          this.enableCamera();
+        });
+      }
+
       this.player.disable();
       this.player.playing = false;
       this.BGM.pause();
@@ -125,7 +142,7 @@ class App extends Application {
     const t = (this.time = Date.now());
     const dt = (this.time - this.startTime) * 0.001;
     this.startTime = this.time;
-
+    updateFps()
     if (this.player && this.player.playing) {
       if (this.player && this.player.camera && this.scene) {
         this.player.update(dt);

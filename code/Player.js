@@ -28,7 +28,7 @@ export class Player extends Node {
         this.inventory = {money: 100, health: 100}
 
         // pretekli čas od zadnjega odbitka hp-ja. Zato, da ti enemy ne more takoj zbiti vseh 100%
-        this.timeSinceDamageTaken = 1.0;
+        this.timeSinceDamageTaken = 0.0;
 
         this.playing = false;
     }
@@ -126,7 +126,8 @@ export class Player extends Node {
             this.min[1] = -3
         }
         c.timeSinceDamageTaken -= dt
-        
+        if( c.timeSinceDamageTaken > 0)
+            c.children[0].red = c.timeSinceDamageTaken
         c.updateGuns()
 
         if(c.children[0]){

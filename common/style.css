@@ -5,7 +5,7 @@ html {
 }
 
 * {
-  font-family: sans-serif;
+  font-family: "Papyrus", fantasy;
 }
 
 .fullscreen {
@@ -17,6 +17,31 @@ html {
 .fullscreen > * {
   width: 100%;
   height: 100%;
+}
+
+.menuHud {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+}
+
+.startGameText {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 60px;
+}
+
+.startGameText:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.inGameHud {
+  display: none;
 }
 
 .overlay {
@@ -67,7 +92,7 @@ a.ammo {
 a.cross {
   display: block;
   font-weight: bold;
-  font-size: large;
+  font-size: xx-large;
   padding: 5px 10px;
   color: rgb(255, 0, 200);
 }
@@ -83,7 +108,7 @@ a.cross {
 
 .hudHealth {
   position: fixed;
-  top: 7vh;
+  top: 4vh;
   right: 20px;
   display: flex;
   width: 220px;
@@ -114,9 +139,11 @@ a.cross {
 
 .hudMoney {
   position: fixed;
-  top: 11vh;
+  top: 8vh;
   right: 20px;
   display: flex;
+  background-color: #ffec838f;
+  padding: 0px 5px;
 }
 
 .myMoney {
@@ -134,6 +161,76 @@ a.cross {
 #warningText {
   font-size: x-large;
   color: white;
+}
+
+.hudCountdown {
+  position: absolute;
+  left: 50%;
+  top: 3vh;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  display: none;
+  color: red;
+}
+
+.hudWaveNr {
+  position: absolute;
+  left: 3vw;
+  top: 4vh;
+  font-size: 27px;
+  font-weight: bold;
+  color: rgb(204, 184, 0);
+}
+
+.hudGameOver {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  display: none;
+  background-color: rgba(255, 0, 0, 0.1);
+}
+
+.gameOverText {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  color: red;
+  font-size: 70px;
+}
+
+.playAgainText {
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  font-size: 40px;
+  color: white;
+}
+
+.playAgainText:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.hudResume {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+}
+
+.resumeText {
+  font-size: 40px;
+  color: white;
+}
+
+.resumeText:hover {
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 .moving {

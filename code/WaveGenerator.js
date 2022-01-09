@@ -1,48 +1,96 @@
-import { vec3, mat4 } from "../lib/gl-matrix-module.js";
+import { vec3 } from "../lib/gl-matrix-module.js";
 import { Enemy } from "./Enemy.js";
-import { Gun } from "./Gun.js";
 import { Player } from "./Player.js";
 
-export class Physics {
-  constructor(scene) {
+export class WaveGenerator {
+  constructor(enemies, scene) {
+    this.waveNumber = 0;
+    this.enemies = enemies;
     this.scene = scene;
+    this.startNew = true;
+    this.time = 20;
   }
 
-  update(dt, playerEnemyCol = true) {
-    this.scene.traverse((node) => {
-      if (node.red && node.red > 0) {
-        node.red -= dt;
+  generateWave() {
+    this.waveNumber++;
+    this.enemies.forEach((enemy) => {
+      if (enemy.isBoss && this.waveNumber % 5 !== 0) return;
+
+      if (enemy.isBoss) {
+        enemy.translation[1] += 20;
+        enemy.hp = enemy.startingHp;
       }
-      if (node.velocity) {
-        //console.log(node)
-        vec3.scaleAndAdd(node.translation, node.translation, node.velocity, dt);
-        vec3.scaleAndAdd(node.translation, node.translation, node.padc, dt);
-        node.updatePos();
-        this.scene.traverse((other) => {
-          if (node !== other) {
-            if (!(other instanceof Gun) && !other.deco) {
-              let collision = this.resolveCollision(node, other);
-              if (playerEnemyCol) {
-                let pl, en;
-                if(node instanceof Player && other instanceof Enemy){
-                    pl = node;
-                    en = other;
-                }else if(other instanceof Player && node instanceof Enemy){
-                    pl = other;
-                    en = node;
-                }
-                if (collision && pl && pl.timeSinceDamageTaken <= 0) {
-                    pl.inventory.health -= en.dmg;
-                    pl.dmgSound.play()
-                    pl.showHealth();
-                    pl.timeSinceDamageTaken = 1;
-                }
+
+      if (this.waveNumber > 1 && !enemy.isBoss) {
+        enemy.translation[1] += 20;
+        enemy.hp = enemy.startingHp + (this.waveNumber - 1) * 5;
+        enemy.dmg += 1;
+        enemy.drop += 0.5;
+      }
+
+      let collision = true;
+
+      do {
+        collision = true;
+        let xPos = Math.floor(Math.random() * (52 - -52)) - 52; //Math.floor(Math.random() * (max - min)) + min;
+        let yPos = Math.floor(Math.random() * (64 - -64)) - 64; //Math.floor(Math.random() * (max - min)) + min;
+        enemy.translation = vec3.fromValues(xPos, enemy.translation[1], yPos);
+        enemy.updateMatrix();
+        //Preverjej kolizijo enemyja z objekti na sceni
+        this.scene.nodes.some((node) => {
+          if (node !== enemy && !node.deco && node.name !== "ground") {
+            if (node instanceof Enemy) {
+              let distance = vec3.dist(node.translation, enemy.translation);
+              if (distance < 10) {
+                collision = true;
+                return true;
               }
             }
+            if (node instanceof Player) {
+              collision = this.resolveCollision(node, enemy);
+              let distance = vec3.dist(node.translation, enemy.translation);
+              if (distance < 35) {
+                collision = true;
+                return true;
+              }
+            } else collision = this.resolveCollision(enemy, node);
+            //console.log(collision, "med objektoma", enemy.name, node.name);
+            if (collision) {
+              console.log(collision, node.name, enemy);
+              return true;
+            }
+            return false;
           }
+          return false;
         });
-      }
+      } while (collision);
+
+      enemy.isInScene = true;
     });
+    this.startNew = true;
+    document.querySelector("#wave").innerHTML = this.waveNumber;
+  }
+
+  startCountdown(time, shop, dt) {
+    this.startNew = false;
+    if (time === 0) {
+      this.generateWave();
+      return;
+    }
+    let div = document.querySelector(".hudCountdown");
+    let timer = document.querySelector("#countdown");
+
+    this.time -= dt;
+
+    timer.innerHTML = Math.ceil(this.time);
+    div.style.display = "block";
+
+    if (this.time <= 0) {
+      shop.openCloseGate();
+      this.generateWave();
+      div.style.display = "none";
+      this.time = time;
+    }
   }
 
   intervalIntersection(min1, max1, min2, max2) {
@@ -75,16 +123,38 @@ export class Physics {
     // Update bounding boxes with global translation.
     const ta = a.getGlobalTransform();
     const tb = b.getGlobalTransform();
-    
+
+    // const posa = mat4.getTranslation(vec3.create(), ta);
+    // const posb = mat4.getTranslation(vec3.create(), tb);
+
     if (!b.mesh) {
+      console.log("grem ven");
       return;
     }
     let aVertices, mina, maxa;
     for (let i = 0; i < b.mesh.primitives.length; i++) {
+      //b.mesh.primitives.length
       if (a.max) {
-        const posa = mat4.getTranslation(vec3.create(), ta);
-        mina = vec3.add(vec3.create(), posa, a.min);
-        maxa = vec3.add(vec3.create(), posa, a.max);
+        aVertices = [
+          vec3.fromValues(a.min[0], a.min[1], a.min[2]),
+          vec3.fromValues(a.min[0], a.min[1], a.max[2]),
+          vec3.fromValues(a.min[0], a.max[1], a.min[2]),
+          vec3.fromValues(a.min[0], a.max[1], a.max[2]),
+          vec3.fromValues(a.max[0], a.min[1], a.min[2]),
+          vec3.fromValues(a.max[0], a.min[1], a.max[2]),
+          vec3.fromValues(a.max[0], a.max[1], a.min[2]),
+          vec3.fromValues(a.max[0], a.max[1], a.max[2]),
+        ].map((v) => vec3.transformMat4(v, v, ta));
+        mina = vec3.fromValues(
+          Math.min(...aVertices.map((v) => v[0])),
+          Math.min(...aVertices.map((v) => v[1])),
+          Math.min(...aVertices.map((v) => v[2]))
+        );
+        maxa = vec3.fromValues(
+          Math.max(...aVertices.map((v) => v[0])),
+          Math.max(...aVertices.map((v) => v[1])),
+          Math.max(...aVertices.map((v) => v[2]))
+        );
       } else {
         aVertices = [
           vec3.fromValues(
@@ -192,6 +262,11 @@ export class Physics {
         Math.max(...bVertices.map((v) => v[1])),
         Math.max(...bVertices.map((v) => v[2]))
       );
+      //const mina = vec3.add(vec3.create(), posa, a.min);
+      //const maxa = vec3.add(vec3.create(), posa, a.max);
+      // const minb = vec3.add(vec3.create(), posb, b.mesh.primitives[0].attributes.POSITION.min);
+      // const maxb = vec3.add(vec3.create(), posb, b.mesh.primitives[0].attributes.POSITION.max);
+
       // Check if there is collision.
       const isColliding = this.aabbIntersection(
         {
@@ -204,11 +279,11 @@ export class Physics {
         }
       );
 
-      if (!isColliding) {
-        continue;
-      }
+      if (isColliding) return true;
+      //console.log(b.deco)
+      //console.log("collison")
       // Move node A minimally to avoid collision.
-      const diffa = vec3.sub(vec3.create(), maxb, mina);
+      /* const diffa = vec3.sub(vec3.create(), maxb, mina);
       const diffb = vec3.sub(vec3.create(), maxa, minb);
 
       let minDiff = Infinity;
@@ -239,9 +314,8 @@ export class Physics {
       }
 
       vec3.add(a.translation, a.translation, minDirection);
-      a.updatePos();
-
-      return isColliding;
+      a.updatePos();*/
     }
+    return false;
   }
 }

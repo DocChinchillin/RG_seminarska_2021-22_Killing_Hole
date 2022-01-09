@@ -11,31 +11,57 @@
     <script type="module" src="90-gltf.js"></script>
 </head>
 <body>
-    <div class="hudHealth">
-        <i class="fa fa-heart" style="color: #a10000;"></i>
-        <div class="fullHealth">
-            <div id="myHealth" class="myHealth">100%</div>
+    <div class="menuHud">
+        <a class="startGameText">Start game</a>
+    </div>
+    <div class="inGameHud">
+        <div class="hudHealth">
+            <i class="fa fa-heart" style="color: #a10000;"></i>
+            <div class="fullHealth">
+                <div id="myHealth" class="myHealth">100%</div>
+            </div>
         </div>
-    </div>
-    <div class="hudMoney">
-        <i class="fa fa-money" style="color: #c4b700; font-size: 19px;"></i> 
-        <div id="myMoney" class="myMoney">100</div>
-    </div>
-    <div class="hudAmmo">
-        <a class="ammo"> Ammo</a>
-    </div>
-    <div class="hudCross">
-        <a class="cross"> + </a>
-    </div>
-    <div class="hudInfoText">
-        <a class="infoText"></a>
-    </div>
-    <!-- <div id="hudWarningcontainer"></div> -->
-    <div id="hudWarningText">
-        <a id="warningText"></a>
+        <div class="hudMoney">
+            <i class="fa fa-money" style="color: #c4b700; font-size: 19px; align-self: center;"></i> 
+            <div id="myMoney" class="myMoney">100</div>
+        </div>
+        <div class="hudAmmo">
+            <a class="ammo"> Ammo</a>
+        </div>
+        <div class="hudCross">
+            <a class="cross"> + </a>
+        </div>
+        <div class="hudInfoText">
+            <a class="infoText"></a>
+        </div>
+        <!-- <div id="hudWarningcontainer"></div> -->
+        <div id="hudWarningText">
+            <a id="warningText"></a>
+        </div>
+        <div class="hudWaveNr">
+            <a style="font-weight: bold;">WAVE</a> <br/>
+            <div style="text-align: center;">
+                <a id="wave"></a>
+            </div>
+        </div>
+        <div class="hudCountdown">
+            <a style="font-weight: bold;">NEXT WAVE IN:</a> <br/>
+            <div style="text-align: center; font-weight: 800;">
+                <a id="countdown"></a><a>s</a>
+            </div>
+        </div>
+        <div class="hudGameOver">
+            <a class="gameOverText">Game Over</a>
+            <a class="playAgainText">Play again</a>
+        </div>
+        <div class="hudResume" style="display: none;">
+            <a class="resumeText">Resume game</a>
+        </div>
     </div>
     <div class="fullscreen">
         <canvas></canvas>
     </div>
+
+
 </body>
 </html>

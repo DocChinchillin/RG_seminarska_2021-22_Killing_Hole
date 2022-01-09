@@ -9,9 +9,9 @@ export class Gun extends Node{
         this.ammoDisplay = document.getElementsByClassName("ammo")[0];
         this.cross = document.getElementsByClassName("cross")[0];
         //firerate
-        this.fireRate = options.extras.fireRate || 1000
-        this.lastFire = 0
-        this.dmg = options.extras.damage || 1
+        this.fireRate = options.extras.fireRate || 1000;
+        this.lastFire = 0;
+        this.dmg = options.extras.damage || 1;
 
         //sounds
         this.bang = new Sound(options.extras.shoot || "../common/sounds/rifle.mp3")

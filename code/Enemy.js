@@ -1,16 +1,22 @@
 import { Node } from "./Node.js";
 import { mat4, quat, vec3, vec4 } from "../lib/gl-matrix-module.js";
+import { Sound } from "./Sound.js";
 
 export class Enemy extends Node {
     constructor(options) {
         console.log(options)
         super(options);
 
+        this.dmgSound = new Sound("../common/sounds/Zombie_Death.mp3");
+        this.dmgSound.setVolume(0.4)
+
         this.hp = options.extras.hp;
-        this.isInScene = true;
+        this.startingHp = options.extras.hp;
+        this.isInScene = false;
         this.moveSpeed = 1;
         this.drop = options.extras.money;
         this.dmg = options.extras.dmg;
+        this.isBoss = options.extras.boss ? true : false;
         this.velocity  = [0, 0, 0];
         this.padc = [0, 0, 0];
         this.originalRotation = vec4.clone(this.rotation);
@@ -58,10 +64,11 @@ export class Enemy extends Node {
     hit(shot, player){
         this.red = 1;
         this.hp -= shot.dmg;
+        this.dmgSound.play()
         if (this.hp <= 0) {
             this.isInScene = false;
             this.translation[1] -= 20;
-            player.inventory.money += this.drop;
+            player.inventory.money += Math.floor(this.drop);
             player.showMoney();
         }
     }

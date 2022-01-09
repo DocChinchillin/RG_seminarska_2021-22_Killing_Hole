@@ -9,7 +9,7 @@ export class HitScan {
         this.scene = scene;
     }
     
-    update(dt,shop,cam,test) {
+    update(dt,shop,cam) {
         let col = {}
         let res
 
@@ -17,10 +17,8 @@ export class HitScan {
             if (cam !== other) {
                 if((other instanceof ShopModel) && shop.gateOpen){
                     res = this.resolveCollision(cam, other,null)
-                    if(res){
-                        if(res[1] < 15){
-                            col[res[1]] = res[0]    
-                        }                                 
+                    if(res && res[1] < 15){
+                        col[res[1]] = res[0]                                 
                     }
                 }
             }
@@ -35,18 +33,14 @@ export class HitScan {
                     lowest = parseFloat(keys[i])
             }
             match = col[lowest]
-            //console.log(match)
-            //console.log(lowest,match)
         }
         
         
         if(shop){
             if(match instanceof ShopModel){
                 shop.setCurModel(match)
-                //document.getElementsByClassName("cross")[0].innerHTML = match.type
             }else{
                 shop.setCurModel(null)
-                //document.getElementsByClassName("cross")[0].innerHTML = "+"
             }
     }
     let col1 = {}
@@ -71,13 +65,8 @@ export class HitScan {
                 if(parseFloat(keys[i]) < lowest)
                     lowest = parseFloat(keys[i])
             }
-            
             match = col1[lowest]
             
-            test.translation = lok[lowest]
-    
-            test.updateMatrix()
-
         }
         if(match.hp){
             match.hit(shot, cam)
@@ -145,10 +134,6 @@ export class HitScan {
             tocka = shot.origin
             smer = shot.dir
         }
-
-        // const poscam = mat4.getTranslation(vec3.create(), tcam);
-        // const posb = mat4.getTranslation(vec3.create(), tb);
-        // let mincam,maxcam;
         
         let minb,maxb,con,bVertices,ret,minDist,dist,mint
         let to1 = vec3.create() 
@@ -189,19 +174,12 @@ export class HitScan {
                     mint = vec3.clone(to1)
                 }
                 con = true
-                //break
             }
             
             
            
         }
         if(con){
-            //console.log(b.constructor.name)
-            //console.log("swap")
-            //console.log(b.translation)
-            //document.getElementsByClassName("cross")[0].innerHTML = b.type
-            //console.log(ret[0],ret[1])
-            //console.log(vec3.dist(to1,tocka))
             return [b,minDist,mint]
         }
         

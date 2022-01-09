@@ -2,6 +2,7 @@ import { vec3, mat4, quat } from '../lib/gl-matrix-module.js';
 
 import { Utils } from './Utils.js';
 import { Node } from './Node.js';
+import { Sound } from './Sound.js';
 
 export class Player extends Node {
 
@@ -11,6 +12,9 @@ export class Player extends Node {
 
         //this.projection = this.camera.matrix//mat4.create();
         //this.camera.updateMatrix();
+
+        this.dmgSound = new Sound("../common/sounds/player_hit.mp3");
+        this.dmgSound.setVolume(0.2)
 
         this.mousemoveHandler = this.mousemoveHandler.bind(this);
         this.keydownHandler = this.keydownHandler.bind(this);
@@ -24,7 +28,9 @@ export class Player extends Node {
         this.inventory = {money: 100, health: 100}
 
         // pretekli čas od zadnjega odbitka hp-ja. Zato, da ti enemy ne more takoj zbiti vseh 100%
-        this.timeSinceDamageTaken = 1.0;
+        this.timeSinceDamageTaken = 0.0;
+
+        this.playing = false;
     }
     getViewProjectionMatrix(camera) {
         const mvpMatrix = mat4.clone(camera.matrix);
@@ -96,7 +102,6 @@ export class Player extends Node {
                 "dir" : smer
             }
             this.shots.push(novRay)
-            //console.log(this.shots)
         }
 
         if(this.keys["KeyR"]){
@@ -105,6 +110,7 @@ export class Player extends Node {
     }
 
     update(dt) {
+
              
         const c = this;
         const forward = vec3.set(vec3.create(),
@@ -119,8 +125,9 @@ export class Player extends Node {
         }else{
             this.min[1] = -3
         }
-      
-        
+        c.timeSinceDamageTaken -= dt
+        if( c.timeSinceDamageTaken > 0)
+            c.children[0].red = c.timeSinceDamageTaken
         c.updateGuns()
 
         if(c.children[0]){
@@ -214,6 +221,7 @@ export class Player extends Node {
         document.addEventListener('mousedown', this.mousedownHandler);
         document.addEventListener('mouseup', this.mouseupHandler);
 
+        this.playing = true;
     }
 
     disable() {
@@ -222,6 +230,8 @@ export class Player extends Node {
         document.removeEventListener('keyup', this.keyupHandler);
         document.removeEventListener('mousedown', this.mousedownHandler);
         document.removeEventListener('mouseup', this.mouseupHandler);
+
+        this.playing = false;
 
         for (let key in this.keys) {
             this.keys[key] = false;

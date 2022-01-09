@@ -25,12 +25,14 @@ export class Player extends Node {
         this.shots = []
         this.keys = {};
 
-        this.inventory = {money: 100, health: 100}
+        this.inventory = {money: 20, health: 100}
 
         // pretekli čas od zadnjega odbitka hp-ja. Zato, da ti enemy ne more takoj zbiti vseh 100%
         this.timeSinceDamageTaken = 0.0;
 
         this.playing = false;
+
+        this.showMoney();
     }
     getViewProjectionMatrix(camera) {
         const mvpMatrix = mat4.clone(camera.matrix);

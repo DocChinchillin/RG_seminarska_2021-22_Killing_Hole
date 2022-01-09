@@ -21,7 +21,6 @@ class App extends Application {
     await this.loader.load("../common/models/map.gltf");
     initFps()
     this.test = await this.loader.loadNode("TEST");
-    console.log("test: ", this.test);
     this.test.translation = vec3.fromValues(20, 20, 20);
     this.test.scale = vec3.fromValues(0.2, 0.2, 0.2);
     this.test.updateMatrix();
@@ -46,7 +45,7 @@ class App extends Application {
     this.shop.shopModels.push(await this.loader.loadShop("Gun1SHOP"));
     this.shop.shopModels.push(await this.loader.loadShop("Gun2SHOP"));
     this.shop.shopModels.push(await this.loader.loadShop("Medpack"));
-    console.log(this.shop);
+   
 
     this.shop.gate = await this.loader.loadNode("door");
 
@@ -59,11 +58,9 @@ class App extends Application {
     //this.enemy2 = await this.loader.loadEnemy("enemy2");
     //this.enemy3 = await this.loader.loadEnemy("enemy3");
     //this.enemy4 = await this.loader.loadEnemy("enemy4");
-    //console.log(this.enemy.rotation)
+   
 
     this.scene = await this.loader.loadScene(this.loader.defaultScene);
-    console.log(this.player);
-    console.log(this.scene);
 
     this.waveGenerator = new WaveGenerator(this.enemies, this.scene);
 
@@ -235,7 +232,6 @@ document.addEventListener("DOMContentLoaded", () => {
     app.enableCamera();
     document.querySelector(".menuHud").style.display = "none";
     document.querySelector(".inGameHud").style.display = "block";
-    console.log("nastavi listener");
   });
   //gui.add(app, "enableCamera");
 });

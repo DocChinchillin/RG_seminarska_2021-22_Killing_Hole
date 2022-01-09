@@ -4,7 +4,6 @@ import {Sound} from "./Sound.js"
 export class Gun extends Node{
     constructor(options) {
         super(options);
-        console.log(options)
 
         this.ammoDisplay = document.getElementsByClassName("ammo")[0];
         this.cross = document.getElementsByClassName("cross")[0];

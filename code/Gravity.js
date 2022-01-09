@@ -41,7 +41,6 @@ export class Gravity {
     }
 
     resolveCollision(a, b) {
-        //console.log(a)
         // Update bounding boxes with global translation.
         const ta = a.getGlobalTransform();
         const tb = b.getGlobalTransform();
@@ -114,7 +113,7 @@ export class Gravity {
         //const stop = vec3.set(vec3.create(),1, 0, 1 );
         //vec3.multiply(cam.velocity,cam.velocity,stop)
         a.can_jump = 1
-        //console.log(b.translation)
+    
         return 1;
         
     }

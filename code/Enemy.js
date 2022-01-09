@@ -4,7 +4,6 @@ import { Sound } from "./Sound.js";
 
 export class Enemy extends Node {
     constructor(options) {
-        console.log(options)
         super(options);
 
         this.dmgSound = new Sound("../common/sounds/Zombie_Death.mp3");
@@ -20,13 +19,11 @@ export class Enemy extends Node {
         this.velocity  = [0, 0, 0];
         this.padc = [0, 0, 0];
         this.originalRotation = vec4.clone(this.rotation);
-        //console.log(this.rotation[0], this.rotation[1], this.rotation[2], this.rotation[3])
 
     }
 
     update(dt, player){
         if (this.isInScene){
-            //console.log(this.rotation[0], this.rotation[1], this.rotation[2], this.rotation[3])
             let direction = vec3.create();
             let pom = vec3.clone(player.translation);
             let trans = vec3.clone(this.translation);

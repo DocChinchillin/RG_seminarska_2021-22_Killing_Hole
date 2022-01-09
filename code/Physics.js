@@ -14,7 +14,6 @@ export class Physics {
         node.red -= dt;
       }
       if (node.velocity) {
-        //console.log(node)
         vec3.scaleAndAdd(node.translation, node.translation, node.velocity, dt);
         vec3.scaleAndAdd(node.translation, node.translation, node.padc, dt);
         node.updatePos();

@@ -200,7 +200,6 @@ export class Player extends Node {
 
         // 4: limit speed
         let len = vec3.len(c.velocity);
-        //console.log(len)
         if (len > c.maxSpeed) {
             vec3.scale(c.velocity, c.velocity, c.maxSpeed / len);
         }

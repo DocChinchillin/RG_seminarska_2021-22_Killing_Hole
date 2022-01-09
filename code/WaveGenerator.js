@@ -54,9 +54,7 @@ export class WaveGenerator {
                 return true;
               }
             } else collision = this.resolveCollision(enemy, node);
-            //console.log(collision, "med objektoma", enemy.name, node.name);
             if (collision) {
-              console.log(collision, node.name, enemy);
               return true;
             }
             return false;
@@ -128,7 +126,6 @@ export class WaveGenerator {
     // const posb = mat4.getTranslation(vec3.create(), tb);
 
     if (!b.mesh) {
-      console.log("grem ven");
       return;
     }
     let aVertices, mina, maxa;
@@ -280,8 +277,6 @@ export class WaveGenerator {
       );
 
       if (isColliding) return true;
-      //console.log(b.deco)
-      //console.log("collison")
       // Move node A minimally to avoid collision.
       /* const diffa = vec3.sub(vec3.create(), maxb, mina);
       const diffb = vec3.sub(vec3.create(), maxa, minb);

@@ -208,7 +208,7 @@ class App extends Application {
     const h = this.canvas.clientHeight;
     const aspectRatio = w / h;
 
-    if (this.player) {
+    if (this.player && this.player.camera) {
       this.player.camera.aspect = aspectRatio;
       this.player.camera.updateMatrix();
     }
